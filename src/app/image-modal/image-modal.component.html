@@ -1,0 +1,10 @@
+<div>
+    <div>
+        <img [src]="isFlipped ? data.backImageSrc : data.frontImageSrc" class="modal-image" [ngClass]="{'flipped': isFlipped}" (click)="toggleFlip()">
+    </div>
+    <div class="modal-actions">
+      <!-- Mostrar el botón solo si hay una imagen seleccionada -->
+      <button *ngIf="isDownloadButtonVisible" class="download-button" (click)="downloadImage()">Descargar cupón</button>
+    </div>
+  </div>
+  

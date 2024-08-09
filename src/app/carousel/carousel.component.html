@@ -1,0 +1,76 @@
+<!--<div class="flexbox">
+	<div class="search">
+	  <div>
+		<input type="text" placeholder="Search . . ." required>
+	  </div>
+	</div>
+</div> -->
+<div class="carousel-container">
+	<div class="contenedor-img-portada-inicio"></div>
+    <div class="contenedor-categorias-modal">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2>CATEGORIA</h2>
+
+        <div class="categorias">
+            <a [class.selected]="selectedItem === 'premium'" (click)="menuItemClicked($event, 'premium')">
+                <img src="../../assets/icon-parques-b.svg" alt="">
+                <span>PREMIUM</span>
+            </a>
+
+            <a [class.selected]="selectedItem === 'parks'" (click)="menuItemClicked($event, 'parks')">
+                <img src="../../assets/icon-parques-b.svg" alt="">
+                <span>PARQUES Y ATRACCIONES</span>
+            </a>
+
+            <a [class.selected]="selectedItem === 'restaurants'" (click)="menuItemClicked($event, 'restaurants')">
+                <img src="../../assets/icon-restaurentes-b.svg" alt="">
+                <span>RESTAURANTES, BAR Y CAFETERÍA</span>
+            </a>
+
+            <a [class.selected]="selectedItem === 'places_events'" (click)="menuItemClicked($event, 'places_events')">
+                <img src="../../assets/icon-eventos-b.svg" alt="">
+                <span>LUGARES Y EVENTOS</span>
+            </a>
+
+            <a [class.selected]="selectedItem === 'stores'" (click)="menuItemClicked($event, 'stores')">
+                <img src="../../assets/icon-tiendas-b.svg" alt="">
+                <span>TIENDAS</span>
+            </a>
+        </div>
+    </div>
+    <br>
+	<!--<button (click)="toggleMenu()">CATEGORÍAS</button>
+	<ul [ngClass]="{ 'expanded': isExpanded }">
+		<li class="premium" [class.selected]="selectedItem === 'premium'" (click)="menuItemClicked($event, 'premium')"><a href="#">Premium</a></li>
+		<li class="parks" [class.selected]="selectedItem === 'parks'" (click)="menuItemClicked($event, 'parks')"><a href="#">Parques y atracciones</a></li>
+		<li class="restaurants" [class.selected]="selectedItem === 'restaurants'" (click)="menuItemClicked($event, 'restaurants')"><a href="#">Restaurantes, bar y cafeterías</a></li>
+		<li class="events" [class.selected]="selectedItem === 'places_events'" (click)="menuItemClicked($event, 'places_events')"><a href="#">Lugares y eventos</a></li>
+		<li class="stores" [class.selected]="selectedItem === 'stores'" (click)="menuItemClicked($event, 'stores')"><a href="#">Tiendas</a></li>
+		<li class="services" [class.selected]="selectedItem === 'services'" (click)="menuItemClicked($event, 'services')"><a href="#">Servicios</a></li>
+	</ul> -->
+	<button class="carousel-button left" (click)="rotateLeft()">
+		<img src="../../assets/left_button.png">
+	</button>
+	<button class="carousel-button right" (click)="rotateRight()">
+		<img src="../../assets/right_button.png">
+	</button>
+	<!-- Carousel -->
+	<div class="carousel">
+	  <ng-container *ngFor="let card of cards">
+		<a class="carousel-item">
+			<div *ngIf="hasImages; else noCards" class="img-area">
+				<img [src]=card.image alt="{{ card.image }}" (click)="openImageModal($event, card)">
+			</div>
+		  <ng-template #noCards>
+			No hay tarjetas
+		  </ng-template>
+		</a>
+	  </ng-container>
+	</div>
+
+  </div>
+  

@@ -1,0 +1,62 @@
+<section class="login-block">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 form-section">
+          <h2 class="text-center">¿Qué te pareció esta aplicación? Dejanoslo saber!</h2>
+          <form class="login-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label class="text-uppercase">Nombre (opcional)</label>
+              <input type="text" class="form-control" formControlName="full_name">
+            </div>
+            <div class="form-group">
+              <label class="text-uppercase">Correo (opcional)</label>
+              <input type="text" class="form-control" formControlName="email">
+            </div>
+            <div class="form-group">
+              <label class="text-uppercase">Teléfono celular (opcional)</label>
+              <input type="number" class="form-control" formControlName="phone_number">
+            </div>
+            <div class="form-group">
+              <label class="text-uppercase">¿Te fue util la información de esta aplicación?</label>
+              <div class="star-rating">
+                <i class="fa fa-star" (click)="rate(1, 'rating1')" [ngClass]="{'rated': ratings['rating1'] >= 1}"></i>
+                <i class="fa fa-star" (click)="rate(2, 'rating1')" [ngClass]="{'rated': ratings['rating1'] >= 2}"></i>
+                <i class="fa fa-star" (click)="rate(3, 'rating1')" [ngClass]="{'rated': ratings['rating1'] >= 3}"></i>
+                <i class="fa fa-star" (click)="rate(4, 'rating1')" [ngClass]="{'rated': ratings['rating1'] >= 4}"></i>
+                <i class="fa fa-star" (click)="rate(5, 'rating1')" [ngClass]="{'rated': ratings['rating1'] >= 5}"></i>
+              </div>
+              <p>Rating: {{ ratings['rating1'] }}/5</p>
+            </div>
+            <div class="form-group">
+              <label class="text-uppercase">¿Fue fácil y rápida tu experiencia?</label>
+              <div class="star-rating">
+                <i class="fa fa-star" (click)="rate(1, 'rating2')" [ngClass]="{'rated': ratings['rating2'] >= 1}"></i>
+                <i class="fa fa-star" (click)="rate(2, 'rating2')" [ngClass]="{'rated': ratings['rating2'] >= 2}"></i>
+                <i class="fa fa-star" (click)="rate(3, 'rating2')" [ngClass]="{'rated': ratings['rating2'] >= 3}"></i>
+                <i class="fa fa-star" (click)="rate(4, 'rating2')" [ngClass]="{'rated': ratings['rating2'] >= 4}"></i>
+                <i class="fa fa-star" (click)="rate(5, 'rating2')" [ngClass]="{'rated': ratings['rating2'] >= 5}"></i>
+              </div>
+              <p>Rating: {{ ratings['rating2'] }}/5</p>
+            </div>
+            <div class="form-group">
+              <label class="text-uppercase">¿Nos recomendarías?</label>
+              <div class="star-rating">
+                <i class="fa fa-star" (click)="rate(1, 'rating3')" [ngClass]="{'rated': ratings['rating3'] >= 1}"></i>
+                <i class="fa fa-star" (click)="rate(2, 'rating3')" [ngClass]="{'rated': ratings['rating3'] >= 2}"></i>
+                <i class="fa fa-star" (click)="rate(3, 'rating3')" [ngClass]="{'rated': ratings['rating3'] >= 3}"></i>
+                <i class="fa fa-star" (click)="rate(4, 'rating3')" [ngClass]="{'rated': ratings['rating3'] >= 4}"></i>
+                <i class="fa fa-star" (click)="rate(5, 'rating3')" [ngClass]="{'rated': ratings['rating3'] >= 5}"></i>
+              </div>
+              <p>Rating: {{ ratings['rating3'] }}/5</p>
+            </div>
+            <div class="form-group">
+              <label class="text-uppercase">¿Qué consideras que pudieramos mejorar o cambiar?</label>
+              <textarea class="form-control" formControlName="message" rows="3"></textarea>
+            </div>
+            <button [disabled]="!contactForm.valid" type="submit" class="btn btn-login float-right">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  

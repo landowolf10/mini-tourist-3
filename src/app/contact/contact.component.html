@@ -1,0 +1,27 @@
+<section class="login-block">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 form-section">
+				<h2 class="text-center">¿Tienes alguna sugerencia o comentario? ¡Contáctanos!</h2>
+				<form class="login-form">
+					<div class="form-group">
+						<label>minitourist@gmail.com</label>
+					</div>
+					<div class="form-group">
+						<label>123456789</label>
+					</div>
+				</form>
+				<h2 class="text-center social-media">Visita nuestras redes sociales!</h2>
+				<div class="carousel">
+					<ng-container *ngFor="let imageName of socialMedia">
+					  <a class="carousel-social carousel-item">
+						  <div class="img-area-social">
+							  <img [src]="'assets/images/' + imageName">
+						  </div>
+					  </a>
+					</ng-container>
+				  </div>
+			</div>
+		</div>
+	</div>
+</section>

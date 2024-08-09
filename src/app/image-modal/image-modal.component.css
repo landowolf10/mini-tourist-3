@@ -1,0 +1,37 @@
+.modal-image {
+  max-width: 100%;
+  max-height: 80vh;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.5s; /* Add a transition for smooth flipping */
+}
+
+/* Style the button */
+.modal-actions {
+  text-align: center;
+  margin-top: 20px;
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.download-button {
+  padding: 10px 20px;
+  background-color: #eb0c0c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Style the button on hover */
+.download-button:hover {
+  background-color: #ee0909;
+}
+
+/* Add styles for the flipped image */
+.flipped {
+  transform: scaleX(-1);
+}

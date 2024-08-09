@@ -1,0 +1,109 @@
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+.login-block{
+    background: #DE6262;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #eb0c0c, #DE6262);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #f15252, #eb0c0c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    float:left;
+    width:100%;
+    padding : 50px 0;
+}
+
+.container{background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);}
+.form-section{padding: 50px 30px; position:relative;}
+
+
+.form-section h2{margin-bottom:30px; font-weight:800; font-size:30px; color: #eb0c0c;}
+.form-section h2:after{content:" "; width:100px; height:5px; background:#FEB58A; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
+.btn-login{background: #eb0c0c; color:#fff; font-weight:600;}
+ label {
+    font-size: 30px;
+    text-align: center;
+    margin: 50px;
+    padding: 150px;
+ }
+
+ .social-media {
+    margin-top: 50px;
+ }
+
+
+
+
+
+
+
+
+
+ .carousel-container {
+   position: relative;
+   text-align: center;
+}
+
+.carousel-button {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   background-color: white;
+   border: none;
+   padding: 10px;
+   cursor: pointer;
+   z-index: 2;
+}
+
+.carousel-button.left {
+   left: 10px;
+}
+
+.carousel-button.right {
+   right: 10px;
+}
+
+
+.carousel {
+   height: 600px;
+   perspective: 250px;
+}
+
+.selected {
+   background-color: #ff0000;
+}
+
+.carousel .carousel-item {
+   width: 450px;
+   background: #fff;
+   padding: 50px;
+   height: auto;
+   text-align: center;
+   border-radius: 15px;
+}
+
+.carousel .carousel-social {
+   width: 60px;
+   background: #fff;
+   padding: 50px;
+   height: auto;
+   text-align: center;
+}
+
+.img-area {
+   width: 350px;
+   height: 550px;
+   overflow: hidden;
+   border: 8px inset deepskyblue;
+}
+
+.img-area-social {
+   width: 200px;
+   height: 200px;
+   overflow: hidden;
+}
+
+.img-area img {
+   width: 100%;
+}
+
+.img-area-social img {
+   width: 100%;
+}
+
+ 

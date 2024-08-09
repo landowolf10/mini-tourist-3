@@ -1,0 +1,20 @@
+<div>
+    <!--<button (click)="countVisitedCards()">Show visited cards</button>-->
+    <p>Visited cards: {{visitedCardsCount}}</p>
+  </div>
+  <div>
+    <!--<button (click)="countVisitedCards()">Show visited cards</button>-->
+    <p>Downloaded cards: {{downloadedCardsCount}}</p>
+  </div>
+  <div>
+    <br>
+  </div>
+  <mat-form-field>
+    <input matInput [matDatepicker]="datepicker" placeholder="Select a date" (dateChange)="onDateChange($event)">
+    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker></mat-datepicker>
+  </mat-form-field>
+  <div>
+    <p>Visited cards: {{visitedCardsCountDate}}</p>
+    <p>Downloaded cards: {{downloadedCardsCountDate}}</p>
+  </div>  
