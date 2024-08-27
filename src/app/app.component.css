@@ -100,7 +100,7 @@ header {
 }
 
 .contenedor-menu-header ul li .ul-submenu .li-submenu a:hover {
-    background-color: #8C0000;
+    background-color: #6e0404;
     color: #FFFFFF;
 }
 
@@ -121,12 +121,12 @@ header {
 }
 
 .contenedor-menu-header nav ul li a:hover {
-    color: #8C0000;
+    color: #350101;
 }
 
 .a-btn-is {
     padding: 10px 20px;
-    background-color: #8C0000;
+    background-color: #6e0404;;
     color: #FFFFFF;
     text-decoration: none;
     border-radius: 5px;
@@ -134,7 +134,7 @@ header {
 }
 
 .a-btn-is:hover {
-    background-color: #700000;
+    background-color: #6e0404;
 }
 
 /* Hamburger menu styles */
