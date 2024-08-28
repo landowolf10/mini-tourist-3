@@ -1,9 +1,43 @@
-
-  
-
 .carousel-container {
   position: relative;
   text-align: center;
+}
+
+.carousel {
+  height: 600px;
+  perspective: 250px;
+}
+
+.carousel .carousel-item {
+  width: 450px;
+  padding: 50px;
+  height: auto;
+  text-align: center;
+}
+
+.img-area {
+  width: 350px;
+  height: 550px;
+}
+
+.img-area img {
+  width: 100%;
+}
+
+.carousel-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.carousel-button {
+  background: linear-gradient(90deg, rgba(230,87,40,1) 0%, rgba(252,31,29,1) 50%, rgba(253,29,29,1) 50%, rgba(230,87,40,1) 100%);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+  display: inline-block;
+  margin: 0 10px;
 }
 
 button {
@@ -16,201 +50,13 @@ button {
   cursor: pointer;
 }
 
-.carousel-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 2;
-}
-
-.carousel-button.left {
-  left: 10px;
-}
-
-.carousel-button.right {
-  right: 10px;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  background-color: #f0f0f0;
-}
-
-li {
-  padding: 10px;
-  display: inline;
-}
-
-a {
-  text-decoration: none;
-  color: #faf4f4;
-  font-size: 20px;
-}
-
-.expanded {
-  display: block;
-}
-
-/* Initially hide the menu */
-ul:not(.expanded) {
-  display: none;
-}
-
-.premium,
-.parks,
-.restaurants,
-.events,
-stores,
-services {
-  background-color: #eb0c0c;
-}
-
-.carousel {
-  height: 600px;
-  perspective: 250px;
-}
-
-.selected {
-  background-color: #ff0000;
-}
-
-.carousel .carousel-item {
-  width: 450px;
-  background: #fff;
-  padding: 50px;
-  height: auto;
-  text-align: center;
-  border-radius: 15px;
-}
-
-.carousel .carousel-social {
-  width: 60px;
-  background: #fff;
-  padding: 50px;
-  height: auto;
-  text-align: center;
-}
-
-.img-area {
-  width: 350px;
-  height: 550px;
-  overflow: hidden;
-  border: 8px inset deepskyblue;
-}
-
-.img-area-social {
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
-}
-
-.img-area img {
-  width: 100%;
-}
-
-.img-area-social img {
-  width: 100%;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.flexbox {
-
-
-display: flex;
-justify-content: center;
-align-items: center;
-}
-
-.search {
-margin: 20px;
-}
-
-
-
-.search > div {
-display: inline-block;
-position: relative;
-background-color: #eb0c0c;
-border-radius: 20px;
-}
-
-.search > div:after {
-content: "";
-background: white;
-width: 4px;
-height: 20px;
-position: absolute;
-top: 40px;
-right: 2px;
-transform: rotate(135deg);
-}
-
-.search > div > input {
-
-font-size: 16px;
-width: 25px;
-height: 25px;
-padding: 10px;
-border: solid 3px white;
-border-radius: 35px;
-transition: width 0.5s;
-}
-
-.search > div > input::placeholder {
-color: #efefef;
-opacity: 0;
-transition: opacity 150ms ease-out;
-}
-
-.search > div > input:focus::placeholder {
-opacity: 1;
-}
-
-.search > div > input:focus,
-.search > div > input:not(:placeholder-shown) {
-width: 250px;
-}
-
-
-
-
-
-.categorias {
-  width: 100%;
-  height: auto;
-  background-color: transparent;
-  display: flex; /* Change from float to flexbox */
-  flex-wrap: wrap; /* Allow wrapping to the next line if needed */
-  margin-top: 20px;
-  justify-content: start; /* Align items to the start */
-}
-
 .categorias a {
-  width: auto; /* Set width to auto so items can be inline */
+  width: auto;
   height: auto;
   background-color: transparent;
   display: inline-flex;
   justify-content: start;
-  margin-right: 20px; /* Add margin-right instead of margin-bottom */
+  margin-right: 20px;
   cursor: pointer;
   transform: translateX(0px);
   transition: transform ease .2s;
@@ -219,7 +65,7 @@ width: 250px;
 .categorias a img {
   width: 40px;
   height: 40px;
-  background-color: #8C0000;
+  background-color: #6e0404;
   padding: 5px;
   border-radius: 5px;
 }
@@ -244,5 +90,80 @@ width: 250px;
 }
 
 .categorias a:hover span {
-  color: #8C0000;
+  color: #6e0404;
+}
+
+.search {
+  margin: 20px;
+}
+
+.search > div {
+  display: inline-block;
+  position: relative;
+  background-color: #eb0c0c;
+  border-radius: 20px;
+}
+
+.search > div:after {
+  content: "";
+  background: white;
+  width: 4px;
+  height: 20px;
+  position: absolute;
+  top: 40px;
+  right: 2px;
+  transform: rotate(135deg);
+}
+
+.search > div > input {
+  font-size: 16px;
+  width: 25px;
+  height: 25px;
+  padding: 10px;
+  border: solid 3px white;
+  border-radius: 35px;
+  transition: width 0.5s;
+}
+
+.search > div > input::placeholder {
+  color: #efefef;
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+}
+
+.search > div > input:focus::placeholder {
+  opacity: 1;
+}
+
+.search > div > input:focus,
+.search > div > input:not(:placeholder-shown) {
+  width: 250px;
+}
+
+/* Categorias Button */
+.categorias-button {
+  display: none; /* This ensures it only shows in the responsive state */
+  margin: 10px auto; /* Center the button horizontally */
+  padding: 10px;
+  background-color: #eb0c0c;
+  font-size: 20px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .categorias {
+      display: none;
+  }
+
+  .categorias.active {
+      display: block;
+  }
+
+  .categorias-button {
+      display: block;
+      margin: 10px auto; /* Ensure it's centered in the responsive view */
+  }
 }

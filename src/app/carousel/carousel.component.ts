@@ -62,6 +62,7 @@ export class CarouselComponent implements OnInit  {
   isExpanded = false;
   selectedItem: string = 'Premium';
   hasImages: boolean = true; //change to false when using api call.
+  menuActive: boolean = false;
   //clientId: number = 0;
 
   constructor(
@@ -107,6 +108,10 @@ export class CarouselComponent implements OnInit  {
 
   toggleMenu() {
     this.isExpanded = !this.isExpanded;
+  }
+
+  toggleCategorias() {
+    this.menuActive = !this.menuActive;
   }
 
   menuItemClicked(event: Event, item: string) {
