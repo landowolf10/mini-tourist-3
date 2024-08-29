@@ -658,7 +658,7 @@ inicio-0{
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
-    font-size: 45px;
+    font-size: 4vw; /* Adjusts font size based on viewport width */
     text-decoration: none;
     color: #FFFFFF;
     text-align: left;
