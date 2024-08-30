@@ -4,7 +4,7 @@
 }
 
 .carousel {
-  height: 600px;
+  height: 800px;
   perspective: 250px;
 }
 
@@ -151,6 +151,40 @@ button {
   border: none;
   cursor: pointer;
 }
+
+
+@media (max-width: 845px) {
+  .carousel .carousel-item {
+    width: 320px; /* Further reduce the width */
+    padding: 5px; /* Adjust padding */
+  }
+
+  .img-area {
+    width: 350px; /* Adjust the image area width */
+    height: 450px; /* Adjust the image area height */
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel .carousel-item {
+    width: 350px; /* Further reduce the width */
+    padding: 5px; /* Adjust padding */
+  }
+
+  .img-area {
+    width: 350px; /* Adjust the image area width */
+    height: 550px; /* Adjust the image area height */
+  }
+}
+
+
+
+
+
+
+
+
+
 
 /* Responsive styles */
 @media (max-width: 768px) {
