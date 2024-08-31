@@ -10,7 +10,7 @@ import { MoreAboutMtComponent } from './more-about-mt/more-about-mt.component';
 import { WhereIsMtComponent } from './where-is-mt/where-is-mt.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'about-mt', component: AboutMtCardsComponent },
