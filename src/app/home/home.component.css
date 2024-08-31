@@ -690,11 +690,16 @@ inicio-0{
     margin-top: 20px;
 }
 
-.contenedor-info-nosotros a{
+.contenedor-info-nosotros a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     width: auto;
     height: 50px;
     background-color: #8C0000;
-    float: left;
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 12px;
@@ -894,5 +899,19 @@ inicio-0{
         width: 45%; /* 1 item per row with minimum margin */
         margin: 0 5px;
         height: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contenedor-info-nosotros a {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor-info-nosotros a {
+        font-size: 12px;
+        padding: 6px 12px;
     }
 }
