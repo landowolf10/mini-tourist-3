@@ -28,7 +28,12 @@ h1, h2, footer {
     padding : 50px 0;
 }
 
-.container{background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);}
+.container{
+    background:#fff; 
+    border-radius: 10px; 
+    box-shadow:15px 20px 0px rgba(0,0,0,0.1);
+    margin-top: 60px;
+}
 
 .about-us ul {
     list-style-type: disc; /* or use 'circle' or 'square' for different bullet styles */

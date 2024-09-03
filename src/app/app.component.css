@@ -152,7 +152,7 @@ header {
     transition: 0.4s;
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1096px) {
     .contenedor-menu-header {
         justify-content: space-between;
         padding: 20px;
