@@ -1,11 +1,13 @@
 .carousel-container {
   position: relative;
   text-align: center;
+  z-index: 1;
 }
 
 .carousel {
   height: 800px; /* Default height */
   perspective: 250px;
+  z-index: 1;
 }
 
 .carousel .carousel-item {
@@ -48,6 +50,10 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+}
+
+.categorias {
+  margin-top: 100px;
 }
 
 .categorias a {
@@ -142,16 +148,27 @@ button {
 
 /* Categorias Button */
 .categorias-button {
-  display: none; /* This ensures it only shows in the responsive state */
-  margin: 10px auto; /* Center the button horizontally */
-  padding: 10px;
+  display: none; /* Hide by default */
+  margin: 50px auto; /* Center the button horizontally */
+  padding: 10px 20px; /* Adjust padding */
   background-color: #eb0c0c;
   font-size: 20px;
   color: white;
   border: none;
-  cursor: pointer;
+  cursor: pointer; /* Ensure the pointer is always visible */
+  text-align: center;
+  line-height: 1; 
+  justify-content: center;
+  align-items: center;
+  width: fit-content; /* Button fits the content */
+  z-index: 10; /* Ensure button is on top */
+  position: relative;
 }
 
+.categorias-button:hover, 
+.categorias-button:focus {
+  cursor: pointer; /* Ensure the pointer is visible on hover and focus */
+}
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -167,6 +184,18 @@ button {
   .img-area {
     width: 300px; /* Adjust the image area width */
     height: 450px; /* Adjust the image area height */
+  }
+
+  .categorias-button {
+    display: flex; /* Show the button on smaller screens */
+  }
+
+  .categorias {
+    display: none; /* Hide categories by default on smaller screens */
+  }
+
+  .categorias.active {
+    display: block; /* Show categories when active */
   }
 }
 
@@ -197,16 +226,15 @@ button {
 
 /* Responsive styles */
 @media (max-width: 768px) {
+  .categorias-button {
+      display: flex; /* Show the button on smaller screens */
+  }
+
   .categorias {
-      display: none;
+      display: none; /* Hide categories by default on smaller screens */
   }
 
   .categorias.active {
-      display: block;
-  }
-
-  .categorias-button {
-      display: block;
-      margin: 10px auto; /* Ensure it's centered in the responsive view */
+      display: block; /* Show categories when active */
   }
 }

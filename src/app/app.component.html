@@ -1,8 +1,9 @@
 <header>
-    <div class="contenedor-menu-header">
-        <a class="a-logo">
-            <img src="" alt="">
+    <a class="a-logo">
+            <img src="../assets/images/logo.jpg" alt="">
         </a>
+    <div class="contenedor-menu-header">
+        
 
         <div class="hamburger" (click)="toggleMenu()">
             <div></div>
@@ -23,10 +24,9 @@
                     </ul>    
                 </li>
                 <li><a routerLink="/contact" (click)="hideMenu()">Contáctanos</a></li>
+                <li><a routerLink="/login" class="a-btn-is" (click)="hideMenu()">Iniciar sesión</a></li>
             </ul>
         </nav>
-
-        <a routerLink="/login" class="a-btn-is">Iniciar sesión</a>
     </div>
 </header>
 <router-outlet></router-outlet>

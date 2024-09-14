@@ -531,7 +531,7 @@ inicio-0{
     transition: transform ease .4s;
 }
 
-.info-locacion{
+.info-locacion {
     width: 80%;
     height: 80%;
     background-color: #000000;
@@ -544,6 +544,9 @@ inicio-0{
     border-radius: 20px;
     padding: 50px 20px 20px;
     box-sizing: border-box;
+    max-width: 800px; /* Set a max-width for larger screens */
+    max-height: 600px; /* Set a max-height */
+    overflow-y: auto; /* Scroll if content overflows */
 }
 
 .info-locacion h3{
@@ -796,7 +799,7 @@ inicio-0{
     }
 
     .locaciones {
-        width: 45%; /* 1 item per row with margin */
+        width: 20%; /* 1 item per row with margin */
         margin: 0 15px; /* Adjust margin for better spacing */
         height: 200px;
     }
@@ -856,10 +859,14 @@ inicio-0{
         padding: 6px;
     }
 
+    .carrusel-locaciones {
+        flex-direction: column;
+    }
+
     .locaciones {
-        width: 45%; /* 1 item per row with reduced margin */
-        margin: 0 10px;
-        height: 150px;
+        width: 20%; /* 1 item per row with margin */
+        margin: 0 15px; /* Adjust margin for better spacing */
+        height: 200px;
     }
 }
 
@@ -895,10 +902,14 @@ inicio-0{
         padding: 4px;
     }
 
+    .carrusel-locaciones {
+        flex-direction: column;
+    }
+
     .locaciones {
-        width: 45%; /* 1 item per row with minimum margin */
-        margin: 0 5px;
-        height: 120px;
+        width: 20%; /* 1 item per row with margin */
+        margin: 0 15px; /* Adjust margin for better spacing */
+        height: 200px;
     }
 }
 
@@ -907,6 +918,10 @@ inicio-0{
         font-size: 14px;
         padding: 8px 16px;
     }
+
+    .modal-dialog {
+        width: 95%; /* Increase width on smaller screens */
+    }
 }
 
 @media (max-width: 480px) {
@@ -914,4 +929,64 @@ inicio-0{
         font-size: 12px;
         padding: 6px 12px;
     }
+
+    .modal-dialog {
+        width: 95%; /* Increase width on smaller screens */
+    }
 }
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  .modal-dialog {
+    margin: 5% auto;
+    width: 90%; /* Default width */
+    max-width: 800px; /* Max width */
+  }
+
+  .modal-title {
+    font-weight: bold; /* Makes the text bold */
+  }
+  
+  .modal-content {
+    background: linear-gradient(90deg, rgba(230,87,40,1) 0%, rgba(252,31,29,1) 50%, rgba(253,29,29,1) 50%, rgba(230,87,40,1) 100%);
+    color: rgb(255, 255, 255);
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    box-sizing: border-box; 
+  }
+  
+  .close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #ff0000; /* Change color on hover */
+}
+
+/* Ensure the button is easily clickable */
+.close-modal:focus {
+    outline: none; /* Remove default focus outline */
+}
+  

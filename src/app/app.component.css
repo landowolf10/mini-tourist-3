@@ -3,30 +3,36 @@ header {
     height: auto;
     background-color: transparent;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;;
     padding: 20px 90px;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 10;
+    align-items: center;
 }
 
 .contenedor-menu-header {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centers the menu */
     align-items: center;
+    padding-left: 250px; /* Adds padding to prevent overlap with the logo */
 }
 
 .a-logo {
-    width: 150px;
-    height: 70px;
+    width: 250px;
+    height: 170px;
     text-decoration: none;
+    position: absolute; /* Ensures logo stays on the left */
+    top: 20px;
+    left: 20px; /* Adjust left positioning if necessary */
 }
 
 .a-logo img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 
 .contenedor-menu-header nav {
@@ -119,7 +125,7 @@ header {
 }
 
 .contenedor-menu-header nav ul li a:hover {
-    color: #350101;
+    color: #ebcdcd;
 }
 
 .a-btn-is {
@@ -131,6 +137,7 @@ header {
     transition: background-color 0.3s;
     font-size: 14px;
     margin-right: 15px; /* Added margin to ensure space between button and hamburger */
+    
 }
 
 .a-btn-is:hover {
@@ -153,6 +160,11 @@ header {
 }
 
 @media (max-width: 1096px) {
+    .a-logo {
+        width: 200px; /* Reduce logo size */
+        height: 140px;
+    }
+
     .contenedor-menu-header {
         justify-content: space-between;
         padding: 20px;
@@ -206,6 +218,22 @@ header {
     .hamburger {
         display: flex;
         cursor: pointer;
+    }
+}
+
+@media (max-width: 768px) {
+    .a-logo {
+        width: 150px; /* Further reduce the logo size */
+        height: 100px;
+    }
+
+    .contenedor-menu-header {
+        padding-left: 150px;
+    }
+
+    /* Adjust margins to ensure space between elements */
+    .a-btn-is {
+        margin-right: 5px;
     }
 }
 

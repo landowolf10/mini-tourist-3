@@ -1,97 +1,114 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
+.content {
+    margin-top: 150px;
 }
 
-p {
-    text-align: justify;
-}
-
-h1, h2, footer {
-    text-align: center;
-}
-
-.about-us {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 50px auto;
-    padding: 10px;
-    max-width: 800px;
-}
-
-.contact-block{
-    float:left;
-    width:100%;
-    padding : 50px 0;
-}
-
-.container{
-    background:#fff; 
-    border-radius: 10px; 
-    box-shadow:15px 20px 0px rgba(0,0,0,0.1);
-    margin-top: 60px;
-}
-
-.about-us ul {
-    list-style-type: disc; /* or use 'circle' or 'square' for different bullet styles */
-    margin-left: 20px; /* Adjust the margin as needed */
-}
-
-.about-us li {
-    margin-bottom: 8px; /* Add space between list items */
-}
-
-.about-us h2 {
-    font-size: 28px;
-    color: #333;
-    margin: 0;
-}
-
-.about-us p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #666;
-}
-
-.about-us img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-.about-us .about {
-    display: flex;
+/* General layout */
+.container {
+    width: 100%; /* Ensure container takes full width */
+    max-width: 1170px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns on larger screens */
     align-items: center;
-    margin-top: 20px;
+    grid-gap: 60px;
+    padding: 35px 15px;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-.team-member img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-right: 20px;
-    object-fit: cover;
+.contentLeft, .contentRight {
+    width: 100%;
+    overflow: hidden;
 }
 
-.about h3 {
-    font-size: 20px;
-    color: #333;
-    margin: 0;
+.contentLeft .row {
+    display: flex;
+    justify-content: center; /* Center the image horizontally */
+    align-items: center;
+}
+
+.contentLeft .row img {
+    max-width: 100%; /* Ensure the image scales properly */
+    height: auto; /* Maintain the aspect ratio */
+    object-fit: cover; /* Ensure the image doesn't get cut off */
+}
+
+.contentRight .content h2 {
     font-weight: bold;
 }
 
-strong {
-    color: red;
+.contentRight .content h2,
+.contentRight .content p,
+.contentRight .content a {
+    color: #ffffff; /* Set all text to white */
 }
 
-/* Add additional styles for team members as needed */
+.contentRight .content p,
+.contentRight .content a {
+    font-size: 20px;
+}
 
-/* Media query for responsiveness */
+/* For smaller screens (768px and below) */
 @media (max-width: 768px) {
-    .about-us {
-        padding: 15px;
+    .content {
+        margin-top: 150px;
+    }
+
+    .container {
+        grid-template-columns: 1fr; /* Stack content vertically */
+        grid-gap: 30px; /* Adjust the gap between elements */
+        padding: 20px 15px;
+    }
+
+    /* Move the image below the text */
+    .contentRight {
+        order: 1; /* Ensure the text appears first */
+    }
+
+    .contentLeft {
+        order: 2; /* Ensure the image appears below the text */
+    }
+
+    .contentLeft .row {
+        justify-content: center; /* Ensure the image is centered */
+    }
+
+    .contentLeft .row img {
+        max-width: 100%; /* Prevent the image from overflowing */
+        height: auto;
+        object-fit: contain; /* Ensure the image fits within its container */
+    }
+
+    .contentLeft .row .imgWrapper {
+        height: 150px; /* Adjust image height for smaller screens */
+    }
+
+    .contentRight .content h2 {
+        font-size: 30px; /* Adjust text size */
+    }
+
+    .contentRight .content p {
+        font-size: 14px;
+        line-height: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px; /* Further reduce padding for very small screens */
+    }
+
+    .contentRight .content h2 {
+        font-size: 24px;
+    }
+
+    .contentRight .content p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .contentLeft .row img {
+        width: 100%; /* Ensure full-width image on small screens */
+        height: auto;
+        object-fit: cover;
     }
 }
