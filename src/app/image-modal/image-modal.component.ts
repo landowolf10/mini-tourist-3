@@ -52,6 +52,11 @@ export class ImageModalComponent {
       return;
     }
   
+    // Ensure the URL uses HTTPS
+    if (this.selectedImageName.startsWith('http://')) {
+      this.selectedImageName = this.selectedImageName.replace('http://', 'https://');
+    }
+
     console.log("Downloading image from URL: ", this.selectedImageName);
   
     fetch(this.selectedImageName)
