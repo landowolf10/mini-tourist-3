@@ -730,6 +730,31 @@ inicio-0{
     max-width: 100px; /* Prevent the image from becoming too large */
 }
 
+/* Styles for large screens */
+@media (min-width: 1700px) {
+    .carrusel-locaciones {
+        width: 100%; /* Adjust as needed to fit three locaciones */
+        margin: auto; /* Center the carousel */
+        overflow: hidden; /* Hide overflowing content */
+    }
+
+    .locaciones {
+        width: calc(80% - 60px); /* Three items with spacing */
+        margin: 0 30px; /* Adjust spacing between items */
+    }
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 1699px) {
+    .carrusel-locaciones {
+        width: 100%;
+    }
+
+    .locaciones {
+        width: 70%; /* Maintain the original layout for smaller screens */
+    }
+}
+
 /* Responsive Styles */
 @media (max-width: 1200px) {
     .contenedor-general-inicio-0 {
@@ -799,7 +824,7 @@ inicio-0{
     }
 
     .locaciones {
-        width: 20%; /* 1 item per row with margin */
+        width: 80%; /* 1 item per row with margin */
         margin: 0 15px; /* Adjust margin for better spacing */
         height: 200px;
     }
@@ -822,6 +847,12 @@ inicio-0{
     .responsive-icon {
         max-width: 100px; /* Adjust the size of the SVG icon */
         height: auto;
+    }
+
+    .locaciones {
+        width: 80%; /* 1 item per row with margin */
+        margin: 0 15px; /* Adjust margin for better spacing */
+        height: 200px;
     }
 }
 
@@ -864,7 +895,7 @@ inicio-0{
     }
 
     .locaciones {
-        width: 20%; /* 1 item per row with margin */
+        width: 80%; /* 1 item per row with margin */
         margin: 0 15px; /* Adjust margin for better spacing */
         height: 200px;
     }
@@ -907,7 +938,7 @@ inicio-0{
     }
 
     .locaciones {
-        width: 20%; /* 1 item per row with margin */
+        width: 80%; /* 1 item per row with margin */
         margin: 0 15px; /* Adjust margin for better spacing */
         height: 200px;
     }

@@ -63,6 +63,7 @@ export class CarouselComponent implements OnInit  {
   selectedItem: string = 'Premium';
   hasImages: boolean = true; //change to false when using api call.
   menuActive: boolean = false;
+  buttonText: string = 'Mostrar categorías';
   //clientId: number = 0;
 
   constructor(
@@ -78,7 +79,6 @@ export class CarouselComponent implements OnInit  {
     this.initializeCarousel();//Comment when calling api
     this.downloadButtonService.setButtonVisibility(false);
   }
-  
 
   fetchPremiumImages() {
     const apiUrl = `http://localhost:9090/api/client/category/premium?isPremium=Yes`;
@@ -112,6 +112,7 @@ export class CarouselComponent implements OnInit  {
 
   toggleCategorias() {
     this.menuActive = !this.menuActive;
+    this.buttonText = this.menuActive ? 'Ocultar categorías' : 'Mostrar categorías';
   }
 
   menuItemClicked(event: Event, item: string) {

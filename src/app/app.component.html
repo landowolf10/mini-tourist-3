@@ -1,32 +1,25 @@
 <header>
     <a class="a-logo">
-            <img src="../assets/images/logo.jpg" alt="">
-        </a>
+      <img src="../assets/images/logo.jpg" alt="">
+    </a>
     <div class="contenedor-menu-header">
-        
-
-        <div class="hamburger" (click)="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-
-        <nav>
-            <ul>
-                <li><a routerLink="/home" (click)="hideMenu()">Inicio</a></li>
-                <li><a routerLink="/locations" (click)="hideMenu()">Locaciones</a></li>
-                <li><a routerLink="/about" (click)="hideMenu()">Acerca de nosotros</a></li>
-                <li class="li-submenu">
-                    <a>¿Que son las Minitourist Cards?</a>
-                    <ul class="ul-submenu">
-                        <li class="li-submenu"><a routerLink="/where-is-mt" (click)="hideMenu()">¿Dónde encuentro las Minitourist Cards?</a></li>
-                        <li class="li-submenu"><a routerLink="/more-about-mt" (click)="hideMenu()">Conoce más sobre las Minitourist Cards</a></li>
-                    </ul>    
-                </li>
-                <li><a routerLink="/contact" (click)="hideMenu()">Contáctanos</a></li>
-                <li><a routerLink="/login" class="a-btn-is" (click)="hideMenu()">Iniciar sesión</a></li>
-            </ul>
-        </nav>
+      <div class="hamburger" [class.active]="menuActive" (click)="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+  
+      <nav [class.active]="menuActive">
+        <button class="close-btn" (click)="closeMenu()">&times;</button>
+        <ul>
+          <li><a routerLink="/home" (click)="hideMenu()">Inicio</a></li>
+          <!--<li><a routerLink="/locations" (click)="hideMenu()">Locaciones</a></li>-->
+          <li><a routerLink="/about" (click)="hideMenu()">Acerca de nosotros</a></li>
+          <li class="li-submenu"><a routerLink="/where-is-mt" (click)="hideMenu()">¿Dónde encontrarnos?</a></li>
+          <li class="li-submenu"><a routerLink="/more-about-mt" (click)="hideMenu()">Conoce más sobre las Minitourist Cards</a></li>
+          <li><a routerLink="/login" class="a-btn-is" (click)="hideMenu()">Iniciar sesión</a></li>
+        </ul>
+      </nav>
     </div>
-</header>
-<router-outlet></router-outlet>
+  </header>
+  <router-outlet></router-outlet>  
