@@ -220,7 +220,7 @@ header {
     .contenedor-menu-header nav {
         display: none; /* Hide by default */
         flex-direction: column;
-        background-color: #eb0c0c;
+        background-color: #342b2b;
         width: 250px; /* Side menu width */
         position: fixed; /* Fixed position for side menu */
         top: 0;
