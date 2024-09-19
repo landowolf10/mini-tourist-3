@@ -15,6 +15,10 @@
   padding: 50px;
   height: auto;
   text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+  background-color: white; /* Optional: give a background color for better contrast */
+  overflow: hidden; /* Ensure the rounded corners clip the content inside */
 }
 
 .img-area {
