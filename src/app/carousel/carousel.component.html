@@ -1,15 +1,14 @@
+
 <div class="carousel-container">
     <div class="contenedor-img-portada-inicio"></div>
     <div class="contenedor-categorias-modal">
       <br><br><br><br><br>
   
       <!-- Categorias Button -->
-      <button class="categorias-button" (click)="toggleCategorias()">
-        {{ buttonText }}
-      </button>
+      
   
       <!-- Categorias Menu -->
-      <div class="categorias" [class.active]="menuActive">
+      <!--<div class="categorias" [class.active]="menuActive">
         <a [class.selected]="selectedItem === 'premium'" (click)="menuItemClicked($event, 'premium')">
           <img src="../../assets/icon-parques-b.svg" alt="">
           <span>Premium</span>
@@ -30,7 +29,7 @@
           <img src="../../assets/icon-tiendas-b.svg" alt="">
           <span>Tiendas</span>
         </a>
-      </div>
+      </div>-->
     </div>
     
     <br>
@@ -52,10 +51,10 @@
     <!-- Carousel Buttons -->
     <div class="carousel-button-container">
       <button class="carousel-button left" (click)="rotateLeft()">
-        <img src="../../assets/left_button.png" alt="Left Button">
+        <img src="../../assets/left_arrow.png" alt="Left Button">
       </button>
       <button class="carousel-button right" (click)="rotateRight()">
-        <img src="../../assets/right_button.png" alt="Right Button">
+        <img src="../../assets/right_arrow.png" alt="Right Button">
       </button>
     </div>
   </div>  

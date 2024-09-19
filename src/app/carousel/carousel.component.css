@@ -33,7 +33,7 @@
 }
 
 .carousel-button {
-  background: rgb(255, 0, 0);
+  background: none;
   border: none;
   padding: 10px;
   cursor: pointer;
@@ -42,10 +42,15 @@
   margin: 0 10px;
 }
 
+.carousel-button img {
+  width: 30px; /* Adjust the size as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
 button {
   margin-top: 50px;
   padding: 10px;
-  background-color: #eb0c0c;
+  background-color: #740000;
   font-size: 20px;
   color: white;
   border: none;
@@ -71,7 +76,7 @@ button {
 .categorias a img {
   width: 40px;
   height: 40px;
-  background-color: #ad0000;
+  background-color: #960606;
   padding: 5px;
   border-radius: 5px;
 }
@@ -84,7 +89,7 @@ button {
   font-weight: 600;
   font-size: 18px;
   text-decoration: none;
-  color: #FFFFFF;
+  color: #f30909;
   text-align: left;
   margin-left: 10px;
   margin-top: 9px;
@@ -146,36 +151,6 @@ button {
   width: 250px;
 }
 
-/* Categorias Button */
-.categorias-button {
-  display: none; /* Hide by default */
-  margin: 50px auto; /* Center the button horizontally */
-  padding: 10px 20px; /* Adjust padding */
-  background-color: #eb0c0c;
-  font-size: 20px;
-  color: white;
-  border: none;
-  cursor: pointer; /* Ensure the pointer is always visible */
-  text-align: center;
-  line-height: 1; 
-  justify-content: center;
-  align-items: center;
-  width: fit-content; /* Button fits the content */
-  z-index: 10; /* Ensure button is on top */
-  position: relative;
-  border-radius: 30px;
-  transition: background-color 0.3s ease;
-}
-
-.categorias-button:active {
-  background-color: #050000;
-}
-
-.categorias-button:hover, 
-.categorias-button:focus {
-  cursor: pointer; /* Ensure the pointer is visible on hover and focus */
-}
-
 /* Responsive styles */
 @media (max-width: 768px) {
   .carousel {
@@ -218,29 +193,5 @@ button {
   .img-area {
     width: 200px; /* Adjust the image area width */
     height: 300px; /* Adjust the image area height */
-  }
-}
-
-
-
-
-
-
-
-
-
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .categorias-button {
-      display: flex; /* Show the button on smaller screens */
-  }
-
-  .categorias {
-      display: none; /* Hide categories by default on smaller screens */
-  }
-
-  .categorias.active {
-      display: block; /* Show categories when active */
   }
 }

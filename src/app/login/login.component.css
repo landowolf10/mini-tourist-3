@@ -202,3 +202,20 @@ body {
         padding-top: 100px; /* Adjust padding for small screens */
     }
 }
+
+/* Base transition for elements */
+.transition {
+    transition: opacity 0.8s ease-in, transform 0.8s ease-in;
+  }
+  
+  /* Initial state of elements (hidden or scaled down) */
+  .transition.hidden {
+    opacity: 0;
+    transform: translateY(20px); /* Adjust this value as needed */
+  }
+  
+  /* State of elements when visible */
+  .transition.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }

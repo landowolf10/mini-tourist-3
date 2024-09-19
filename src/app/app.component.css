@@ -1,36 +1,24 @@
+/* Default header styling for all screen sizes */
 header {
     width: 100%;
     height: auto;
     background-color: transparent;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Distribute items across header */
+    align-items: center;
     padding: 20px 90px;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 10;
-    align-items: center;
 }
 
-.contenedor-menu-header {
-    display: flex;
-    align-items: center;
-    padding-left: 250px; /* Space for the logo */
-    width: 100%;
-}
-
-.contenedor-menu-header ul li:hover .ul-submenu {
-    display: block;
-    opacity: 1;
-}
-
+/* Logo styling */
 .a-logo {
     width: 250px;
     height: 170px;
     text-decoration: none;
-    position: absolute; /* Ensures logo stays on the left */
-    top: 20px;
-    left: 20px; /* Adjust left positioning if necessary */
+    position: relative; /* Changed from absolute for proper flex layout */
 }
 
 .a-logo img {
@@ -39,6 +27,7 @@ header {
     object-fit: contain;
 }
 
+/* Button to close the sidebar menu */
 .close-btn {
     position: absolute;
     top: 20px;
@@ -49,100 +38,79 @@ header {
     font-size: 30px;
     cursor: pointer;
     transition: color 0.3s;
-    display: none; /* Hide by default */
+    z-index: 11;
+    display: block;
 }
 
 .close-btn:hover {
-    color: #d61919;
+    color: #f30909;
 }
 
-/* Default nav display for larger screens */
-.contenedor-menu-header nav {
-    display: flex; /* Show the menu by default */
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-}
-
-.contenedor-menu-header nav ul {
+/* Hamburger menu styling */
+.hamburger {
     display: flex;
-    list-style: none;
-    gap: 20px;
+    flex-direction: column;
+    cursor: pointer;
+    position: static; /* Align within flexbox */
+    z-index: 11;
 }
 
-.contenedor-menu-header nav ul li {
-    position: relative;
-    background-color: transparent;
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #f30909;
+    margin: 4px 0;
+    transition: 0.4s;
 }
 
-.contenedor-menu-header ul li .ul-submenu {
-    width: 400px;
-    background-color: #FFFFFF;
-    position: absolute;
-    top: 45px;
-    left: 0;
-    border-radius: 20px;
-    display: none;
+/* Hide the navigation menu by default */
+.contenedor-menu-header nav {
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: #e9e9e9;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    transform: translateX(100%);
     opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    z-index: 9;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 6.5);
 }
 
-.contenedor-menu-header nav ul li:hover .ul-submenu {
-    width: 400px;
-    height: auto;
-    background-color: #FFFFFF;
-    float: left;
-    position: absolute;
-    top: 45px;
-    left: 0;
-    border-radius: 20px;
-    display: block;
-    overflow: hidden;
-    padding-top: 0px;
+/* Show the nav menu when active */
+.contenedor-menu-header nav.active {
+    transform: translateX(0);
     opacity: 1;
 }
 
-.contenedor-menu-header ul li .ul-submenu .li-submenu {
+.contenedor-menu-header nav ul {
+    flex-direction: column;
     width: 100%;
-    padding: 0;
-    background-color: transparent;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
 }
 
-.contenedor-menu-header ul li .ul-submenu .li-submenu a {
+.contenedor-menu-header nav ul li {
     width: 100%;
-    height: auto;
-    background-color: transparent;
-    float: left;
-    font-family: "Mada", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-    font-size: 18px;
-    text-decoration: none;
-    color: #000000;
-    text-align: left;
-    cursor: pointer;
-    padding: 10px 20px;
-    display: block;
-}
-
-.contenedor-menu-header ul li .ul-submenu .li-submenu a:hover {
-    background-color: #d30909;
-    color: #FFFFFF;
+    text-align: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .contenedor-menu-header nav ul li a {
-    width: auto;
-    height: 100%;
+    width: 100%;
     background-color: transparent;
-    float: left;
     font-family: "Mada", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 600;
-    font-style: normal;
     font-size: 18px;
     text-decoration: none;
-    color: #FFFFFF;
-    padding: 5px 10px;
+    color: #7e0000;
+    padding: 10px;
     transition: color 0.3s;
 }
 
@@ -150,6 +118,7 @@ header {
     color: #d61919;
 }
 
+/* Button for login */
 .a-btn-is {
     padding: 5px 10px;
     background-color: #6e0404;
@@ -158,148 +127,20 @@ header {
     border-radius: 5px;
     transition: background-color 0.3s;
     font-size: 14px;
-    margin-right: 15px; /* Added margin to ensure space between button and hamburger */
+    margin-right: 15px;
 }
 
 .a-btn-is:hover {
     background-color: #6e0404;
 }
 
-/* Hamburger menu styles */
-.hamburger {
-    display: none; /* Default hidden */
-    flex-direction: column;
-    cursor: pointer;
+/* Submenu hidden by default */
+.contenedor-menu-header ul li .ul-submenu {
+    display: none;
+    opacity: 0;
 }
 
-.hamburger div {
-    width: 25px;
-    height: 3px;
-    background-color: #FFFFFF;
-    margin: 4px 0;
-    transition: 0.4s;
-}
-
-/* Media query for 1178px and smaller */
-@media (max-width: 1178px) {
-    .hamburger {
-        display: flex; /* Show hamburger menu */
-    }
-
-    .contenedor-menu-header ul li:hover .ul-submenu {
-        display: none;
-    }
-
-    .contenedor-menu-header ul li.active .ul-submenu {
-        display: block;
-        opacity: 1;
-    }
-
-    .contenedor-menu-header ul li .ul-submenu {
-        display: none;
-        opacity: 0;
-    }
-
-    .contenedor-menu-header ul li .ul-submenu.active {
-        display: block;
-        opacity: 1;
-    }
-
-    .a-logo {
-        width: 200px; /* Reduce logo size */
-        height: 140px;
-    }
-
-    .contenedor-menu-header {
-        justify-content: space-between;
-        padding: 20px;
-    }
-
-
-    /* Side menu styles for screens up to 1178px */
-    .contenedor-menu-header nav {
-        display: none; /* Hide by default */
-        flex-direction: column;
-        background-color: #342b2b;
-        width: 250px; /* Side menu width */
-        position: fixed; /* Fixed position for side menu */
-        top: 0;
-        right: 0; /* Align to the right */
-        height: 100vh;
-        transform: translateX(100%); /* Start hidden off the screen */
-        transition: transform 0.3s ease; /* Smooth slide-in effect */
-        z-index: 9;
-    }
-
-    /* Show nav when it's active */
-    .contenedor-menu-header nav.active {
-        display: flex;
-        transform: translateX(0); /* Slide in from the right */
-    }
-
-    /* Adjust ul and li styles */
-    .contenedor-menu-header nav ul {
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .contenedor-menu-header nav ul li {
-        width: 100%;
-        text-align: center;
-        padding: 15px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .contenedor-menu-header nav ul li a {
-        width: 100%;
-        padding: 10px;
-    }
-
-    /* Show close button in side menu */
-    .close-btn {
-        display: block; /* Show the close button in side menu */
-    }
-}
-
-/* Media query for 768px and smaller */
-@media (max-width: 1180px) {
-    .contenedor-menu-header ul li:hover .ul-submenu {
-        display: none;
-    }
-
-    .contenedor-menu-header ul li.active .ul-submenu {
-        display: block;
-        opacity: 1;
-    }
-
-    .contenedor-menu-header ul li .ul-submenu {
-        display: none;
-        opacity: 0;
-    }
-
-    .contenedor-menu-header ul li .ul-submenu.active {
-        display: block;
-        opacity: 1;
-    }
-
-    .a-logo {
-        width: 150px; /* Further reduce the logo size */
-        height: 100px;
-    }
-
-    .contenedor-menu-header {
-        padding-left: 150px;
-    }
-
-    /* Adjust margins to ensure space between elements */
-    .a-btn-is {
-        margin-right: 5px;
-    }
-}
-
-/* Hamburger menu animation */
+/* Hamburger menu animation when active */
 .hamburger.active div:nth-child(1) {
     transform: rotate(-45deg) translate(-5px, 6px);
 }
@@ -311,3 +152,198 @@ header {
 .hamburger.active div:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -6px);
 }
+
+/* Categorias Button */
+.categorias-button {
+    margin: 0 20px; /* Position between logo and hamburger */
+    display: flex;
+    padding: 10px 20px;
+    background-color: #eb0c0c;
+    font-size: 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.categorias-button:active {
+    background-color: #050000;
+}
+
+.categorias-button:hover, 
+.categorias-button:focus {
+    cursor: pointer;
+}
+
+/* Modal Styles */
+.modal-categorias {
+    display: flex;
+    opacity: 0;
+    pointer-events: none; /* Prevent interactions when hidden */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: opacity 0.5s ease;
+}
+
+.modal-categorias.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    position: relative;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease;
+}
+
+/* When modal is active, slide down into view */
+.modal-categorias.active .modal-content {
+    transform: translateY(0); /* Slide down to its normal position */
+}
+
+/* Close button */
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Modal header */
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Categories Container */
+.modal-content ul.categorias-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 categories per row by default */
+    gap: 20px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Category Item */
+.modal-content ul.categorias-container li {
+    text-align: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.modal-content ul.categorias-container li:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Category Image */
+.modal-content ul.categorias-container li img {
+    filter: invert(29%) sepia(97%) saturate(5995%) hue-rotate(355deg) brightness(96%) contrast(110%);
+}
+
+/* Media query for screens smaller than 1178px */
+@media (max-width: 1178px) {
+    header {
+        padding: 10px 50px;
+    }
+
+    .categorias-button {
+        margin: 0 10px;
+    }
+
+    .a-logo {
+        width: 200px;
+        height: auto;
+    }
+}
+
+/* Media query for 768px and smaller */
+@media (max-width: 768px) {
+    .a-logo {
+        width: 150px;
+    }
+
+    .categorias-button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    .a-btn-is {
+        margin-right: 5px;
+    }
+
+    .modal-content ul.categorias-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 categories per row on smaller screens */
+    }
+
+    .modal-content {
+        width: 90%;
+        max-width: 500px;
+    }
+}
+
+/* Media query for 480px and smaller */
+/*@media (max-width: 480px) {
+    .modal-content ul.categorias-container {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-width: 400px;
+    }
+}*/
+
+/* Selected category */
+.modal-content ul.categorias-container li a.selected {
+    border: 2px solid #007BFF; /* Highlight selected category */
+    background-color: #e6f2ff;
+}
+
+.modal-content ul.categorias-container li a {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-content ul.categorias-container li a span {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+  /* Base transition for elements */
+  .transition {
+    transition: opacity 0.8s ease-in, transform 0.8s ease-in;
+  }
+  
+  /* Initial state of elements (hidden or scaled down) */
+  .transition.hidden {
+    opacity: 0;
+    transform: translateY(20px); /* Adjust this value as needed */
+  }
+  
+  /* State of elements when visible */
+  .transition.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }

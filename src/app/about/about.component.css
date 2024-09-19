@@ -1,14 +1,14 @@
 h1 {
   font-size: 36px;
   font-weight: 700;
-  color: white;
-  margin-top: 100px; /* Adds space below the h1 */
+  color: #7e0000;
+  margin-top: 200px; /* Adds space below the h1 */
 }
 
 h2 {
   font-size: 28px;
   font-weight: 600;
-  color: white;
+  color: #7e0000;
   margin-top: 0px; /* Removes extra space above h2 */
 }
 
@@ -16,7 +16,7 @@ h2 {
 p {
   font-size: 20px;
   line-height: 1.6;
-  color: white;
+  color: #7e0000;
 }
 
 .responsive-container-block {
@@ -72,7 +72,7 @@ p {
     font-size: 25px;
     font-weight: 700;
     line-height: 34px;
-    color: rgb(255, 255, 255);
+    color: #7e0000;
     padding-top: 0px;
     padding-right: 10px;
     padding-bottom: 0px;
@@ -97,7 +97,7 @@ p {
   }
   
   .text-blk.subHeadingText {
-    color: rgb(255, 255, 255);
+    color: #7e0000;
     font-size: 25px;
     line-height: 34px;
     font-weight: 700;
@@ -114,7 +114,7 @@ p {
   .text-blk.description {
     font-size: 20px;
     line-height: 34px;
-    color: rgb(255, 255, 255);
+    color: #7e0000;
     margin-top: 0px;
     margin-right: 0px;
     margin-bottom: 50px;
@@ -123,49 +123,6 @@ p {
     padding-right: 10px;
     padding-bottom: 0px;
     padding-left: 10px;
-  }
-  
-  .explore {
-    font-size: 20px;
-    line-height: 28px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(244, 152, 146);
-    padding-top: 10px;
-    padding-right: 50px;
-    padding-bottom: 10px;
-    padding-left: 50px;
-    border-top-width: 0px;
-    border-right-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 0px;
-    border-top-style: outset;
-    border-right-style: outset;
-    border-bottom-style: outset;
-    border-left-style: outset;
-    border-top-color: rgb(244, 152, 146);
-    border-right-color: rgb(244, 152, 146);
-    border-bottom-color: rgb(244, 152, 146);
-    border-left-color: rgb(244, 152, 146);
-    border-image-source: initial;
-    border-image-slice: initial;
-    border-image-width: initial;
-    border-image-outset: initial;
-    border-image-repeat: initial;
-    cursor: pointer;
-  }
-  
-  .explore:hover {
-    background-image: initial;
-    background-position-x: initial;
-    background-position-y: initial;
-    background-size: initial;
-    background-repeat-x: initial;
-    background-repeat-y: initial;
-    background-attachment: initial;
-    background-origin: initial;
-    background-clip: initial;
-    background-color: rgb(255, 235, 234);
-    color: rgb(244, 152, 146);
   }
   
   .responsive-container-block.Container {
@@ -311,6 +268,10 @@ p {
     .allText.bottomText {
       margin: 40px 0 0 0;
     }
+
+    h1 {
+      margin-top: 100px;
+    }
   }
   
   @media (max-width: 500px) {
@@ -358,3 +319,20 @@ p {
       width: 100%;
     }
   }
+
+  /* Base transition for elements */
+.transition {
+  transition: opacity 0.8s ease-in, transform 0.8s ease-in;
+}
+
+/* Initial state of elements (hidden or scaled down) */
+.transition.hidden {
+  opacity: 0;
+  transform: translateY(20px); /* Adjust this value as needed */
+}
+
+/* State of elements when visible */
+.transition.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

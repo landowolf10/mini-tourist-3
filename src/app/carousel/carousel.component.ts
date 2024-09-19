@@ -5,6 +5,7 @@ import { ImageModalComponent } from '../image-modal/image-modal.component';
 import { SelectedImageService } from '../services/selected-image.service';
 import { DownloadButtonService } from '../services/download-button.service';
 import { StatusService } from '../services/card-status.service';
+import { CategoryServiceService } from '../services/category-service.service';
 
 
 declare var $: any;
@@ -62,8 +63,7 @@ export class CarouselComponent implements OnInit  {
   isExpanded = false;
   selectedItem: string = 'Premium';
   hasImages: boolean = true; //change to false when using api call.
-  menuActive: boolean = false;
-  buttonText: string = 'Mostrar categorías';
+  
   //clientId: number = 0;
 
   constructor(
@@ -71,13 +71,19 @@ export class CarouselComponent implements OnInit  {
     public dialog: MatDialog,
     private selectedImageService: SelectedImageService,
     private downloadButtonService: DownloadButtonService,
-    private statusService: StatusService
+    private statusService: StatusService,
+    private sharedService: CategoryServiceService
   ) {}
 
   ngOnInit() {
     //this.fetchPremiumImages(); Uncomment when calling API.
     this.initializeCarousel();//Comment when calling api
     this.downloadButtonService.setButtonVisibility(false);
+    // Subscribe to the selectedItem changes
+    this.sharedService.selectedItem$.subscribe(item => {
+      this.selectedItem = item;
+      this.fetchImageNames(); // Fetch data based on the selected item
+    });
   }
 
   fetchPremiumImages() {
@@ -110,14 +116,12 @@ export class CarouselComponent implements OnInit  {
     this.isExpanded = !this.isExpanded;
   }
 
-  toggleCategorias() {
-    this.menuActive = !this.menuActive;
-    this.buttonText = this.menuActive ? 'Ocultar categorías' : 'Mostrar categorías';
-  }
-
   menuItemClicked(event: Event, item: string) {
     event.preventDefault();
     this.selectedItem = item;
+
+    // Broadcast the selected item to AppComponent
+    this.sharedService.menuItemClicked(this.selectedItem);
 
     //If premium, call premium, if not, call other
     console.log('Selected category: ', this.selectedItem);

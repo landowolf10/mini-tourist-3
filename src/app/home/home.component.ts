@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
   locations = [
     { title: 'Ixtapa Zihuatanejo', description: 'Ixtapa, el lugar blanco, en lengua náhuatl, es uno de los destinos de playa emblemáticos de México. Es un complejo turístico desarrollado a sólo seis kilómetros de la típica población pesquera de Zihuatanejo, por lo que popularmente se le conoce como Ixtapa Zihuatanejo; en realidad, son dos destinos en un mismo lugar. Cada año recibe más de dos millones de visitantes atraídos por su clima tropical, la belleza de sus playas, la hospitalidad de sus habitantes y sus servicios turísticos, de categoría y clase mundial, mientras que Zihua mantiene su atractivo ambiente tradicional de población de pescadores.', imgClass: 'img-locacion img-locacion-1' },
     { title: 'Acapulco', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae id, incidunt officiis nesciunt consequatur.', imgClass: 'img-locacion img-locacion-2' },
@@ -14,6 +14,19 @@ export class HomeComponent {
 
   selectedTitle: string = '';
   selectedBody: string = '';
+
+  ngAfterViewInit() {
+    // Select elements to animate
+    const elements = document.querySelectorAll('.transition');
+    
+    // Add a slight delay to each element
+    elements.forEach((element, index) => {
+      setTimeout(() => {
+        element.classList.remove('hidden');
+        element.classList.add('visible');
+      }, index * 50); // Adjust delay as needed
+    });
+  }
 
   openModal(location: any) {
     this.selectedTitle = location.title;

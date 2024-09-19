@@ -1,25 +1,68 @@
 <header>
-    <a class="a-logo">
-      <img src="../assets/images/logo.jpg" alt="">
-    </a>
-    <div class="contenedor-menu-header">
-      <div class="hamburger" [class.active]="menuActive" (click)="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-  
-      <nav [class.active]="menuActive">
-        <button class="close-btn" (click)="closeMenu()">&times;</button>
-        <ul>
-          <li><a routerLink="/home" (click)="hideMenu()">Inicio</a></li>
-          <!--<li><a routerLink="/locations" (click)="hideMenu()">Locaciones</a></li>-->
-          <li><a routerLink="/about" (click)="hideMenu()">Acerca de nosotros</a></li>
-          <li class="li-submenu"><a routerLink="/where-is-mt" (click)="hideMenu()">¿Dónde encontrarnos?</a></li>
-          <li class="li-submenu"><a routerLink="/more-about-mt" (click)="hideMenu()">Conoce más sobre las Minitourist Cards</a></li>
-          <li><a routerLink="/login" class="a-btn-is" (click)="hideMenu()">Iniciar sesión</a></li>
-        </ul>
-      </nav>
+  <a class="a-logo">
+    <img src="../assets/images/logo.jpg" alt="Logo">
+  </a>
+  <!-- Only show the "Mostrar categorías" button on the Home page -->
+  <button class="categorias-button transition hidden" *ngIf="showCategoriasButton" (click)="toggleCategorias()">
+    Mostrar categorías
+  </button>
+  <div class="contenedor-menu-header">
+    <div class="hamburger" [class.active]="menuActive" (click)="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
-  </header>
-  <router-outlet></router-outlet>  
+
+    <nav [class.active]="menuActive">
+      <button class="close-btn" (click)="toggleMenu()">✖</button>
+      <ul>
+        <li><a routerLink="/home" (click)="hideMenu()">Inicio</a></li>
+        <li><a routerLink="/about" (click)="hideMenu()">Acerca de nosotros</a></li>
+        <li class="li-submenu"><a routerLink="/where-is-mt" (click)="hideMenu()">¿Dónde encontrarnos?</a></li>
+        <li class="li-submenu"><a routerLink="/more-about-mt" (click)="hideMenu()">Conoce más sobre las Minitourist Cards</a></li>
+        <li><a routerLink="/login" class="a-btn-is" (click)="hideMenu()">Iniciar sesión</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!-- Modal structure -->
+<div class="modal-categorias" [class.active]="categoriasModalActive">
+  <div class="modal-content">
+    <span class="close" (click)="toggleCategorias()">&times;</span>
+    <h2>¿Qué estás buscando hoy?</h2>
+    <ul class="categorias-container">
+      <li>
+        <a [class.selected]="selectedItem === 'premium'" (click)="menuItemClicked($event, 'premium')">
+          <img src="../../assets/icon-parques-b.svg" alt="">
+          <span>Premium</span>
+        </a>
+      </li>
+      <li>
+        <a [class.selected]="selectedItem === 'parks'" (click)="menuItemClicked($event, 'parks')">
+          <img src="../../assets/icon-parques-b.svg" alt="">
+          <span>Parques y atracciones</span>
+        </a>
+      </li>
+      <li>
+        <a [class.selected]="selectedItem === 'restaurants'" (click)="menuItemClicked($event, 'restaurants')">
+          <img src="../../assets/icon-restaurentes-b.svg" alt="">
+          <span>Restaurantes, bares y cafeterías</span>
+        </a>
+      </li>
+      <li>
+        <a [class.selected]="selectedItem === 'places_events'" (click)="menuItemClicked($event, 'places_events')">
+          <img src="../../assets/icon-eventos-b.svg" alt="">
+          <span>Lugares y eventos</span>
+        </a>
+      </li>
+      <li>
+        <a [class.selected]="selectedItem === 'stores'" (click)="menuItemClicked($event, 'stores')">
+          <img src="../../assets/icon-tiendas-b.svg" alt="">
+          <span>Tiendas</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

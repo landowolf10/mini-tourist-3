@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'about-mt', component: AboutMtCardsComponent },
-  { path: 'contact', component: ContactComponent },
+  //{ path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'where-is-mt', component: WhereIsMtComponent },
