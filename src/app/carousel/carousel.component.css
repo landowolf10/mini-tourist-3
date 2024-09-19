@@ -24,10 +24,14 @@
 .img-area {
   width: 350px;
   height: 550px;
+  border-radius: 15px; /* Ensure the image inside is also rounded */
+  overflow: hidden
 }
 
 .img-area img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .carousel-button-container {
