@@ -14,7 +14,7 @@ interface Card {
   cardName: string;
   category: string;
   city: string;
-  clientId: number;
+  cardid: number;
   creationDate: string;
   image: string;
   premium: string;
@@ -26,45 +26,72 @@ interface Card {
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.css']
 })
-export class CarouselComponent implements OnInit  {
+export class CarouselComponent implements OnInit {
   cards: Card[] = [
     {
-      cardName: 'Card 1',
+      cardName: 'Fishers',
       category: 'Premium',
       city: 'City 1',
-      clientId: 1,
+      cardid: 1,
       creationDate: '2024-01-01',
       image: 'http://res.cloudinary.com/dbwgqd2ap/image/upload/v1724134262/cards/Premium/hdqvm7xp1alwewtuulps.jpg',
       premium: 'Yes',
       updateDate: null,
     },
     {
-      cardName: 'Card 2',
+      cardName: 'La Isla Ixtapa',
       category: 'Standard',
       city: 'City 2',
-      clientId: 2,
+      cardid: 2,
       creationDate: '2024-01-01',
       image: 'http://res.cloudinary.com/dbwgqd2ap/image/upload/v1724170432/cards/Premium/hzjyjcbv63xxjtigoq6y.jpg',
       premium: 'No',
       updateDate: null,
     },
     {
-      cardName: 'Card 2',
+      cardName: 'La Ropa',
       category: 'Standard',
       city: 'City 2',
-      clientId: 3,
+      cardid: 3,
       creationDate: '2024-01-01',
       image: 'http://res.cloudinary.com/dbwgqd2ap/image/upload/v1724170470/cards/Premium/uhnat6t2exbr2bnugopx.jpg',
       premium: 'No',
       updateDate: null,
     },
+    {
+      cardName: 'Las Gatas',
+      category: 'Standard',
+      city: 'City 2',
+      cardid: 4,
+      creationDate: '2024-01-01',
+      image: 'http://res.cloudinary.com/dbwgqd2ap/image/upload/v1724170494/cards/Premium/d7dkoohxvvzxv16gzmdy.jpg',
+      premium: 'No',
+      updateDate: null,
+    },
+    {
+      cardName: 'Buffalo Xtreme',
+      category: 'Standard',
+      city: 'City 2',
+      cardid: 5,
+      creationDate: '2024-01-01',
+      image: 'http://res.cloudinary.com/dbwgqd2ap/image/upload/v1728082446/cards/Premium/et462dftkf29e3byvdm4.jpg',
+      premium: 'No',
+      updateDate: null,
+    }
   ];
-  socialMedia: string[] = ['facebook.png', 'whats.png', 'instagram.png', 'twitter.png'];
+  //cards: Card[] = [];
   isExpanded = false;
-  selectedItem: string = 'Premium';
+  selectedItem: string = '';
   hasImages: boolean = true; //change to false when using api call.
-  
-  //clientId: number = 0;
+  currentIndex: number = 0;
+  intervalId: any;
+  startX: number = 0;
+  startY: number = 0;
+  categoriasModalActive: boolean = false;
+  isModalVisible: boolean = false;
+  menuActive: boolean = false;
+
+  @ViewChild('carouselContainer', { static: true }) carouselContainer!: ElementRef;
 
   constructor(
     private http: HttpClient,
@@ -76,39 +103,85 @@ export class CarouselComponent implements OnInit  {
   ) {}
 
   ngOnInit() {
-    //this.fetchPremiumImages(); Uncomment when calling API.
-    this.initializeCarousel();//Comment when calling api
-    this.downloadButtonService.setButtonVisibility(false);
-    // Subscribe to the selectedItem changes
+    // Subscribing to selected item changes
     this.sharedService.selectedItem$.subscribe(item => {
       this.selectedItem = item;
-      this.fetchImageNames(); // Fetch data based on the selected item
+      console.log('Selected item in Carousel:', this.selectedItem);
+      //this.fetchImageNames(); // Fetch data based on the selected item
     });
-  }
-
-  fetchPremiumImages() {
-    const apiUrl = `http://localhost:9090/api/client/category/premium?isPremium=Yes`;
-    this.http.get<Card[]>(apiUrl).subscribe(data => {
-      this.cards = data;
-      console.log('Premium cards: ', this.cards);
-
-      if (this.cards.length > 0) { 
-        this.hasImages = true;
-        this.initializeCarousel();
-      }
-    });
+    //this.fetchPremiumImages();
+    this.addSwipeListeners();
+    this.downloadButtonService.setButtonVisibility(false);
   }
   
   fetchImageNames() {
-    const apiUrl = `http://localhost:9090/api/client/category?category=${this.selectedItem}`;
+    const apiUrl = `http://127.0.0.1:8000/api/v1/cards/category?category=${this.selectedItem}`;
     this.http.get<Card[]>(apiUrl).subscribe(data => {
       this.cards = data;
       console.log('Cards: ', this.cards);
 
       if (this.cards.length > 0) { 
         this.hasImages = true;
-        this.initializeCarousel();
+        //this.initializeCarousel();
       }
+    });
+  }
+
+  startAutoSlide() {
+    this.intervalId = setInterval(() => {
+      this.nextImage();
+    }, 5000); // Change image every 5 seconds
+  }
+
+  // Navigate to the next image
+  nextImage() {
+    this.currentIndex = (this.currentIndex + 1) % this.cards.length;
+  }
+
+  // Navigate to the previous image
+  prevImage() {
+    this.currentIndex = (this.currentIndex - 1 + this.cards.length) % this.cards.length;
+  }
+
+  stopAutoSlide() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
+
+  // Add swipe gesture listeners
+  addSwipeListeners() {
+    const carousel = this.carouselContainer.nativeElement;
+
+    carousel.addEventListener('touchstart', (event: TouchEvent) => {
+      const touch = event.touches[0];
+      this.startX = touch.clientX;
+      this.startY = touch.clientY;
+    });
+
+    carousel.addEventListener('touchmove', (event: TouchEvent) => {
+      if (!this.startX || !this.startY) {
+        return;
+      }
+
+      const touch = event.touches[0];
+      const diffX = this.startX - touch.clientX;
+      const diffY = this.startY - touch.clientY;
+
+      // Detect horizontal swipe
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 0) {
+          // Swipe left
+          this.nextImage();
+        } else {
+          // Swipe right
+          this.prevImage();
+        }
+      }
+
+      // Reset values
+      this.startX = 0;
+      this.startY = 0;
     });
   }
 
@@ -116,44 +189,39 @@ export class CarouselComponent implements OnInit  {
     this.isExpanded = !this.isExpanded;
   }
 
-  menuItemClicked(event: Event, item: string) {
-    event.preventDefault();
-    this.selectedItem = item;
-
-    // Broadcast the selected item to AppComponent
-    this.sharedService.menuItemClicked(this.selectedItem);
-
-    //If premium, call premium, if not, call other
-    console.log('Selected category: ', this.selectedItem);
-
-    if (this.selectedItem == 'premium')
-      this.fetchPremiumImages();
-    else
-      this.fetchImageNames();
+  toggleCategorias() {
+    console.log('Toggle categorias called');
+    
+    if (this.categoriasModalActive) {
+      console.log('Is modal visible?', this.isModalVisible);
+      this.slideUpModal();
+    } else {
+      this.isModalVisible = true; // Ensure modal is visible
+      
+      setTimeout(() => {
+        this.categoriasModalActive = true; // Trigger slide down
+      }, 20); // Slight delay for transition
+    }
   }
 
-  rotateLeft() {
-    $('.carousel').carousel('prev');
-  }
-
-  rotateRight() {
-    $('.carousel').carousel('next');
-  }
-
-  private initializeCarousel() {
+  private slideUpModal() {
+    this.categoriasModalActive = false; // Slide up
     setTimeout(() => {
-      // Initialize the carousel here using jQuery
-      $('.carousel').carousel({
-        padding: 200
-      });
-      this.autoplay();
-    }, 0);
+      this.isModalVisible = false; // After transition, hide modal
+    }, 500); // Match CSS transition timing
   }
 
-  private autoplay() {
-    $('.carousel').carousel('next');
-    setTimeout(() => this.autoplay(), 4500);
+  menuItemClicked(event: Event, item: string) {
+    console.log('menuItemClicked function called');
+    event.preventDefault();
+    event.stopPropagation();
+    this.selectedItem = item; // Set the selected item
+    console.log('Selected item:', item);
+    
+    this.fetchImageNames();
+    this.toggleCategorias();
   }
+  
 
   openImageModal(event: Event, card: Card): void {
     event.preventDefault();
@@ -177,12 +245,11 @@ export class CarouselComponent implements OnInit  {
 
     //Call status API (Visited)
     const status = 'Visited';
-    const date = new Date().toISOString();
-    //this.clientId = card.clientId;
+    const date = new Date().toISOString().split('T')[0];
 
-    console.log('Client Id: ', card.clientId);
+    console.log('Card Id: ', card.cardid);
 
-    this.statusService.registerStatus(card.clientId, status, card.city, date).subscribe(
+    this.statusService.registerStatus(card.cardid, status, card.city, date).subscribe(
       data => {
         console.log('Status registered: ', data);
       },

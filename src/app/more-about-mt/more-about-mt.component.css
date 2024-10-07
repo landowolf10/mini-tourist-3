@@ -1,338 +1,200 @@
-h1 {
-    font-size: 36px;
-    font-weight: 700;
-    color: #7e0000;
-    margin-top: 200px; /* Adds space below the h1 */
-  }
-  
-  h2 {
-    font-size: 28px;
-    font-weight: 600;
-    color: #7e0000;
-    margin-top: 0px; /* Removes extra space above h2 */
-  }
-  
-  /* Styling for paragraphs */
-  p {
-    font-size: 20px;
-    line-height: 1.6;
-    color: #7e0000;
-  }
-  
-  .responsive-container-block {
-      min-height: 75px;
-      height: fit-content;
-      width: 100%;
-      padding-top: 10px;
-      padding-right: 10px;
-      padding-bottom: 10px;
-      padding-left: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: 0px;
-      margin-right: auto;
-      margin-bottom: 0px;
-      margin-left: auto;
-      justify-content: flex-start;
-    }
-    
-    .text-blk {
-      margin-top: 0px;
-      margin-right: 0px;
-      margin-bottom: 0px;
-      margin-left: 0px;
-      padding-top: 10px;
-      padding-right: 10px;
-      padding-bottom: 10px;
-      padding-left: 10px;
-      line-height: 25px;
-    }
-    
-    .responsive-container-block.bigContainer {
-      padding-top: 10px;
-      padding-right: 30px;
-      padding-bottom: 10px;
-      padding-left: 30px;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .mainImg {
-      width: 55%;
-      height: auto;
-      box-shadow: rgba(0, 0, 0, 0.05) 0px 5px 10px 7px;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
-      border-bottom-left-radius: 10px;
-    }
-    
-    .text-blk.headingText {
-      font-size: 25px;
-      font-weight: 700;
-      line-height: 34px;
-      color: #7e0000;
-      padding-top: 0px;
-      padding-right: 10px;
-      padding-bottom: 0px;
-      padding-left: 10px;
-      margin-top: 0px;
-      margin-right: 0px;
-      margin-bottom: 10px;
-      margin-left: 0px;
-    }
-    
-    .allText {
-      padding-top: 0px;
-      padding-right: 0px;
-      padding-bottom: 0px;
-      padding-left: 0px;
-      margin-top: 0px;
-      margin-right: 0px;
-      margin-bottom: 0px;
-      margin-left: 40px;
-      width: 40%;
-      margin: 0 0 0 0;
-    }
-    
-    .text-blk.subHeadingText {
-      color: #7e0000;
-      font-size: 25px;
-      line-height: 34px;
-      font-weight: 700;
-      padding-top: 0px;
-      padding-right: 10px;
-      padding-bottom: 0px;
-      padding-left: 10px;
-      margin-top: 0px;
-      margin-right: 0px;
-      margin-bottom: 15px;
-      margin-left: 0px;
-    }
-    
-    .text-blk.description {
-      font-size: 20px;
-      line-height: 34px;
-      color: #7e0000;
-      margin-top: 0px;
-      margin-right: 0px;
-      margin-bottom: 50px;
-      margin-left: 0px;
-      padding-top: 0px;
-      padding-right: 10px;
-      padding-bottom: 0px;
-      padding-left: 10px;
-    }
-    
-    .responsive-container-block.Container {
-      margin-top: 80px;
-      margin-right: auto;
-      margin-bottom: 50px;
-      margin-left: auto;
-      justify-content: center;
-      align-items: center;
-      max-width: 1320px;
-      padding-top: 10px;
-      padding-right: 10px;
-      padding-bottom: 10px;
-      padding-left: 10px;
-    }
-    
-    .responsive-container-block.Container.bottomContainer {
-      margin-top: 100px;
-      margin-right: 0px;
-      margin-bottom: 50px;
-      margin-left: 0px;
-      flex-direction: row-reverse;
-      margin: 100px auto 50px auto;
-    }
-    
-    .allText.aboveText {
-      margin: 0 0 0 40px;
-    }
-    
-    .allText.bottomText {
-      margin: 0 40px 0 0;
-    }
-    
-    @media (max-width: 1024px) {
-      .responsive-container-block.Container {
-        max-width: 850px;
-      }
-    
-      .mainImg {
-        width: 55%;
-        height: auto;
-      }
-    
-      .text-blk.description {
-        font-size: 20px;
-      }
-    
-      .allText {
-        width: 40%;
-        margin-top: 0px;
-        margin-right: 0px;
-        margin-bottom: 0px;
-        margin-left: 20px;
-      }
-    
-      .responsive-container-block.bigContainer {
-        padding-top: 10px;
-        padding-right: 10px;
-        padding-bottom: 10px;
-        padding-left: 10px;
-      }
-    
-      .text-blk.subHeadingText {
-        font-size: 22px;
-      }
-    
-      .responsive-container-block.Container.bottomContainer {
-        margin: 80px auto 50px auto;
-      }
-    
-      .responsive-container-block.Container {
-        max-width: 830px;
-      }
-    
-      .allText.aboveText {
-        margin: 30px 0 0 40px;
-      }
-    
-      .allText.bottomText {
-        margin: 30px 40px 0 0;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .mainImg {
-        width: 90%;
-      }
-    
-      .allText {
-        width: 100%;
-        margin-top: 0px;
-        margin-right: 0px;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding-top: 0px;
-        padding-right: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-      }
-    
-      .responsive-container-block.Container {
-        flex-direction: column;
-        height: auto;
-      }
-    
-      .text-blk.headingText {
-        text-align: center;
-      }
-    
-      .text-blk.subHeadingText {
-        text-align: center;
-        font-size: 20px;
-      }
-    
-      .text-blk.description {
-        text-align: center;
-        font-size: 20px;
-      }
-    
-      .allText {
-        margin-top: 40px;
-        margin-right: 0px;
-        margin-bottom: 0px;
-        margin-left: 0px;
-      }
-    
-      .allText.aboveText {
-        margin: 40px 0 0 0;
-      }
-    
-      .responsive-container-block.Container {
-        margin: 80px auto 50px auto;
-      }
-    
-      .responsive-container-block.Container.bottomContainer {
-        margin: 50px auto 50px auto;
-      }
-    
-      .allText.bottomText {
-        margin: 40px 0 0 0;
-      }
-
-      h1 {
-        margin-top: 100px;
-      }
-    }
-    
-    @media (max-width: 500px) {
-      .responsive-container-block.Container {
-        padding-top: 10px;
-        padding-right: 0px;
-        padding-bottom: 10px;
-        padding-left: 0px;
-        width: 100%;
-        max-width: 100%;
-      }
-    
-      .mainImg {
-        width: 100%;
-      }
-    
-      .responsive-container-block.bigContainer {
-        padding-top: 50px;
-        padding-right: 25px;
-        padding-bottom: 10px;
-        padding-left: 25px;
-      }
-    
-      .text-blk.subHeadingText {
-        font-size: 20px;
-        padding-top: 0px;
-        padding-right: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-      }
-    
-      .text-blk.description {
-        font-size: 20px;
-        padding-top: 0px;
-        padding-right: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-      }
-    
-      .allText {
-        padding-top: 0px;
-        padding-right: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        width: 100%;
-      }
-    }
-
-  /* Base transition for elements */
-  .transition {
-    transition: opacity 0.8s ease-in, transform 0.8s ease-in;
-  }
-  
-  /* Initial state of elements (hidden or scaled down) */
-  .transition.hidden {
+@keyframes fadeIn {
+  from {
     opacity: 0;
-    transform: translateY(20px); /* Adjust this value as needed */
   }
-  
-  /* State of elements when visible */
-  .transition.visible {
+  to {
     opacity: 1;
-    transform: translateY(0);
   }
+}
+
+.seccion-cmdminitours-card-0,
+.seccion-cmdminitours-card-1 {
+  animation: fadeIn 2s ease-in-out forwards; /* 2 seconds fade-in */
+  opacity: 0; /* Start invisible */
+}
+
+
+.seccion-cmdminitours-card-0 {
+  width: 100%;
+  background-color: #FFFFFF;
+  padding-top: 180px;
+  padding-bottom: 60px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contenedor-general-cmdminitours-card-0 {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+.contenedor-titulo-cmdminitours-card-0 {
+  width: 100%;
+  max-width: 35%;
+}
+
+
+.contenedor-titulo-cmdminitours-card-0 h2 {
+  font-family: "Mada", sans-serif;
+  font-weight: 700;
+  font-size: 42px;
+  color: #0D0D0D;
+  text-align: left;
+  line-height: 52px;
+  margin-top: 20px;
+}
+
+.contenedor-info-cmdminitours-card-0 {
+  width: 100%;
+  max-width: 60%;
+  padding-top: 42px;
+}
+
+.contenedor-info-cmdminitours-card-0 p {
+  font-family: "Mada", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #0D0D0D;
+  text-align: left;
+  line-height: 26px;
+}
+
+.seccion-cmdminitours-card-1 {
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 120px;
+  display: flex;
+  justify-content: center;
+}
+
+.contenedor-general-cmdminitours-card-1 {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contenedor-detalles-tarjetas {
+  width: 100%;
+  max-width: 46%;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.detalle-izq{
+  margin-bottom: 160px;
+}
+
+.detalle-der{
+  margin-top: 160px;
+}
+
+.contenedor-detalles-tarjetas img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+}
+
+.info-tarjetas {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.info-tarjetas span {
+  background-color: #FF344F;
+  font-family: "Mada", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.info-tarjetas h3 {
+  font-family: "Mada", sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  color: #0D0D0D;
+  text-align: center;
+}
+
+.info-tarjetas p {
+  font-family: "Mada", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #0D0D0D;
+  text-align: center;
+  line-height: 26px;
+}
+
+@media (max-width: 768px) {
+  .contenedor-general-cmdminitours-card-0 {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Ensure centered alignment */
+  }
+
+  .contenedor-titulo-cmdminitours-card-0 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px; /* Add space below the title container */
+  }
+
+  .contenedor-titulo-cmdminitours-card-0 h2 {
+    font-size: 28px; /* Reduce font size */
+    line-height: 36px;
+    margin-top: 10px; /* Reduce margin */
+    margin-bottom: 20px; /* Ensure space below the title */
+  }
+
+  .contenedor-info-cmdminitours-card-0 {
+    width: 100%;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px; /* Add space between title and info */
+  }
+
+  .contenedor-info-cmdminitours-card-0 p {
+    font-size: 14px; /* Adjust text size */
+    line-height: 22px;
+  }
+}
+
+@media (max-width: 576px) {
+  .contenedor-general-cmdminitours-card-0 {
+    flex-direction: column; /* Ensure vertical stacking on small screens */
+    align-items: center; /* Center align */
+  }
+
+  .contenedor-titulo-cmdminitours-card-0 {
+    width: 100%;
+    margin-bottom: 15px; /* Space below title container */
+    text-align: center;
+  }
+
+  .contenedor-titulo-cmdminitours-card-0 h2 {
+    font-size: 24px; /* Further reduce font size */
+    line-height: 30px;
+    margin-top: 5px; /* Reduce margin */
+    margin-bottom: 15px; /* Add more space below title */
+  }
+
+  .contenedor-info-cmdminitours-card-0 {
+    padding-top: 10px; /* Further reduce padding */
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 15px; /* Add more space between the title and info */
+  }
+
+  .contenedor-info-cmdminitours-card-0 p {
+    font-size: 12px; /* Adjust font size for smaller screens */
+    line-height: 20px;
+  }
+}

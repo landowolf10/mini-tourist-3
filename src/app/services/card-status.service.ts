@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 interface CardStatus {
-  clientId: number;
+  cardid: number;
   status: string;
   city: string;
   date: string;
@@ -13,13 +13,13 @@ interface CardStatus {
   providedIn: 'root'
 })
 export class StatusService  {
-  private apiUrl = 'http://localhost:9090/api/card/cards';
+  private apiUrl = 'http://127.0.0.1:8000/api/v1/card/register_status';
 
   constructor(private http: HttpClient) {}
 
-  registerStatus(clientId: number, status: string, city: string, date: string): Observable<CardStatus[]> {
+  registerStatus(cardid: number, status: string, city: string, date: string): Observable<CardStatus[]> {
     const payload: CardStatus = {
-      clientId,
+      cardid,
       status,
       city,
       date

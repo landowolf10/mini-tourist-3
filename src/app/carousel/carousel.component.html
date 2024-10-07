@@ -1,15 +1,20 @@
 
-<div class="carousel-container">
-    <div class="contenedor-img-portada-inicio"></div>
-    <div class="contenedor-categorias-modal">
-      <br><br><br><br><br>
-    </div>
-    
-    <br>
+<div class="contenedor-general-inicio-0">
+  <a class="btns-modal-filtro" (click)="toggleCategorias()">
+    <img src="assets/icon-filtro-b.svg" alt="">
+    <span>FILTRAR</span>
+  </a>
+</div>
+<div class="carousel-container" #carouselContainer>
   
-    <!-- Carousel -->
-    <div class="carousel">
-      <ng-container *ngFor="let card of cards">
+    <div *ngFor="let card of cards; let i = index" 
+         class="image-wrapper"
+         [ngClass]="{
+           'current': i === currentIndex,
+           'previous': i === (currentIndex - 1 + cards.length) % cards.length,
+           'next': i === (currentIndex + 1) % cards.length,
+           'hidden': i !== currentIndex && i !== (currentIndex - 1 + cards.length) % cards.length && i !== (currentIndex + 1) % cards.length
+         }">
         <a class="carousel-item">
           <div *ngIf="hasImages; else noCards" class="img-area">
             <img [src]="card.image" alt="{{ card.image }}" (click)="openImageModal($event, card)">
@@ -18,16 +23,118 @@
             No hay tarjetas
           </ng-template>
         </a>
-      </ng-container>
     </div>
-  
-    <!-- Carousel Buttons -->
-    <div class="carousel-button-container">
-      <button class="carousel-button left" (click)="rotateLeft()">
-        <img src="../../assets/left_arrow.png" alt="Left Button">
-      </button>
-      <button class="carousel-button right" (click)="rotateRight()">
-        <img src="../../assets/right_arrow.png" alt="Right Button">
-      </button>
+  </div>
+  <!-- Carousel Buttons -->
+  <div class="carousel-button-container">
+    <button class="carousel-button left" (click)="prevImage()">
+      <img src="../../assets/left_arrow.png" alt="Left Button">
+    </button>
+    <button class="carousel-button right" (click)="nextImage()">
+      <img src="../../assets/right_arrow.png" alt="Right Button">
+    </button>
+  </div>
+
+  <!-- Modal structure -->
+
+  <div class="modal-categorias" [class.active]="categoriasModalActive">
+    <div class="modal-content">
+      <span class="close" (click)="toggleCategorias()">&times;</span>
+      <h2>¿Qué estás buscando hoy?</h2>
+      <div class="contenedor-filtro-ciudad">
+        <label for="" class="titulo-input">CAMBIAR CIUDAD O DESTINO</label>
+        <select name="" id="" required>
+            <option value="">Ciudades</option>
+            <option value="">Iztapa Zihuatanejo</option>
+            <option value="">Acapulco</option>
+            <option value="">Morelia</option>
+            <option value="">San Cristobal de las Casas</option>
+        </select>
     </div>
-  </div>  
+      <ul class="categorias-container">
+        <li class="category1">
+          <a [class.selected]="selectedItem === 'premium'" (click)="menuItemClicked($event, 'premium')">
+            <img src="../../assets/icon-valores.svg" alt="">
+            <span>Premium</span>
+          </a>
+        </li>
+        <li class="category2">
+          <a [class.selected]="selectedItem === 'parks'" (click)="menuItemClicked($event, 'parks')">
+            <img src="../../assets/icon-parques-b.svg" alt="">
+            <span>Parques y atracciones</span>
+          </a>
+        </li>
+        <li class="category3">
+          <a [class.selected]="selectedItem === 'restaurants'" (click)="menuItemClicked($event, 'restaurants')">
+            <img src="../../assets/icon-restaurentes-b.svg" alt="">
+            <span>Restaurantes, bares y cafeterías</span>
+          </a>
+        </li>
+        <li class="category4">
+          <a [class.selected]="selectedItem === 'places_events'" (click)="menuItemClicked($event, 'places_events')">
+            <img src="../../assets/icon-eventos-b.svg" alt="">
+            <span>Lugares y eventos</span>
+          </a>
+        </li>
+        <li class="category5">
+          <a [class.selected]="selectedItem === 'stores'" (click)="menuItemClicked($event, 'stores')">
+            <img src="../../assets/icon-tiendas-b.svg" alt="">
+            <span>Tiendas</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+<!--<section class="modal-filtros" id="modalFiltros" [class.muestra-modal-filtros]="isModalVisible">
+  <div class="contenedor-general-modal-filtros">
+      <div class="titulo-modal">
+          <h2>¿QUÉ ESTAS BUSCANDO HOY?</h2>
+          <button class="btns-modal-filtro" (click)="toggleCategorias()"><img src="../assets/icon-cerrar-n.svg" alt=""></button>
+      </div>
+
+      <form>
+          <div class="contenedor-filtro-ciudad">
+              <label for="" class="titulo-input">CAMBIAR CIUDAD O DESTINO</label>
+              <select name="" id="" required>
+                  <option value="">Ciudades</option>
+                  <option value="">Ixtapa Zihuatanejo</option>
+                  <option value="">Acapulco</option>
+                  <option value="">Morelia</option>
+                  <option value="">San Cristobal de las Casas</option>
+              </select>
+          </div>
+
+          <div class="contenedor-categorias">
+              <input type="radio" name="categoria" id="categoria1" checked [(ngModel)]="selectedItem" (click)="menuItemClicked($event, 'premium')" value="premium">
+              <label for="categoria1" class="cat1">
+                  <img src="../assets/icon-parques-b.svg" alt="">
+                  <span>PREMIUM</span>
+              </label>
+
+              <input type="radio" name="categoria" id="categoria2" [(ngModel)]="selectedItem" (click)="menuItemClicked($event, 'parks')" value="parks">
+              <label for="categoria2" class="cat2">
+                  <img src="../assets/icon-restaurentes-b.svg" alt="">
+                  <span>PARQUES Y ATRACCIONES</span>
+              </label>
+
+              <input type="radio" name="categoria" id="categoria3" [(ngModel)]="selectedItem" (click)="menuItemClicked($event, 'restaurants')" value="restaurants">
+              <label for="categoria3" class="cat3">
+                  <img src="../assets/icon-eventos-b.svg" alt="">
+                  <span>RESTAURANTES, BARES Y CAFETERÍAS</span>
+              </label>
+
+              <input type="radio" name="categoria" id="categoria4" [(ngModel)]="selectedItem" (click)="menuItemClicked($event, 'places_events')" value="places_events">
+              <label for="categoria4" class="cat4">
+                  <img src="../assets/icon-tiendas-b.svg" alt="">
+                  <span>LUGARES Y EVENTOS</span>
+              </label>
+
+              <input type="radio" name="categoria" id="categoria5">
+              <label for="categoria5" class="cat5">
+                  <img src="../assets/icon-tiendas-b.svg" alt="">
+                  <span>TIENDAS</span>
+              </label>
+          </div>
+      </form>
+  </div>
+</section>-->

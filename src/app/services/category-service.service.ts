@@ -5,16 +5,18 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoryServiceService {
-  // Using BehaviorSubject to hold the selected item state
-  private selectedItemSource = new BehaviorSubject<string>('premium');
+  private selectedItemSource = new BehaviorSubject<string>('premium'); // Default value
   selectedItem$ = this.selectedItemSource.asObservable();
 
-  // Method to update the selected item
-  menuItemClicked(item: string) {
+  constructor() {}
+
+  // Method to set selected item
+  setSelectedItem(item: string) {
     this.selectedItemSource.next(item);
   }
 
-  getSelectedItem() {
-    return this.selectedItemSource.getValue();
+  // Method to simulate menu item click if needed
+  menuItemClicked(item: string) {
+    this.setSelectedItem(item);
   }
 }

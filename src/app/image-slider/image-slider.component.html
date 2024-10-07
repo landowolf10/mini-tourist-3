@@ -1,0 +1,17 @@
+<div class="slider-container">
+    <button (click)="prevImage()">&#10094;</button>
+  
+    <div *ngFor="let card of cards; let i = index" 
+         class="image-wrapper"
+         [ngClass]="{
+           'current': i === currentIndex,
+           'previous': i === (currentIndex - 1 + cards.length) % cards.length,
+           'next': i === (currentIndex + 1) % cards.length,
+           'hidden': i !== currentIndex && i !== (currentIndex - 1 + cards.length) % cards.length && i !== (currentIndex + 1) % cards.length
+         }">
+      <img [src]="card.image" alt="{{ card.cardName }}">
+    </div>
+  
+    <button (click)="nextImage()">&#10095;</button>
+  </div>
+  

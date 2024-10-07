@@ -1,68 +1,38 @@
 <header>
-  <a class="a-logo">
-    <img src="../assets/images/logo.jpg" alt="Logo">
-  </a>
-  <!-- Only show the "Mostrar categorías" button on the Home page -->
-  <button class="categorias-button transition hidden" *ngIf="showCategoriasButton" (click)="toggleCategorias()">
-    Mostrar categorías
-  </button>
   <div class="contenedor-menu-header">
-    <div class="hamburger" [class.active]="menuActive" (click)="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+    <a href="index.html" class="a-logo">
+      <img src="../assets/images/logo.jpg" alt="Logo">
+    </a>
 
-    <nav [class.active]="menuActive">
-      <button class="close-btn" (click)="toggleMenu()">✖</button>
-      <ul>
-        <li><a routerLink="/home" (click)="hideMenu()">Inicio</a></li>
-        <li><a routerLink="/about" (click)="hideMenu()">Acerca de nosotros</a></li>
-        <li class="li-submenu"><a routerLink="/where-is-mt" (click)="hideMenu()">¿Dónde encontrarnos?</a></li>
-        <li class="li-submenu"><a routerLink="/more-about-mt" (click)="hideMenu()">Conoce más sobre las Minitourist Cards</a></li>
-        <li><a routerLink="/login" class="a-btn-is" (click)="hideMenu()">Iniciar sesión</a></li>
-      </ul>
+    <!--<div class="contenedor-general-inicio-0">
+      <a class="btns-modal-filtro" (click)="toggleCategorias()">
+        <img src="assets/icon-filtro-b.svg" alt="">
+        <span>FILTRAR</span>
+      </a>
+    </div>-->
+
+    <!-- The menu toggle logic is here -->
+    <nav class="elementos-menu" [class.muestra-menu]="menuActive">
+      <div class="contenedor-ul" [class.muestra-menu]="menuActive">
+        <ul>
+          <button id="btnCerrarMenu" class="btns-menu" (click)="closeMenu()">
+            <img src="assets/icon-cerrar-c.svg" alt="Close Menu">
+          </button>
+          <li><a routerLink="/home" (click)="closeMenu()">Inicio</a></li>
+          <li><a routerLink="/about" (click)="closeMenu()">Acerca de nosotros</a></li>
+          <li><a routerLink="/where-is-mt" (click)="closeMenu()">¿Dónde encontrarnos?</a></li>
+          <li><a routerLink="/more-about-mt" (click)="closeMenu()">Conoce más sobre las MiniTourist Cards</a></li>
+          <li><a href="/contact">Contáctanos</a></li>
+          <li><a href="/login">Iniciar sesión</a></li>
+        </ul>
+      </div>
     </nav>
+    <div class="contenedor-btns-menu-is">
+      <button class="btns-menu" (click)="toggleMenu()">
+        <img src="assets/icon-menu.svg" alt="Hamburger Menu">
+      </button>
+    </div>
   </div>
 </header>
-<!-- Modal structure -->
-<div class="modal-categorias" [class.active]="categoriasModalActive">
-  <div class="modal-content">
-    <span class="close" (click)="toggleCategorias()">&times;</span>
-    <h2>¿Qué estás buscando hoy?</h2>
-    <ul class="categorias-container">
-      <li>
-        <a [class.selected]="selectedItem === 'premium'" (click)="menuItemClicked($event, 'premium')">
-          <img src="../../assets/icon-parques-b.svg" alt="">
-          <span>Premium</span>
-        </a>
-      </li>
-      <li>
-        <a [class.selected]="selectedItem === 'parks'" (click)="menuItemClicked($event, 'parks')">
-          <img src="../../assets/icon-parques-b.svg" alt="">
-          <span>Parques y atracciones</span>
-        </a>
-      </li>
-      <li>
-        <a [class.selected]="selectedItem === 'restaurants'" (click)="menuItemClicked($event, 'restaurants')">
-          <img src="../../assets/icon-restaurentes-b.svg" alt="">
-          <span>Restaurantes, bares y cafeterías</span>
-        </a>
-      </li>
-      <li>
-        <a [class.selected]="selectedItem === 'places_events'" (click)="menuItemClicked($event, 'places_events')">
-          <img src="../../assets/icon-eventos-b.svg" alt="">
-          <span>Lugares y eventos</span>
-        </a>
-      </li>
-      <li>
-        <a [class.selected]="selectedItem === 'stores'" (click)="menuItemClicked($event, 'stores')">
-          <img src="../../assets/icon-tiendas-b.svg" alt="">
-          <span>Tiendas</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
 
 <router-outlet></router-outlet>

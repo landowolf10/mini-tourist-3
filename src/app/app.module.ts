@@ -26,6 +26,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { WhereIsMtComponent } from './where-is-mt/where-is-mt.component';
 import { MoreAboutMtComponent } from './more-about-mt/more-about-mt.component';
 import { HomeComponent } from './home/home.component';
+import { ImageSliderComponent } from './image-slider/image-slider.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { HomeComponent } from './home/home.component';
     DashboardComponent,
     WhereIsMtComponent,
     MoreAboutMtComponent,
-    HomeComponent
+    HomeComponent,
+    ImageSliderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

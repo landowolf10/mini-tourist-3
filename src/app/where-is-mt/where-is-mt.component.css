@@ -1,131 +1,216 @@
-.content {
-    margin-top: 150px;
-}
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .seccion-general {
+    animation: fadeIn 2s ease-in-out forwards; /* 2 seconds fade-in */
+    opacity: 0; /* Start invisible */
+  }
 
-/* General layout */
-.container {
-    width: 100%; /* Ensure container takes full width */
-    max-width: 1170px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns on larger screens */
-    align-items: center;
-    grid-gap: 60px;
-    padding: 35px 15px;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
-.contentLeft, .contentRight {
+.seccion-delminitours-card-0 {
     width: 100%;
+    padding-top: 180px;
+    padding-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    background-color: #FFFFFF;
+}
+
+.contenedor-general-delminitours-card-0 {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.contenedor-mapa-delminitours-card-0 {
+    width: 46%;
+    position: relative;
+}
+
+.contenedor-mapa-delminitours-card-0 img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.contenedor-info-delminitours-card {
+    width: 46%;
+}
+
+.contenedor-info-delminitours-card h2 {
+    font-size: 42px;
+    color: #0D0D0D;
+    line-height: 52px;
+    margin-top: 20px;
+}
+
+.contenedor-info-delminitours-card p {
+    font-size: 16px;
+    color: #0D0D0D;
+    line-height: 26px;
+    margin-top: 20px;
+}
+
+.contenedor-ubicaciones-cartas {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    gap: 10px;
+}
+
+.contenedor-ubicaciones-cartas input[type="radio"] {
+    display: none;
+}
+
+.contenedor-ubicaciones-cartas label {
+    width: 30%;
+    padding: 20px;
+    background-color: #F7F7F7;
+    border-radius: 20px;
+    border: 1px solid #D8D8D8;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.contenedor-ubicaciones-cartas label img {
+    position: absolute;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+.contenedor-ubicaciones-cartas label span {
+    font-size: 12px;
+    font-weight: 600;
+    color: #0D0D0D;
+}
+
+.contenedor-ubicaciones-cartas input[type="radio"]:checked + label,
+.contenedor-ubicaciones-cartas input[type="radio"]:hover + label {
+    background-color: #FF344F;
+}
+
+.contenedor-ubicaciones-cartas input[type="radio"]:checked + label span,
+.contenedor-ubicaciones-cartas input[type="radio"]:hover + label span {
+    color: #FFFFFF;
+}
+
+/* Section 2 (seccion-delminitours-card-1) */
+.seccion-delminitours-card-1 {
+    width: 100%;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor-genral-delminitours-card-1 {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.contenedor-genral-delminitours-card-1 h2 {
+    font-size: 42px;
+    color: #0D0D0D;
+    line-height: 52px;
+    margin-top: 20px;
+}
+
+.contenedor-clientes {
+    width: 100%;
+    height: 250px;
+    margin-top: 40px;
     overflow: hidden;
 }
 
-.contentLeft .row {
+.carrusel-clientes {
+    width: 200%;
     display: flex;
-    justify-content: center; /* Center the image horizontally */
-    align-items: center;
+    justify-content: space-between;
+    animation: movimiento-carrusel 20s infinite;
 }
 
-.contentLeft .row img {
-    max-width: 100%; /* Ensure the image scales properly */
-    height: auto; /* Maintain the aspect ratio */
-    object-fit: cover; /* Ensure the image doesn't get cut off */
+@keyframes movimiento-carrusel {
+    0%, 18% { transform: translateX(0); }
+    20%, 38% { transform: translateX(-12.5%); }
+    40%, 58% { transform: translateX(-25%); }
+    60%, 78% { transform: translateX(-37.5%); }
+    80%, 98% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
 }
 
-.contentRight .content h2 {
-    font-weight: bold;
+.clientes {
+    width: 50%;
+    height: 250px;
+    background-color: #F7F7F7;
+    border-radius: 20px;
+    margin: 0 20px;
+    position: relative;
 }
 
-.contentRight .content h2,
-.contentRight .content p,
-.contentRight .content a {
-    color: #7e0000; /* Set all text to white */
+.clientes img {
+    width: 200px;
+    opacity: .5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.contentRight .content p,
-.contentRight .content a {
-    font-size: 20px;
-}
-
-/* For smaller screens (768px and below) */
+/* Responsive Styles */
 @media (max-width: 768px) {
-    .content {
-        margin-top: 150px;
+    .contenedor-general-delminitours-card-0 {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .container {
-        grid-template-columns: 1fr; /* Stack content vertically */
-        grid-gap: 30px; /* Adjust the gap between elements */
-        padding: 20px 15px;
+    .contenedor-mapa-delminitours-card-0, 
+    .contenedor-info-delminitours-card {
+        width: 100%;
     }
 
-    /* Move the image below the text */
-    .contentRight {
-        order: 1; /* Ensure the text appears first */
+    .contenedor-info-delminitours-card h2 {
+        font-size: 32px;
+        line-height: 42px;
     }
 
-    .contentLeft {
-        order: 2; /* Ensure the image appears below the text */
-    }
-
-    .contentLeft .row {
-        justify-content: center; /* Ensure the image is centered */
-    }
-
-    .contentLeft .row img {
-        max-width: 100%; /* Prevent the image from overflowing */
-        height: auto;
-        object-fit: contain; /* Ensure the image fits within its container */
-    }
-
-    .contentLeft .row .imgWrapper {
-        height: 150px; /* Adjust image height for smaller screens */
-    }
-
-    .contentRight .content h2 {
-        font-size: 30px; /* Adjust text size */
-    }
-
-    .contentRight .content p {
+    .contenedor-info-delminitours-card p {
         font-size: 14px;
-        line-height: 24px;
+    }
+
+    .contenedor-ubicaciones-cartas label {
+        width: 45%;
     }
 }
 
-@media (max-width: 480px) {
-    .container {
-        padding: 15px; /* Further reduce padding for very small screens */
+@media (max-width: 576px) {
+    /* Adjust carousel width and item width */
+    .carrusel-clientes {
+        width: 1400px; /* Make the width suitable for two items in the view */
+        display: flex;
+        justify-content: space-between;
     }
 
-    .contentRight .content h2 {
-        font-size: 24px;
+    /* Show only 2 elements at a time */
+    .clientes {
+        width: 1500px; /* Show two elements per row */
+        height: 200px; /* Adjust height if needed */
     }
 
-    .contentRight .content p {
-        font-size: 14px;
-        line-height: 22px;
-    }
-
-    .contentLeft .row img {
-        width: 100%; /* Ensure full-width image on small screens */
-        height: auto;
-        object-fit: cover;
+    .clientes img {
+        width: 140px; /* Adjust the image size accordingly */
     }
 }
-
-  /* Base transition for elements */
-  .transition {
-    transition: opacity 0.8s ease-in, transform 0.8s ease-in;
-  }
-  
-  /* Initial state of elements (hidden or scaled down) */
-  .transition.hidden {
-    opacity: 0;
-    transform: translateY(20px); /* Adjust this value as needed */
-  }
-  
-  /* State of elements when visible */
-  .transition.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }

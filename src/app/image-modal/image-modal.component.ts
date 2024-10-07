@@ -13,7 +13,7 @@ export class ImageModalComponent {
   selectedImageName: string = '';
   isDownloadButtonVisible: boolean = false;
   isFlipped: boolean = false;
-  clientId: number | null = null;
+  cardid: number | null = null;
   city: string | null = null;
 
   constructor(
@@ -35,8 +35,11 @@ export class ImageModalComponent {
     });
 
     if (data && data.card) {
-      this.clientId = data.card.clientId;
+      this.cardid = data.card.cardid;
       this.city = data.card.city;
+
+      console.log('Selected card clientid: ', this.cardid);
+      console.log('Selected card city: ', this.city);
     } else {
       console.error('No card data provided to modal');
     }
@@ -83,10 +86,10 @@ export class ImageModalComponent {
         window.URL.revokeObjectURL(url);
 
         // Register status after successful download
-        if (this.clientId && this.city) {
+        if (this.cardid && this.city) {
           const status = 'Downloaded';
-          const date = new Date().toISOString();
-          this.statusService.registerStatus(this.clientId, status, this.city, date).subscribe(
+          const date = new Date().toISOString().split('T')[0];
+          this.statusService.registerStatus(this.cardid, status, this.city, date).subscribe(
             data => console.log('Status registered: ', data),
             error => console.error('Error registering status: ', error)
           );

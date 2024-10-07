@@ -1,338 +1,393 @@
-h1 {
-  font-size: 36px;
-  font-weight: 700;
-  color: #7e0000;
-  margin-top: 200px; /* Adds space below the h1 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-h2 {
-  font-size: 28px;
-  font-weight: 600;
-  color: #7e0000;
-  margin-top: 0px; /* Removes extra space above h2 */
+.seccion-general {
+  animation: fadeIn 2s ease-in-out forwards; /* 2 seconds fade-in */
+  opacity: 0; /* Start invisible */
 }
 
-/* Styling for paragraphs */
-p {
-  font-size: 20px;
-  line-height: 1.6;
-  color: #7e0000;
-}
-
-.responsive-container-block {
-    min-height: 75px;
-    height: fit-content;
-    width: 100%;
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 0px;
-    margin-right: auto;
-    margin-bottom: 0px;
-    margin-left: auto;
-    justify-content: flex-start;
-  }
-  
-  .text-blk {
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    line-height: 25px;
-  }
-  
-  .responsive-container-block.bigContainer {
-    padding-top: 10px;
-    padding-right: 30px;
-    padding-bottom: 10px;
-    padding-left: 30px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .mainImg {
-    width: 55%;
-    height: auto;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 5px 10px 7px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-  }
-  
-  .text-blk.headingText {
-    font-size: 25px;
-    font-weight: 700;
-    line-height: 34px;
-    color: #7e0000;
-    padding-top: 0px;
-    padding-right: 10px;
-    padding-bottom: 0px;
-    padding-left: 10px;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 10px;
-    margin-left: 0px;
-  }
-  
-  .allText {
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 40px;
-    width: 40%;
-    margin: 0 0 0 0;
-  }
-  
-  .text-blk.subHeadingText {
-    color: #7e0000;
-    font-size: 25px;
-    line-height: 34px;
-    font-weight: 700;
-    padding-top: 0px;
-    padding-right: 10px;
-    padding-bottom: 0px;
-    padding-left: 10px;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 15px;
-    margin-left: 0px;
-  }
-  
-  .text-blk.description {
-    font-size: 20px;
-    line-height: 34px;
-    color: #7e0000;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 50px;
-    margin-left: 0px;
-    padding-top: 0px;
-    padding-right: 10px;
-    padding-bottom: 0px;
-    padding-left: 10px;
-  }
-  
-  .responsive-container-block.Container {
-    margin-top: 80px;
-    margin-right: auto;
-    margin-bottom: 50px;
-    margin-left: auto;
-    justify-content: center;
-    align-items: center;
-    max-width: 1320px;
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-  }
-  
-  .responsive-container-block.Container.bottomContainer {
-    margin-top: 100px;
-    margin-right: 0px;
-    margin-bottom: 50px;
-    margin-left: 0px;
-    flex-direction: row-reverse;
-    margin: 100px auto 50px auto;
-  }
-  
-  .allText.aboveText {
-    margin: 0 0 0 40px;
-  }
-  
-  .allText.bottomText {
-    margin: 0 40px 0 0;
-  }
-  
-  @media (max-width: 1024px) {
-    .responsive-container-block.Container {
-      max-width: 850px;
-    }
-  
-    .mainImg {
-      width: 55%;
-      height: auto;
-    }
-  
-    .text-blk.description {
-      font-size: 20px;
-    }
-  
-    .allText {
-      width: 40%;
-      margin-top: 0px;
-      margin-right: 0px;
-      margin-bottom: 0px;
-      margin-left: 20px;
-    }
-  
-    .responsive-container-block.bigContainer {
-      padding-top: 10px;
-      padding-right: 10px;
-      padding-bottom: 10px;
-      padding-left: 10px;
-    }
-  
-    .text-blk.subHeadingText {
-      font-size: 22px;
-    }
-  
-    .responsive-container-block.Container.bottomContainer {
-      margin: 80px auto 50px auto;
-    }
-  
-    .responsive-container-block.Container {
-      max-width: 830px;
-    }
-  
-    .allText.aboveText {
-      margin: 30px 0 0 40px;
-    }
-  
-    .allText.bottomText {
-      margin: 30px 40px 0 0;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .mainImg {
-      width: 90%;
-    }
-  
-    .allText {
-      width: 100%;
-      margin-top: 0px;
-      margin-right: 0px;
-      margin-bottom: 0px;
-      margin-left: 0px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding-top: 0px;
-      padding-right: 0px;
-      padding-bottom: 0px;
-      padding-left: 0px;
-    }
-  
-    .responsive-container-block.Container {
-      flex-direction: column;
-      height: auto;
-    }
-  
-    .text-blk.headingText {
-      text-align: center;
-    }
-  
-    .text-blk.subHeadingText {
-      text-align: center;
-      font-size: 20px;
-    }
-  
-    .text-blk.description {
-      text-align: center;
-      font-size: 20px;
-    }
-  
-    .allText {
-      margin-top: 40px;
-      margin-right: 0px;
-      margin-bottom: 0px;
-      margin-left: 0px;
-    }
-  
-    .allText.aboveText {
-      margin: 40px 0 0 0;
-    }
-  
-    .responsive-container-block.Container {
-      margin: 80px auto 50px auto;
-    }
-  
-    .responsive-container-block.Container.bottomContainer {
-      margin: 50px auto 50px auto;
-    }
-  
-    .allText.bottomText {
-      margin: 40px 0 0 0;
-    }
-
-    h1 {
-      margin-top: 100px;
-    }
-  }
-  
-  @media (max-width: 500px) {
-    .responsive-container-block.Container {
-      padding-top: 10px;
-      padding-right: 0px;
-      padding-bottom: 10px;
-      padding-left: 0px;
-      width: 100%;
-      max-width: 100%;
-    }
-  
-    .mainImg {
-      width: 100%;
-    }
-  
-    .responsive-container-block.bigContainer {
-      padding-top: 50px;
-      padding-right: 25px;
-      padding-bottom: 10px;
-      padding-left: 25px;
-    }
-  
-    .text-blk.subHeadingText {
-      font-size: 20px;
-      padding-top: 0px;
-      padding-right: 0px;
-      padding-bottom: 0px;
-      padding-left: 0px;
-    }
-  
-    .text-blk.description {
-      font-size: 20px;
-      padding-top: 0px;
-      padding-right: 0px;
-      padding-bottom: 0px;
-      padding-left: 0px;
-    }
-  
-    .allText {
-      padding-top: 0px;
-      padding-right: 0px;
-      padding-bottom: 0px;
-      padding-left: 0px;
-      width: 100%;
-    }
-  }
-
-  /* Base transition for elements */
-.transition {
-  transition: opacity 0.8s ease-in, transform 0.8s ease-in;
-}
-
-/* Initial state of elements (hidden or scaled down) */
-.transition.hidden {
-  opacity: 0;
-  transform: translateY(20px); /* Adjust this value as needed */
-}
-
-/* State of elements when visible */
-.transition.visible {
+.seccion-nosotros-0, 
+.seccion-nosotros-1, 
+.seccion-nosotros-2 {
+  /* Add this to ensure content stays visible after fade-in */
   opacity: 1;
-  transform: translateY(0);
+}
+
+.seccion-nosotros-0 {
+  width: 100%;
+  height: 500px;
+  float: left;
+  background-color: #111429BF;
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.contenedor-img-portada-nosotros{
+  width: 100%;
+  height: 100%;
+  float: left;
+  background-color: transparent;
+  background: url('../../assets/zihua.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: .2;
+  position: fixed;
+}
+
+.contenedor-general-nosotros-0 {
+  width: 1200px;
+  height: 50px;
+  float: left;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.contenedor-general-nosotros-0 h1{
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  float: left;
+  font-family: "Mada", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 42px;
+  text-decoration: none;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 55px;
+  margin-top: 40px;
+}
+
+
+
+
+
+
+.seccion-nosotros-1{
+  width: 100%;
+  height: auto;
+  background-color: #FFFFFF;
+  float: left;
+  position: relative;
+  z-index: 10;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.contenedor-general-nosotros-1{
+  width: 1200px;
+  height: auto;
+  background-color: transparent;
+  float: left;
+  display: inline-flex;
+  justify-content: space-between;
+  padding-right: 0px;
+}
+
+.contenedor-titulos-nosotros{
+  width: 35%;
+  height: auto;
+  background-color: transparent;
+  float: left;
+}
+
+.contenedor-titulos-nosotros h2{
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  float: left;
+  font-family: "Mada", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 42px;
+  text-decoration: none;
+  color: #0D0D0D;
+  text-align: left;
+  letter-spacing: .5px;
+  line-height: 52px;
+  margin-top: 20px;
+}
+
+.contenedor-info-nosotros-1{
+  width: 60%;
+  height: auto;
+  background-color: transparent;
+  float: left;
+  padding-top: 42px;
+  margin-right: 0px;
+}
+
+.contenedor-info-nosotros-1 h3{
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  float: left;
+  font-family: "Mada", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 28px;
+  text-decoration: none;
+  color: #0D0D0D;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+.contenedor-info-nosotros-1 p{
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  float: left;
+  font-family: "Mada", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  text-decoration: none;
+  color: #0D0D0D;
+  text-align: left;
+  line-height: 26px;
+  letter-spacing: .5px;
+  margin-top: 20px;
+}
+
+.contenedor-titulo-vision-mision-valores{
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  float: left;
+  margin-top:20px;
+  display: inline-flex;
+  justify-content: start;
+}
+
+.contenedor-titulo-vision-mision-valores img{
+  width: 60px;
+  height: 60px;
+  background-color: #FF344F;
+  padding: 10px;
+  float: left;
+  margin-right: 15px;
+  border-radius: 10px;
+}
+
+.contenedor-titulo-vision-mision-valores h3{
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  float: left;
+  font-family: "Mada", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 28px;
+  text-decoration: none;
+  color: #0D0D0D;
+  text-align: left;
+  letter-spacing: .5px;
+  margin-top: 15px;
+}
+
+.seccion-nosotros-2 {
+  width: 100%;
+  height: auto;
+  background-color: #FFFFFF;
+  float: left;
+  display: inline-flex;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  padding-bottom: 120px;
+}
+
+.contenedor-general-nosotros-2{
+  width: 1200px;
+  height: auto;
+  background-color: #FF344F;
+  float: left;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  padding-right: 40px;
+  padding-left: 40px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.contenedor-img-back-nosotros{
+  width: 100%;
+  height: 100%;
+  float: left;
+  background-color: transparent;
+  background: url('../../assets/zihua.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: .2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.contenedor-titulo-seccion-nosotros-2{
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  float: left;
+  display: inline-flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+}
+
+.contenedor-titulo-seccion-nosotros-2 h2{
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  float: left;
+  font-family: "Mada", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 42px;
+  text-decoration: none;
+  color: #FFFFFF;
+  text-align: center;
+  letter-spacing: .5px;
+  line-height: 52px;
+  margin-top: 20px;
+}
+
+.contenedor-btn-seccion-nosotros-2{
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  float: left;
+  display: inline-flex;
+  justify-content: center;
+  margin-top: 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.contenedor-btn-seccion-nosotros-2 a{
+  width: auto;
+  height: 50px;
+  background-color: #FFFFFF;
+  float: left;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 20px;
+  font-family: "Mada", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  text-decoration: none;
+  color: #0D0D0D;
+}
+
+.contenedor-btn-seccion-nosotros-2 a:hover{
+  background-color: #0D0D0D;
+  color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+  .contenedor-general-nosotros-0 h1 {
+    font-size: 36px;
+    line-height: 45px;
+  }
+  
+  .contenedor-titulos-nosotros h2, 
+  .contenedor-titulo-seccion-nosotros-2 h2 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .contenedor-info-nosotros-1 {
+    width: 100%;
+  }
+
+  .contenedor-titulos-nosotros {
+    width: 100%;
+    text-align: center;
+  }
+
+  .contenedor-general-nosotros-1 {
+    flex-direction: column;
+  }
+
+  .contenedor-img-back-nosotros {
+    background-size: cover;
+  }
+}
+
+/* For Small Screens (Mobile phones) */
+@media (max-width: 576px) {
+  .contenedor-general-nosotros-0 h1 {
+    font-size: 28px;
+    margin-top: 20px;
+    line-height: 36px;
+  }
+
+  .contenedor-titulos-nosotros h2, 
+  .contenedor-titulo-seccion-nosotros-2 h2 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .contenedor-info-nosotros-1 h3 {
+    font-size: 18px;
+  }
+
+  .contenedor-info-nosotros-1 p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .contenedor-titulo-vision-mision-valores img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contenedor-general-nosotros-2 {
+    padding: 20px;
+  }
+
+  .seccion-nosotros-0 {
+    width: 100%;
+    height: 500px;
+    float: left;
+    background-color: #111429BF;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  .contenedor-img-portada-nosotros {
+    background-size: contain;
+  }
 }

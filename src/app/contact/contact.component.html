@@ -1,27 +1,44 @@
-<section class="login-block">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4 form-section">
-				<h2 class="text-center">¿Tienes alguna sugerencia o comentario? ¡Contáctanos!</h2>
-				<form class="login-form">
-					<div class="form-group">
-						<label>minitourist@gmail.com</label>
-					</div>
-					<div class="form-group">
-						<label>123456789</label>
-					</div>
-				</form>
-				<h2 class="text-center social-media">Visita nuestras redes sociales!</h2>
-				<div class="carousel">
-					<ng-container *ngFor="let imageName of socialMedia">
-					  <a class="carousel-social carousel-item">
-						  <div class="img-area-social">
-							  <img [src]="'assets/images/' + imageName">
-						  </div>
-					  </a>
-					</ng-container>
-				  </div>
+<section class="seccion-contacto-0 fade-in">
+	<div class="contenedor-general-contacto-0">
+		<div class="contenedor-titulos-contacto">
+			<div class="titulo-seccion">
+				<div class="linea-titulo"></div>
+				<span>CONTÁCTANOS</span>
 			</div>
+			<h2>¡Tu opinión es muy importante!</h2>
+		</div>
+
+		<div class="contenedor-form-contacto-0">
+			<form action="">
+				<div class="contenedor-input-70">
+					<label for="" class="titulo-campo">NOMBRE COMPLETO</label>
+					<input type="text" name="" id="" class="input-formulario">
+				</div>
+
+				<div class="contenedor-input-30">
+					<label for="" class="titulo-campo">EMAIL</label>
+					<input type="email" name="" id="" class="input-formulario">
+				</div>
+
+				<div class="contenedor-input-50">
+					<label for="" class="titulo-campo">TELÉFONO</label>
+					<input type="tel" name="" id="" class="input-formulario">
+				</div>
+
+				<div class="contenedor-input-50">
+					<label for="" class="titulo-campo">ASUNTO</label>
+					<input type="text" name="" id="" class="input-formulario">
+				</div>
+
+				<div class="contenedor-input-100">
+					<label for="" class="titulo-campo">MENSAJE</label>
+					<textarea name="" id="" class="textarea-formulario"></textarea>
+				</div>
+
+				<div class="contenedor-btn-form">
+					<input type="submit" value="ENVIAR DATOS">
+				</div>
+			</form>
 		</div>
 	</div>
 </section>

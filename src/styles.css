@@ -1,11 +1,408 @@
-body {
-    background:  rgb(255, 255, 255);
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    background-color: #FFFFFF;
     font-family: sans-serif;
     position: relative;
     float: none;
     height: auto;
     overflow-x: hidden;   
-}/* You can add global styles to this file, and also import other style files */
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.seccion-general{
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    float: left;
+}
+
+header{
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF;
+    float: left;
+    display: inline-flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 90px;
+    padding-right: 90px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    border-bottom: 1px solid #D8D8D8;
+}
+
+.a-logo{
+    width: 150px;
+    height: 70px;
+    float: left;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.a-logo img{
+    width: 150px;
+    height: 70px;
+    float: left;
+    background-color: transparent;
+}
+
+.contenedor-menu-header nav{
+    width: 100%;
+    height: 100vh;
+    background-color: transparent;
+    float: left;
+    display: inline-flex;
+    justify-content: space-between;
+    position: fixed;
+    top: -150vh;
+    right: 0;
+    z-index: 10;
+    transition: top ease .4s;
+}
+
+
+.a-btn-is{
+    width: auto;
+    height: 45px;
+    background-color: #FF344F;
+    float: left;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 20px;
+    font-family: "Mada", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    text-decoration: none;
+    color: #FFFFFF;
+    letter-spacing: .5px;
+    transform: scale(1);
+    transition: transform ease .4s;
+}
+
+.a-btn-is:hover{
+    background-color: #CC0721;
+    transform: scale(1.05);
+    transition: transform ease .4s;
+}
+
+.contenedor-titulos-seccion{
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    float: left;
+}
+
+.titulo-seccion{
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    float: left;
+    display: inline-flex;
+    justify-content: start;
+}
+
+.linea-titulo{
+    width: 30px;
+    height: 1px;
+    background-color: #FF344F;
+    float: left;
+    margin-top: 10px;
+}
+
+.linea-titulo-b{
+    background-color: #FFFFFF;
+}
+
+.titulo-seccion span{
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    float: left;
+    font-family: "Mada", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    text-decoration: none;
+    color: #FF344F;
+    margin-left: 15px;
+}
+
+.titulo-seccion .titulo-b{
+    color: #FFFFFF;
+}
+
+footer{
+    width: 100%;
+    height: auto;
+    background-color: #0D0D0D;
+    float: left;
+    padding-left: 90px;
+    padding-right: 90px;
+    display: inline-flex;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+.contenedor-footer{
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    float: left;
+    border-top: solid 1px #FFFFFF;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.contenedor-logo-footer{
+    width: 300px;
+    height: auto;
+    background-color: transparent;
+    float: left;
+}
+
+.contenedor-logo-footer img{
+    width: 300px;
+    height: 150px;
+    background-color: transparent;
+    float: left;
+}
+
+.contenedor-datos-avisos-footer{
+    width: 350px;
+    height: auto;
+    background-color: transparent;
+    float: left;
+}
+
+.contenedor-rss-footer{
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    float: left;
+    margin-top: 5px;
+    display: inline-flex;
+    justify-content: start;
+    padding-left: 45px;
+}
+
+.contenedor-rss-footer a{
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    float: left;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.contenedor-rss-footer a img{
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    float: left;
+}
+
+.datos-avisos-footer{
+    margin-top: 40px;
+}
+
+.datos-avisos-footer ul{
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    float: left;
+    margin-top: 10px;
+    list-style-type: none;
+    padding-left: 45px;
+}
+
+.datos-avisos-footer ul li{
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    float: left;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.datos-avisos-footer ul li a{
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    float: left;
+    font-family: "Mada", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    text-decoration: none;
+    color: #FFFFFF;
+    text-align: left;
+    cursor: pointer;
+}
+
+.datos-avisos-footer ul li a:hover{
+    color: #FF344F;
+}
+
+.contenedor-calificacion-footer{
+    width: 400px;
+    height: auto;
+    background-color: transparent;
+    float: left;
+}
+
+.contenedor-calificacion-footer form{
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    float: left;
+    margin-top: 20px;
+}
+
+.contenedor-input{
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.contenedor-input input[type="text"]{
+    width: 100%;
+    height: 50px;
+    float: left;
+    background-color: #FFFFFF;
+    float: left;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    appearance: none;
+    font-family: "Mada", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    color: #0D0D0D;
+    padding: 10px;
+}
+
+.titulo-calificacion{
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    float: left;
+    font-family: "Mada", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.calificacion{
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    float: left;
+    /*direction: rtl;/* right to left */
+    /*unicode-bidi: bidi-override;/* bidi de bidireccional */
+    display: inline-flex;
+    justify-content: start;
+    flex-direction: row-reverse;
+}
+
+.calificacion label{
+    font-family: "Mada", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-right: 15px;
+    float: left;
+}
+
+.calificacion input[type = "radio"]{ 
+    display:none;
+}
+
+.calificacion label:hover{
+    color:#FF344F;
+}
+
+.calificacion label:hover ~ label{
+    color:#FF344F;
+}
+
+.calificacion input[type = "radio"]:checked ~ label{
+    color:#FF344F;
+}
+
+.contenedor-input textarea{
+    width: 100%;
+    height: 150px;
+    float: left;
+    background-color: #FFFFFF;
+    float: left;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    appearance: none;
+    font-family: "Mada", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    color: #0D0D0D;
+    padding: 10px;
+}
+
+.contenedor-button{
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    float: left;
+}
+
+.contenedor-button input[type="submit"]{
+    width: 190px;
+    height: 50px;
+    background-color: #FF344F;
+    float: left;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 12px;
+    padding-bottom: 15px;
+    border-radius: 20px;
+    font-family: "Mada", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 18px;
+    text-decoration: none;
+    color: #FFFFFF;
+    margin-top: 20px;
+    border: solid 3px #FF344F;
+    cursor: pointer;
+}
+
+.contenedor-button input[type="submit"]:hover{
+    background-color: transparent;
+    border: solid 3px #FFFFFF;
+}

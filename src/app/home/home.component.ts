@@ -32,10 +32,9 @@ export class HomeComponent implements AfterViewInit {
     this.selectedTitle = location.title;
     this.selectedBody = location.description;
 
-    
-
     // Show the modal
     const modalElement = document.getElementById('infoModal');
+    
     if (modalElement) {
       console.log(this.selectedTitle);
       console.log(this.selectedBody);

@@ -13,8 +13,8 @@ export class AppComponent {
   title = 'mini-tourist-3';
   menuActive: boolean = false;
   categoriasModalActive: boolean = false;
-  modalVisible: boolean = false;
-  selectedItem: string = '';
+  isModalVisible: boolean = false;
+  selectedItem: string = 'premium';
   showCategoriasButton: boolean = false;
 
   constructor(private sharedService: CategoryServiceService, private router: Router) {}
@@ -50,23 +50,24 @@ export class AppComponent {
     // Use the service to update the selected item
     this.sharedService.menuItemClicked(item);
     this.categoriasModalActive = false;
+    this.isModalVisible = false;
   }
 
   toggleCategorias() {
     if (this.categoriasModalActive) {
       this.slideUpModal();
     } else {
-      this.modalVisible = true; // Ensure modal is visible
+      this.isModalVisible = true; // Ensure modal is visible
       setTimeout(() => {
         this.categoriasModalActive = true; // Trigger slide down
-      }, 50); // Slight delay for transition
+      }, 20); // Slight delay for transition
     }
   }
 
   private slideUpModal() {
     this.categoriasModalActive = false; // Slide up
     setTimeout(() => {
-      this.modalVisible = false; // After transition, hide modal
+      this.isModalVisible = false; // After transition, hide modal
     }, 500); // Match CSS transition timing
   }
 

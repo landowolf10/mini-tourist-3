@@ -1,43 +1,230 @@
-.carousel-container {
-  position: relative;
-  text-align: center;
-  z-index: 1;
+.contenedor-general-inicio-0 {
+  width: 100%;;
+  height: 100%;
+  background-color: transparent;
+  float: left;
+  display: flex;
+  justify-content: flex-start;
+  flex: 1;
+  margin-top: 250px;
+  margin-bottom: -200px;
+  position: relative; /* Ensure this is set */
+  z-index: 10;
 }
 
-.carousel {
-  height: 800px; /* Default height */
-  perspective: 250px;
-  z-index: 1;
+.contenedor-general-inicio-0 a {
+  max-width: calc(100% - 20px); /* Prevent overflow */
+  height: 45px;
+  background-color: #FF344F;
+  padding: 12px 40px; /* Use shorthand for padding */
+  border-radius: 20px;
+  display: flex; /* Use flex for alignment */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  margin: 0 10px; /* Add margin to separate buttons */
+  transition: transform ease 0.4s;
 }
 
-.carousel .carousel-item {
-  width: 450px;
-  padding: 50px;
+.contenedor-general-inicio-0 a img {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  float: left;
+  margin-right: 15px;
+}
+
+.contenedor-general-inicio-0 span {
+  width: auto;
   height: auto;
-  text-align: center;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
-  background-color: white; /* Optional: give a background color for better contrast */
-  overflow: hidden; /* Ensure the rounded corners clip the content inside */
+  background-color: transparent;
+  float: left;
+  font-family: "Mada", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  text-decoration: none;
+  color: #FFFFFF;
+  margin-top: 2px;
 }
 
-.img-area {
-  width: 350px;
-  height: 550px;
-  border-radius: 15px; /* Ensure the image inside is also rounded */
-  overflow: hidden
+.contenedor-general-inicio-0 a:hover {
+  background-color: #CC0721;
+  transform: scale(1.05);
+  transition: transform ease .4s;
 }
 
-.img-area img {
+/* Modal Styles */
+.modal-categorias {
+  display: flex;
+  opacity: 0;
+  pointer-events: none; /* Prevent interactions when hidden */
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: opacity 0.5s ease;
+  margin-top: -1100px;
+}
+
+.modal-categorias.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  position: relative;
+  transform: translateY(-100%);
+  transition: transform 0.5s ease;
+}
+
+/* When modal is active, slide down into view */
+.modal-categorias.active .modal-content {
+  transform: translateY(0); /* Slide down to its normal position */
+}
+
+/* Close button */
+.modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* Modal header */
+.modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Categories Container */
+.modal-content ul.categorias-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 categories per row by default */
+  gap: 20px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Category Item */
+.modal-content ul.categorias-container li {
+  text-align: center;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.modal-content ul.categorias-container li:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Category Image */
+.modal-content ul.categorias-container li img {
+  filter: invert(29%) sepia(97%) saturate(5995%) hue-rotate(355deg) brightness(96%) contrast(110%);
+}
+
+.category1 {
+  border-bottom: 5px solid #EBCE2C; /* Default border */
+  padding-bottom: 10px;
+  transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.category2 {
+  border-bottom: 5px solid #EB6D1A; /* Default border */
+  padding-bottom: 10px;
+  transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.category3 {
+  border-bottom: 5px solid #035DC4; /* Default border */
+  padding-bottom: 10px;
+  transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.category4 {
+  border-bottom: 5px solid #07CC49; /* Default border */
+  padding-bottom: 10px;
+  transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.category5 {
+  border-bottom: 5px solid #CC07B2; /* Default border */
+  padding-bottom: 10px;
+  transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Ensures buttons are positioned relative to the carousel */
+  width: 100%;
+  height: 1000px; /* Adjust height as needed */
+  overflow: hidden;
+}
+
+.image-wrapper {
+  position: absolute;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  width: 30vw; /* Use viewport width to ensure responsiveness */
+  height: 30vh;
+  margin-top: -300px;
+}
+
+.image-wrapper img {
+  width: 100%; /* Make images take the full width of their container */
+  height: 100%; /* Ensure images take the full height of their container */
   object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+.current {
+  transform: translateZ(150px) scale(1); /* Bring the current image forward */
+  z-index: 3;
+  opacity: 1;
+}
+
+.previous, .next {
+  transform: translateZ(-100px) scale(0.8); /* Push previous and next images back */
+  z-index: 2;
+  opacity: 0.7;
+}
+
+.previous {
+  transform: translateX(-50%) translateZ(-100px) scale(0.8); /* Center previous image */
+}
+
+.next {
+  transform: translateX(50%) translateZ(-100px) scale(0.8); /* Center next image */
+}
+
+.hidden {
+  opacity: 0;
+  z-index: 1;
 }
 
 .carousel-button-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  position: absolute;
+  bottom: 1880px; /* Move the buttons just below the carousel */
+  width: 100%;
+  z-index: 10;
 }
 
 .carousel-button {
@@ -45,14 +232,14 @@
   border: none;
   padding: 10px;
   cursor: pointer;
-  z-index: 2;
   display: inline-block;
   margin: 0 10px;
+  z-index: 11;
 }
 
 .carousel-button img {
-  width: 30px; /* Adjust the size as needed */
-  height: auto; /* Maintain aspect ratio */
+  width: 30px; /* Adjust size */
+  height: auto;
 }
 
 button {
@@ -112,67 +299,21 @@ button {
   color: #d61919;
 }
 
-.search {
-  margin: 20px;
-}
-
-.search > div {
-  display: inline-block;
-  position: relative;
-  background-color: #eb0c0c;
-  border-radius: 20px;
-}
-
-.search > div:after {
-  content: "";
-  background: white;
-  width: 4px;
-  height: 20px;
-  position: absolute;
-  top: 40px;
-  right: 2px;
-  transform: rotate(135deg);
-}
-
-.search > div > input {
-  font-size: 16px;
-  width: 25px;
-  height: 25px;
-  padding: 10px;
-  border: solid 3px white;
-  border-radius: 35px;
-  transition: width 0.5s;
-}
-
-.search > div > input::placeholder {
-  color: #efefef;
-  opacity: 0;
-  transition: opacity 150ms ease-out;
-}
-
-.search > div > input:focus::placeholder {
-  opacity: 1;
-}
-
-.search > div > input:focus,
-.search > div > input:not(:placeholder-shown) {
-  width: 250px;
-}
-
 /* Responsive styles */
+
+@media (max-width: 1024px) {
+  .carousel-button-container {
+    bottom: 1750px; /* Adjust the bottom position for smaller screens */
+  }
+}
+
 @media (max-width: 768px) {
-  .carousel {
-    height: 600px; /* Adjust the height for smaller screens */
+  .previous {
+    transform: translateX(-100px) translateZ(-100px) scale(0.8); /* Move images closer */
   }
 
-  .carousel .carousel-item {
-    width: 320px; /* Reduce the width */
-    padding: 30px; /* Adjust padding */
-  }
-
-  .img-area {
-    width: 300px; /* Adjust the image area width */
-    height: 450px; /* Adjust the image area height */
+  .next {
+    transform: translateX(100px) translateZ(-100px) scale(0.8); /* Move images closer */
   }
 
   .categorias-button {
@@ -186,20 +327,123 @@ button {
   .categorias.active {
     display: block; /* Show categories when active */
   }
+
+  .carousel-button-container {
+    bottom: 2230px; /* Adjust the bottom position for smaller screens */
+  }
+
+  .modal-content ul.categorias-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 categories per row on smaller screens */
+  }
+
+  .contenedor-general-modal-filtros {
+      width: 90%; /* Keep modal responsive */
+    max-width: 780px;
+    height: auto;
+    float: left;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    position: absolute;
+    top: 10%; /* Set this to control how far down the modal appears */
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 40px;
+  }
+
+  .titulo-modal h2 {
+      font-size: 20px; /* Smaller title size */
+  }
+
+  .contenedor-categorias label {
+      width: 48%; /* 2 categories per row */
+      margin-bottom: 20px; /* Space between categories */
+  }
+
+  .modal-content {
+      padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  .carousel-button-container {
+    bottom: 2480px; /* Adjust the bottom position for smaller screens */
+  }
+
+  .contenedor-general-inicio-0 {
+    width: 120px;
+    height: 100%;
+    background-color: transparent;
+    float: left;
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
+    margin-top: 150px;
+    margin-bottom: -3300px;
+    z-index: 10;
+  }
 }
 
 @media (max-width: 576px) {
-  .carousel {
-    height: 400px; /* Further reduce the height for even smaller screens */
+  .carousel-container {
+    height: 50vh; /* Adjust the container height */
   }
 
-  .carousel .carousel-item {
-    width: 250px; /* Further reduce the width */
-    padding: 20px; /* Adjust padding */
+  .image-wrapper {
+    width: 50vw; /* Reduce width for smaller images */
+    height: 30vh; /* Reduce height for smaller images */
+    margin-top: 50px;
   }
 
-  .img-area {
-    width: 200px; /* Adjust the image area width */
-    height: 300px; /* Adjust the image area height */
+  .image-wrapper img {
+    width: 100%; /* Ensure images fill their container */
+    height: 100%; /* Keep height proportional */
+    object-fit: cover; /* Maintain aspect ratio */
+  }
+
+  .current {
+    transform: translateZ(80px) scale(0.85); /* Smaller size for current image */
+    z-index: 3;
+  }
+
+  .previous, .next {
+    transform: translateZ(-100px) scale(0.7); /* Smaller size for previous and next images */
+    z-index: 2;
+  }
+
+  .previous {
+    transform: translateX(-25vw) translateZ(-100px) scale(0.7); /* Adjust position */
+  }
+
+  .next {
+    transform: translateX(25vw) translateZ(-100px) scale(0.7); /* Adjust position */
+  }
+
+  .carousel-button-container {
+    bottom: 2650px; /* Adjust the bottom position for smaller screens */
+  }
+
+  .contenedor-general-inicio-0 {
+    width: 120px;
+    height: 100%;
+    background-color: transparent;
+    float: left;
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
+    margin-top: 100px;
+    margin-bottom: -100px;
+    z-index: 10;
+  }
+
+  .modal-filtros.muestra-modal-filtros {
+    top: -8%; /* Move it up further on small screens */
+  }
+
+  /* You can adjust other properties if needed */
+  .contenedor-general-modal-filtros {
+    padding: 20px; /* Adjust padding for smaller screens */
+  }
+
+  .contenedor-categorias label {
+    width: calc(50% - 20px); /* Two elements per row */
   }
 }
