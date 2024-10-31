@@ -28,6 +28,7 @@ import { MoreAboutMtComponent } from './more-about-mt/more-about-mt.component';
 import { HomeComponent } from './home/home.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { FooterComponent } from './footer/footer.component';
+import { TriviaComponent } from './trivia/trivia.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { FooterComponent } from './footer/footer.component';
     MoreAboutMtComponent,
     HomeComponent,
     ImageSliderComponent,
-    FooterComponent
+    FooterComponent,
+    TriviaComponent
   ],
   imports: [
     BrowserModule,

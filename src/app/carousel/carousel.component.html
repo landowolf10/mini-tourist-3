@@ -1,10 +1,3 @@
-
-<div class="contenedor-general-inicio-0">
-  <a class="btns-modal-filtro" (click)="toggleCategorias()">
-    <img src="assets/icon-filtro-b.svg" alt="">
-    <span>FILTRAR</span>
-  </a>
-</div>
 <div class="carousel-container" #carouselContainer>
   
     <div *ngFor="let card of cards; let i = index" 
@@ -35,8 +28,28 @@
     </button>
   </div>
 
-  <!-- Modal structure -->
+  <div class="contenedor-general-inicio-0">
+    <div class="grid-box" (click)="menuItemClicked($event, 'parks', false)" style="background-image: url('../../assets/atractions.webp');">
+      <span>Atracciones</span>
+    </div>
+    <div class="grid-box" style="background-image: url('../../assets/entertainment.webp');">
+      <span>Entretenimiento</span>
+    </div>
+    <div class="grid-box" (click)="menuItemClicked($event, 'restaurants', false)" style="background-image: url('../../assets/food.jpg');">
+      <span>Gastronomía</span>
+    </div>
+    <div class="grid-box" style="background-image: url('../../assets/shopping.jpg');">
+      <span>Compras</span>
+    </div>
+    <div class="grid-box" style="background-image: url('../../assets/diversion.jpg');">
+      <span>Diversión familiar</span>
+    </div>
+    <div class="grid-box" (click)="toggleCategorias()" style="background-image: url('../../assets/img-conocer-mas.png');">
+      <span>Conoce todas nuestras categorías</span>
+    </div>
+  </div>
 
+  <!-- Modal structure -->
   <div class="modal-categorias" [class.active]="categoriasModalActive">
     <div class="modal-content">
       <span class="close" (click)="toggleCategorias()">&times;</span>
@@ -45,7 +58,7 @@
         <label for="" class="titulo-input">CAMBIAR CIUDAD O DESTINO</label>
         <select name="" id="" required>
             <option value="">Ciudades</option>
-            <option value="">Iztapa Zihuatanejo</option>
+            <option value="">Ixtapa Zihuatanejo</option>
             <option value="">Acapulco</option>
             <option value="">Morelia</option>
             <option value="">San Cristobal de las Casas</option>
@@ -53,31 +66,31 @@
     </div>
       <ul class="categorias-container">
         <li class="category1">
-          <a [class.selected]="selectedItem === 'premium'" (click)="menuItemClicked($event, 'premium')">
+          <a [class.selected]="selectedItem === 'premium'" (click)="menuItemClicked($event, 'premium', true)">
             <img src="../../assets/icon-valores.svg" alt="">
             <span>Premium</span>
           </a>
         </li>
         <li class="category2">
-          <a [class.selected]="selectedItem === 'parks'" (click)="menuItemClicked($event, 'parks')">
+          <a [class.selected]="selectedItem === 'parks'" (click)="menuItemClicked($event, 'parks', true)">
             <img src="../../assets/icon-parques-b.svg" alt="">
             <span>Parques y atracciones</span>
           </a>
         </li>
         <li class="category3">
-          <a [class.selected]="selectedItem === 'restaurants'" (click)="menuItemClicked($event, 'restaurants')">
+          <a [class.selected]="selectedItem === 'restaurants'" (click)="menuItemClicked($event, 'restaurants', true)">
             <img src="../../assets/icon-restaurentes-b.svg" alt="">
             <span>Restaurantes, bares y cafeterías</span>
           </a>
         </li>
         <li class="category4">
-          <a [class.selected]="selectedItem === 'places_events'" (click)="menuItemClicked($event, 'places_events')">
+          <a [class.selected]="selectedItem === 'places_events'" (click)="menuItemClicked($event, 'places_events', true)">
             <img src="../../assets/icon-eventos-b.svg" alt="">
             <span>Lugares y eventos</span>
           </a>
         </li>
         <li class="category5">
-          <a [class.selected]="selectedItem === 'stores'" (click)="menuItemClicked($event, 'stores')">
+          <a [class.selected]="selectedItem === 'stores'" (click)="menuItemClicked($event, 'stores', true)">
             <img src="../../assets/icon-tiendas-b.svg" alt="">
             <span>Tiendas</span>
           </a>

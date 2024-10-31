@@ -1,5 +1,5 @@
 export interface CardStatusGeneralCount {
-    visitedCount: number;
-    downloadedCount: number;
+    visited_count: number;
+    downloaded_count: number;
   }
   

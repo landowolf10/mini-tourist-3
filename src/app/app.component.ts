@@ -11,11 +11,21 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'mini-tourist-3';
-  menuActive: boolean = false;
+  isMenuActive: boolean = false;
   categoriasModalActive: boolean = false;
   isModalVisible: boolean = false;
   selectedItem: string = 'premium';
   showCategoriasButton: boolean = false;
+  showFeatureContainer: boolean = false;
+  secondSliderImages: any[] = [
+    { url: '../assets/playa.jpg' },
+    { url: '../assets/cancha.jpg' },
+    { url: '../assets/info-carousel-1.jpg' },
+    { url: '../assets/delfiniti.jpg' },
+    // Add more image URLs
+  ];
+  currentSlideIndex: number = 0;
+  autoSlideInterval: any;
 
   constructor(private sharedService: CategoryServiceService, private router: Router) {}
 
@@ -42,7 +52,19 @@ export class AppComponent {
     // Check the current route to toggle button visibility
     this.router.events.subscribe(() => {
       this.showCategoriasButton = this.router.url === '/home';
+      this.showFeatureContainer = this.router.url === '/home';
     });
+
+    this.autoSlideInterval = setInterval(() => {
+      this.nextSlide();
+    }, 3000);
+  }
+
+  ngOnDestroy() {
+    // Clear the interval when the component is destroyed
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
+    }
   }
 
   menuItemClicked(event: Event, item: string) {
@@ -71,16 +93,37 @@ export class AppComponent {
     }, 500); // Match CSS transition timing
   }
 
+  prevSlide() {
+    // Decrease the index, wrap around if at the first slide
+    this.currentSlideIndex = (this.currentSlideIndex > 0) ? this.currentSlideIndex - 1 : this.secondSliderImages.length - 1;
+    this.updateSliderPosition();
+  }
+
+  nextSlide() {
+    // Increase the index, wrap around if at the last slide
+    this.currentSlideIndex = (this.currentSlideIndex < this.secondSliderImages.length - 1) ? this.currentSlideIndex + 1 : 0;
+    this.updateSliderPosition();
+  }
+
+  updateSliderPosition() {
+    // Access the slider DOM element and apply the transform
+    const slider = document.querySelector('.slider');
+    if (slider) {
+      const offset = this.currentSlideIndex * -100; // Assuming each slide takes up 100% of the width
+      slider.setAttribute('style', `transform: translateX(${offset}%);`);
+    }
+  }
+
   toggleMenu() {
-    this.menuActive = !this.menuActive;
-    console.log('Menu Active State:', this.menuActive);
+    this.isMenuActive = !this.isMenuActive;
+    console.log('Menu Active State:', this.isMenuActive);
   }
 
   hideMenu() {
-    this.menuActive = false;
+    this.isMenuActive = false;
   }
 
   closeMenu() {
-    this.menuActive = false;
+    this.isMenuActive = false;
   }
 }

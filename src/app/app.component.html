@@ -1,38 +1,123 @@
 <header>
-  <div class="contenedor-menu-header">
-    <a href="index.html" class="a-logo">
-      <img src="../assets/images/logo.jpg" alt="Logo">
-    </a>
-
-    <!--<div class="contenedor-general-inicio-0">
-      <a class="btns-modal-filtro" (click)="toggleCategorias()">
-        <img src="assets/icon-filtro-b.svg" alt="">
-        <span>FILTRAR</span>
-      </a>
-    </div>-->
-
-    <!-- The menu toggle logic is here -->
-    <nav class="elementos-menu" [class.muestra-menu]="menuActive">
-      <div class="contenedor-ul" [class.muestra-menu]="menuActive">
-        <ul>
-          <button id="btnCerrarMenu" class="btns-menu" (click)="closeMenu()">
-            <img src="assets/icon-cerrar-c.svg" alt="Close Menu">
-          </button>
-          <li><a routerLink="/home" (click)="closeMenu()">Inicio</a></li>
-          <li><a routerLink="/about" (click)="closeMenu()">Acerca de nosotros</a></li>
-          <li><a routerLink="/where-is-mt" (click)="closeMenu()">¿Dónde encontrarnos?</a></li>
-          <li><a routerLink="/more-about-mt" (click)="closeMenu()">Conoce más sobre las MiniTourist Cards</a></li>
-          <li><a routerLink="/contact" (click)="closeMenu()">Contáctanos</a></li>
-          <li><a routerLink="/login" (click)="closeMenu()">Iniciar sesión</a></li>
-        </ul>
+  <div class="header-content">
+    <!-- Social Media Links Section and Logo -->
+    <div class="logo-social-container">
+      <!-- Social Media Links Section -->
+      <div class="social-media-links">
+        <a href="https://www.facebook.com" target="_blank">
+          <img src="../assets/facebook.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com" target="_blank">
+          <img src="../assets/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.twitter.com" target="_blank">
+          <img src="../assets/social-media.png" alt="Twitter">
+        </a>
+        <a href="https://www.tiktok.com" target="_blank">
+          <img src="../assets/tiktok.png" alt="TikTok">
+        </a>
       </div>
-    </nav>
-    <div class="contenedor-btns-menu-is">
-      <button class="btns-menu" (click)="toggleMenu()">
-        <img src="assets/icon-menu.svg" alt="Hamburger Menu">
-      </button>
+
+      <!-- Logo Section -->
+      
+    </div>
+
+    <a class="a-logo">
+      <img src="../assets/logo.png" alt="Logo">
+    </a>
+    <!-- Hamburger menu icon -->
+    <div class="hamburger" (click)="toggleMenu()" [class.active]="isMenuActive">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div class="contenedor-menu-header" [class.active]="isMenuActive">
+      <!-- The menu toggle logic is here -->
+      <nav class="elementos-menu" [class.muestra-menu]="isMenuActive">
+        <div class="contenedor-ul" [class.muestra-menu]="isMenuActive">
+          <ul>
+            <button id="btnCerrarMenu" class="btns-menu close-btn" (click)="closeMenu()">
+              <img src="assets/icon-cerrar-c.svg" alt="Close Menu">
+            </button>
+            <li><a routerLink="/home" routerLinkActive="active-menu" (click)="closeMenu()">Inicio</a></li>
+            <li><a routerLink="/about" routerLinkActive="active-menu" (click)="closeMenu()">Acerca de nosotros</a></li>
+            <li><a routerLink="/where-is-mt" routerLinkActive="active-menu" (click)="closeMenu()">¿Dónde encontrarnos?</a></li>
+            <li><a routerLink="/more-about-mt" routerLinkActive="active-menu" (click)="closeMenu()">Conoce nuestras tarjetas</a></li>
+            <li><a routerLink="/contact" routerLinkActive="active-menu" (click)="closeMenu()">Contáctanos</a></li>
+            <li><a routerLink="/login" routerLinkActive="active-menu" (click)="closeMenu()">Iniciar sesión</a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
   </div>
 </header>
+<!-- Feature Slides ============================================== -->
+<div *ngIf="showFeatureContainer" class="feature-container">
+  <!-- First Column: Image Slider -->
+  <div class="carousel-column">
+    <div class="slider-container second-slider">
+      <div class="slider">
+        <div class="slide" *ngFor="let image of secondSliderImages">
+          <img [src]="image.url" alt="Second slider image">
+        </div>
+      </div>
+      <button class="slider-control prev" (click)="prevSlide()">&lt;</button>
+      <button class="slider-control next" (click)="nextSlide()">&gt;</button>
+    </div>
+  </div><!-- /carousel-column -->
+
+  <!-- Second Column: Information -->
+  <div class="column-info">
+    <p class="title">ClickCards ¡Un click, muchos ahorros!</p>
+    <h1>Todo lo que a TI te conviene en Ixtapa Zihuatanejo</h1>
+    <p>¡COMPRA! ¡DEGUSTA! ¡EXPLORA! Descubre que hacer. Descubre cuando hacerlo.</p>
+    <p><strong>Hazlo por menos.</strong></p>
+    <hr role="presentation" />
+    <p><a routerLink="/deals" class="cms-button-primary">Obten las ofertas de ClickCards »</a></p>
+  </div><!-- /column-info -->
+</div><!-- /feature-container -->
+
+
+
+<!-- Modal structure -->
+<div class="modal-categorias" [class.active]="categoriasModalActive">
+  <div class="modal-content">
+    <span class="close" (click)="toggleCategorias()">&times;</span>
+    <h2>¿Qué estás buscando hoy?</h2>
+    <ul class="categorias-container">
+      <li>
+        <a [class.selected]="selectedItem === 'premium'" (click)="menuItemClicked($event, 'premium')">
+          <img src="../../assets/icon-parques-b.svg" alt="">
+          <span>Premium</span>
+        </a>
+      </li>
+      <li>
+        <a [class.selected]="selectedItem === 'parks'" (click)="menuItemClicked($event, 'parks')">
+          <img src="../../assets/icon-parques-b.svg" alt="">
+          <span>Parques y atracciones</span>
+        </a>
+      </li>
+      <li>
+        <a [class.selected]="selectedItem === 'restaurants'" (click)="menuItemClicked($event, 'restaurants')">
+          <img src="../../assets/icon-restaurentes-b.svg" alt="">
+          <span>Restaurantes, bares y cafeterías</span>
+        </a>
+      </li>
+      <li>
+        <a [class.selected]="selectedItem === 'places_events'" (click)="menuItemClicked($event, 'places_events')">
+          <img src="../../assets/icon-eventos-b.svg" alt="">
+          <span>Lugares y eventos</span>
+        </a>
+      </li>
+      <li>
+        <a [class.selected]="selectedItem === 'stores'" (click)="menuItemClicked($event, 'stores')">
+          <img src="../../assets/icon-tiendas-b.svg" alt="">
+          <span>Tiendas</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
 
 <router-outlet></router-outlet>

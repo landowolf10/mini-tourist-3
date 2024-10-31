@@ -13,11 +13,11 @@ export class DashboardComponent {
   downloadedCardsCount: number = 0;
   visitedCardsCountDate: number = 0;
   downloadedCardsCountDate: number = 0;
-  selectedDate: string | null = null; // Variable to hold the selected date
+  selectedDate: string | null = null;
   currentDate: Date | null = null;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) {}
 
   ngOnInit() {
@@ -45,12 +45,13 @@ export class DashboardComponent {
   }
 
   countVisitedAndDownloadedGeneralCards() {
-    const apiUrl = `http://localhost:9090/api/card/cards/count`;
+    const apiUrl = `http://127.0.0.1:8000/api/v1/cards/count/general`;
     this.http.get<CardStatusGeneralCount>(apiUrl).subscribe(
       data => {
-        this.visitedCardsCount = data?.visitedCount ?? 0;
-        this.downloadedCardsCount = data?.downloadedCount ?? 0;
-        //console.log('Total visited cards: ', data.visitedCount);
+        this.visitedCardsCount = data?.visited_count ?? 0;
+        this.downloadedCardsCount = data?.downloaded_count ?? 0;
+        console.log('Total visited general cards: ', data.visited_count);
+        console.log('Total downloaded general cards: ', data.downloaded_count);
       },
       error => {
         console.error('There was an error!', error);
@@ -59,11 +60,11 @@ export class DashboardComponent {
   }
 
   countVisitedAndDownloadedGeneralDateCards(selectedDate: string) {
-    const apiUrl = `http://localhost:9090/api/card/cards?date=${selectedDate}`;
+    const apiUrl = `http://127.0.0.1:8000/api/v1/cards/count/date?date=${selectedDate}`;
     this.http.get<CardStatusGeneralCount>(apiUrl).subscribe(
       data => {
-        this.visitedCardsCountDate = data?.visitedCount ?? 0;
-        this.downloadedCardsCountDate = data?.downloadedCount ?? 0;
+        this.visitedCardsCountDate = data?.visited_count ?? 0;
+        this.downloadedCardsCountDate = data?.downloaded_count ?? 0;
         console.log('Visited count: ', this.visitedCardsCountDate);
         console.log('Downloaded count: ', this.downloadedCardsCountDate);
       },
@@ -72,4 +73,9 @@ export class DashboardComponent {
       }
     );
   }
+
+  //By range of dates
+
+
+  //By City
 }

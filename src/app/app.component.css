@@ -1,27 +1,492 @@
-.contenedor-menu-header {
-    display: flex;
-    justify-content: space-between; /* Ensures that the logo, 'Filtrar' button, and hamburger are spaced correctly */
-    align-items: center; /* Centers items vertically */
+/* Default header styling for all screen sizes */
+header {
     width: 100%;
-    padding: 5px 50px;
-    box-sizing: border-box;
+    background-color: transparent;
+    padding: 20px 90px;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between; /* Ensures logo and menu/hamburger are at opposite ends */
+    align-items: center;
 }
 
+/* Flexbox layout for logo and hamburger */
+.header-content {
+  display: flex;
+  flex-direction: column; /* Arrange logo and menu horizontally */
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 20px;
+}
 
-/* Logo styling */
+.logo-social-container {
+  display: flex;
+  align-items: center; /* Vertically center items */
+  gap: 200px; /* Space between the social media icons and the logo */
+  padding-right: 1100px;
+}
+
+/* Social Media Links Styling */
+.social-media-links {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icons */
+  margin-right: auto; /* Push other elements to the right */
+  border: 2px solid #f30909; /* Add border around the social media container */
+  padding: 5px 10px; /* Add some padding inside the container */
+  border-radius: 8px; /* Optional: Make the border rounded */
+}
+
+.social-media-links a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px; /* Add padding to give space between icons */
+}
+
+.social-media-links a img {
+  width: 25px;
+  height: 25px;
+  transition: transform 0.3s ease;
+}
+
+/* Divider between each icon */
+.social-media-links a:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #f30909; /* Color of the divider */
+}
+
+/* Hover effect for social media icons */
+.social-media-links a:hover img {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Inline Menu (Desktop View) */
+.contenedor-menu-header {
+    display: flex; /* Inline menu visible by default on large screens */
+    justify-content: flex-start; /* Align menu to the start */
+    width: 120%;
+    height: auto;
+    border: none;
+    background-color: transparent; /* No background for inline menu */
+    transition: none; /* No sliding transition needed for desktop view */
+    position: relative; /* Not fixed on large screens */
+    top: unset;
+    right: unset;
+    z-index: 100;
+}
+
+.contenedor-menu-header.active {
+    right: 0; /* Slide in from the right */
+}
+
 .a-logo {
-    width: 250px;
-    height:120px;
-    text-decoration: none;
-    position: relative; /* Changed from absolute for proper flex layout */
-    margin-right: auto;
+  width: 150px;
+  height: 70px;
+  text-decoration: none;
 }
 
 .a-logo img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Button to close the sidebar menu */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    font-size: 30px;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 1001; /* Make sure it's visible above other elements */
+    display: none;
+}
+
+.close-btn img {
+    width: 30px;  /* Set a reasonable size for the image */
+    height: 30px;
+}
+
+.close-btn:hover {
+    color: #f30909;
+}
+
+/* Hamburger menu styling */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 11; /* Ensure it’s on top */
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #f30909;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+/* Seguir cambiando */
+.contenedor-menu-header nav {
+    display: inline-block;
+    background-color: transparent;
+}
+
+/* Show the nav menu when active */
+.contenedor-menu-header nav.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.contenedor-menu-header nav ul {
+    display: flex;
+    flex-direction: row; /* Inline items */
+    gap: 20px; /* Space between menu items */
+}
+
+.contenedor-menu-header nav ul li {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contenedor-menu-header nav ul li a {
+    width: 100%;
+    background-color: transparent;
+    font-family: "Mada", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    color: #FF344F;
+    padding: 25px;
+    transition: color 0.3s;
+    display: block;
+    line-height: 1.2;
+    transition: background 0.3s, color 0.3s;
+}
+
+.contenedor-menu-header nav ul li a:hover {
+    background-color: #d61919; /* Change background to red on hover */
+    color: white;
+}
+
+.contenedor-menu-header nav ul li a.active-menu {
+  border-bottom: 2px solid #d61919; /* Add the border when the link is active */
+  color: #d61919; /* Optional: Change text color */
+}
+
+/* Modal Styles */
+.modal-categorias {
+    display: flex;
+    opacity: 0;
+    pointer-events: none; /* Prevent interactions when hidden */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: opacity 0.5s ease;
 }
+
+.modal-categorias.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    position: relative;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease;
+}
+
+/* When modal is active, slide down into view */
+.modal-categorias.active .modal-content {
+    transform: translateY(0); /* Slide down to its normal position */
+}
+
+/* Close button */
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Main container for the two columns */
+.feature-container {
+  display: flex;
+  flex-direction: row; /* Default layout is side-by-side */
+  justify-content: space-between;
+  padding: 20px;
+  column-gap: 40px;
+  height: 600px;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  flex-wrap: wrap; /* Allow elements to wrap when needed */
+}
+  
+  /* Styling for the carousel column */
+  .carousel-column {
+    flex: 1; /* Takes up one half of the space */
+    max-width: 50%;
+    height: 100%;
+  }
+  
+  .image-slider img {
+    width: 100%; /* Ensures the images are responsive */
+    height: auto;
+    display: block;
+  }
+  
+  /* Styling for the info column */
+  .column-info {
+    background: 
+        linear-gradient(rgba(49, 50, 51, 0.8), rgba(49, 50, 51, 0.8)), /* Semi-transparent overlay */
+        url('../assets/Zihuatanejo.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    flex: 1; /* Takes up the other half of the space */
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    z-index: 1;
+}
+
+  .column-info p, .column-info h1 {
+  z-index: 10;
+  position: relative;
+}
+  
+  .column-info .title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .column-info h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  .column-info p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .column-info hr {
+    margin: 20px 0;
+  }
+  
+  .column-info .cms-button-primary {
+    background-color: #f30909;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 10; /* Ensure the button is above other elements */
+  position: relative;
+  }
+
+  .slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .slide {
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .slider-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  
+  .second-slider img {
+    width: 100%;
+    height: auto;
+  }
+
+@media (max-width: 768px) {
+  .logo-social-container {
+    display: none;
+  }
+
+    header {
+        flex-direction: row; /* Align logo and hamburger side by side */
+        justify-content: space-between; 
+        padding: 10px 20px; 
+    }
+
+    /* Show the hamburger menu next to the logo */
+    .hamburger {
+        display: flex; /* Display hamburger icon */
+        z-index: 1;
+    }
+
+    /* Ensure the logo and hamburger align correctly */
+    .a-logo {
+        width: 120px; /* Optionally reduce logo size on small screens */
+        height: auto;
+    }
+
+    /* Hamburger styles for small screens */
+    .contenedor-menu-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: rgb(73, 71, 71);
+        transition: right 0.4s ease;
+        z-index: 10;
+    }
+
+    .contenedor-menu-header.active {
+        right: 0; /* Slide in from the right */
+    }
+
+    /* Adjust spacing for menu items */
+    .contenedor-menu-header nav ul {
+      display: flex;
+      flex-direction: column; /* Stack items vertically on smaller screens */
+      gap: 15px; /* Space between menu items */
+      margin-top: 20px; /* Move the menu down */
+  }
+
+  .contenedor-menu-header nav ul li {
+    margin-bottom: 10px; /* Additional space between list items */
+    padding: 10px 0; /* Increase padding to make items more clickable */
+}
+
+    /* Adjust padding for links and reduce margin */
+    .contenedor-menu-header nav ul li a {
+        color: #FFFFFF;
+        padding: 10px 20px; /* Reduce padding */
+        margin: 0; /* Remove margin */
+        font-size: 14px; /* Optionally reduce font size */
+        line-height: 1.2; /* Adjust line height for less space */
+        display: block; /* Ensure full width for clickable area */
+    }
+
+    .header-content {
+        display: flex;
+        flex-direction: row; /* Arrange logo and menu horizontally */
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        background: none;
+        border: none;
+        color: #FFFFFF;
+        font-size: 30px;
+        cursor: pointer;
+        transition: color 0.3s;
+        z-index: 1001; /* Make sure it's visible above other elements */
+        display: block;
+    }
+
+    .feature-container {
+      flex-direction: column;
+      height: auto;
+    }
+
+    /* Make carousel and info take full width on smaller screens */
+  .carousel-column, .column-info {
+    max-width: 100%;
+    margin-bottom: 20px; /* Add space between stacked columns */
+  }
+  
+  /* Adjust image slider height for small screens */
+  .slider-container {
+    height: 300px; /* Adjust as necessary */
+  }
+  
+  .column-info h1 {
+    font-size: 24px; /* Reduce heading size */
+  }
+
+  .column-info p {
+    font-size: 14px;
+  }
+  
+  .column-info .cms-button-primary {
+    padding: 8px 16px; /* Reduce button size */
+  }
+}
+
+
+
+/* Media query for 480px and smaller */
+/*@media (max-width: 480px) {
+    .modal-content ul.categorias-container {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-width: 400px;
+    }
+}*/
 
 /* Selected category */
 .modal-content ul.categorias-container li a.selected {
@@ -39,7 +504,7 @@
 
 .modal-content ul.categorias-container li a span {
     margin-top: 10px;
-    font-size: 15px;
+    font-size: 14px;
     color: #333;
 }
 
@@ -59,289 +524,3 @@
     opacity: 1;
     transform: translateY(0);
   }
-
-  .contenedor-menu-header nav {
-    width: 50%; /* Adjust width to what you prefer */
-    height: 100vh;
-    background-color: transparent;
-    position: fixed;
-    top: 0;
-    right: -100%; /* Start off-screen to the right */
-    z-index: 10;
-    transition: right 0.4s ease; /* Animate sliding in */
-}
-
-.contenedor-menu-header nav.muestra-menu {
-    right: 0;
-}
-
-.contenedor-img-menu {
-    width: 50%;
-    height: 100vh;
-    float: left;
-    background-color: #0D0D0D;
-    position: relative;
-    transform: translateY(-150%);
-    transition: transform ease .4s;
-}
-
-.contenedor-img-menu.muestra-menu {
-    transform: translateY(-0%);
-    transition: transform ease .4s;
-}
-
-.contenedor-img-menu img{
-    width: 200px;
-    height: 150px;
-    float: left;
-    background-color: transparent;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-
-.contenedor-menu-header nav .contenedor-ul {
-    width: 100%;
-    height: 100vh;
-    background-color: #FFFFFF;
-    float: left;
-    position: relative;
-    transform: translateY(-150%);
-    transition: transform ease .4s;
-    transition-delay: .2s;
-    overflow-y: auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Add shadow here */
-}
-
-.contenedor-menu-header nav .contenedor-ul.muestra-menu{
-    transform: translateY(-0%);
-    transition: transform ease .4s;
-    transition-delay: .2s;
-}
-
-
-.contenedor-menu-header nav .contenedor-ul ul {
-    width: 100%;
-    height: 450px;
-    padding-left: 90px;
-    padding-right: 90px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin-top: auto;
-    margin-bottom: auto;
-    list-style: none;
-    background-color: transparent;
-}
-
-#btnCerrarMenu {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: -100px; /* Adjust the top position */
-    right: 10px; /* Adjust the right position */
-    background-color: transparent;
-    appearance: none;
-    outline: none;
-    border: none;
-    cursor: pointer;
-}
-
-#btnCerrarMenu img {
-    width: 100%; /* Ensure the image takes the full width of the button */
-    height: 100%; /* Ensure the image takes the full height of the button */
-}
-
-
-.contenedor-menu-header nav .contenedor-ul ul li {
-    width: 100%;
-    height: auto;
-    text-align: center;
-    background-color: transparent;
-    float: left;
-    position: relative;
-    margin-bottom: 5px;
-    border-bottom: 1px solid #ddd; /* Add a light grey line between menu items */
-    padding-bottom: 10px; /* Add some padding to give space between the text and the line */
-    margin-bottom: 10px;
-}
-
-.contenedor-menu-header nav .contenedor-ul ul li a {
-    width: auto;
-    height: auto;
-    background-color: transparent;
-    float: right;
-    font-family: "Mada", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 15px;
-    text-decoration: none;
-    color: #0D0D0D;
-    letter-spacing: .5px;
-    text-align: right;
-    transform: translateX(0px);
-    transition: transform ease .4s;
-}
-
-.contenedor-menu-header nav .contenedor-ul ul li a:hover {
-    color: #FF344F;
-    transform: translateX(-50px);
-    transition: transform ease .4s;
-}
-
-.contenedor-menu-header nav ul li a {
-    padding: 10px; /* Add some padding for better hover area */
-    display: block; /* Ensure the whole link is clickable */
-}
-
-.contenedor-btns-menu-is {
-    width: 300px;
-    height: auto;
-    background-color: transparent;
-    float: left;
-    display: inline-flex;
-    justify-content: end;
-    padding-top: 9px;
-    margin-left: auto
-}
-
-.contenedor-btns-menu-is button{
-    width: 45px;
-    height: 45px;
-    float: right;
-    background-color: #0D0D0D;
-    appearance: none;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    margin-left: 40px;
-    margin-top: 0px;
-    border-radius: 10px;
-    position: relative;
-}
-
-.contenedor-btns-menu-is button img{
-    width: 30px;
-    height: 30px;
-    float: left;
-    background-color: transparent;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-
-.contenedor-btns-menu-is button:hover{
-    background-color: #FF344F;
-}
-
-/* Media query for screens smaller than 1178px */
-@media (max-width: 1178px) {
-    header {
-        padding: 10px 50px;
-    }
-
-    .contenedor-general-inicio-0 a {
-        display: inline-flex; /* Ensure it is displayed on larger screens */
-    }
-
-    .a-logo {
-        width: 200px;
-        height: auto;
-    }
-}
-
-/* Media query for 768px and smaller */
-@media (max-width: 768px) {
-    .a-logo {
-        width: 150px;
-    }
-
-    .categorias-button {
-        font-size: 16px;
-        padding: 8px 16px;
-    }
-
-    .a-btn-is {
-        margin-right: 5px;
-    }
-
-    .modal-content ul.categorias-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 categories per row on smaller screens */
-    }
-
-    .contenedor-general-modal-filtros {
-        width: 95%; /* Increase width for smaller devices */
-        padding: 20px; /* Reduce padding */
-    }
-
-    .titulo-modal h2 {
-        font-size: 20px; /* Smaller title size */
-    }
-
-    .contenedor-categorias label {
-        width: 48%; /* 2 categories per row */
-        margin-bottom: 20px; /* Space between categories */
-    }
-
-    .modal-content {
-        padding: 15px; /* Adjust padding for smaller screens */
-    }
-
-    .contenedor-menu-header nav .contenedor-ul {
-        width: 100%; /* Full width for smaller screens */
-        height: auto; /* Adjust height based on content */
-    }
-
-    .contenedor-menu-header nav .contenedor-ul ul {
-        padding-left: 20px;
-        padding-right: 20px; /* Reduce padding on smaller screens */
-        height: auto; /* Let the height adjust based on the number of items */
-        margin-top: 20px; /* Add some spacing */
-    }
-
-    .contenedor-menu-header nav .contenedor-ul ul li {
-        width: 100%; /* Ensure the list items take full width */
-        text-align: center; /* Center the text for a cleaner look */
-    }
-
-    .contenedor-menu-header nav .contenedor-ul ul li a {
-        font-size: 14px; /* Slightly reduce font size */
-        text-align: center; /* Center the text */
-        padding: 10px; /* Increase padding for better touch targets */
-    }
-}
-
-@media (max-width: 576px) {
-    .contenedor-menu-header nav .contenedor-ul ul {
-        margin-top: 80px; /* Increase top margin to move elements further down */
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    /* Adjust the size and position of the X button */
-    #btnCerrarMenu {
-        width: 35px;  /* Reduce the width */
-        height: 35px; /* Reduce the height */
-        top: -70px;     /* Move it slightly higher */
-        right: 5px;   /* Move it slightly to the right */
-    }
-}
-
-/* Media query for 480px and smaller */
-/*@media (max-width: 480px) {
-    .modal-content ul.categorias-container {
-        grid-template-columns: 1fr;
-    }
-
-    .modal-content {
-        width: 95%;
-        max-width: 400px;
-    }
-}*/

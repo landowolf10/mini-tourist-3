@@ -1,23 +1,75 @@
 .contenedor-general-inicio-0 {
-  width: 100%;;
-  height: 100%;
-  background-color: transparent;
-  float: left;
-  display: flex;
-  justify-content: flex-start;
-  flex: 1;
-  margin-top: 250px;
-  margin-bottom: -200px;
-  position: relative; /* Ensure this is set */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-rows: repeat(2, auto); /* 2 rows */
+  gap: 20px; /* Space between the grid items */
+  width: 100%;
+  margin-top: 150px;
+  margin-bottom: -50px;
   z-index: 10;
+  position: relative;
+}
+
+.grid-box {
+  display: flex; /* Add flexbox to center content */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  position: relative;
+  padding: 20px;
+  text-align: center;
+  color: rgb(231, 29, 29);
+  font-family: "Mada", sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.grid-box span {
+  font-size: 24px; /* Increase the font size */
+  color: #fff; /* Ensure text color is white for readability */
+  z-index: 2; /* Make sure the text is above any overlays */
+  position: relative; /* Ensure it doesn't overlap with other content */
+}
+
+/* Optional: If you want to slightly increase the font size on hover */
+.grid-box:hover span {
+  font-size: 26px; /* Slightly larger font on hover */
+}
+
+/* Create an overlay with lower z-index */
+.grid-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  border-radius: 10px;
+  z-index: 1; /* Ensure the overlay is below the text */
+}
+
+/* Ensure text appears above the overlay */
+.grid-box > * {
+  position: relative;
+  z-index: 2; /* Ensure the text is above the overlay */
+}
+
+.grid-box:hover::before {
+  background-color: rgba(0, 0, 0, 0.7); /* Darken the overlay on hover */
 }
 
 .contenedor-general-inicio-0 a {
   max-width: calc(100% - 20px); /* Prevent overflow */
   height: 45px;
-  background-color: #FF344F;
-  padding: 12px 40px; /* Use shorthand for padding */
-  border-radius: 20px;
+  background-color: transparent; /* Remove background color */
+  padding: 12px 40px; /* Padding remains */
+  border-radius: 0; /* Remove the rounded corners */
   display: flex; /* Use flex for alignment */
   align-items: center; /* Center items vertically */
   justify-content: center; /* Center items horizontally */
@@ -48,12 +100,6 @@
   margin-top: 2px;
 }
 
-.contenedor-general-inicio-0 a:hover {
-  background-color: #CC0721;
-  transform: scale(1.05);
-  transition: transform ease .4s;
-}
-
 /* Modal Styles */
 .modal-categorias {
   display: flex;
@@ -69,7 +115,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   transition: opacity 0.5s ease;
-  margin-top: -1100px;
+  margin-top: -500px;
 }
 
 .modal-categorias.active {
@@ -168,6 +214,7 @@
 }
 
 .carousel-container {
+  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -222,7 +269,7 @@
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: 1880px; /* Move the buttons just below the carousel */
+  bottom: 2320px; /* Move the buttons just below the carousel */
   width: 100%;
   z-index: 10;
 }
@@ -329,7 +376,7 @@ button {
   }
 
   .carousel-button-container {
-    bottom: 2230px; /* Adjust the bottom position for smaller screens */
+    bottom: 3450px; /* Adjust the bottom position for smaller screens */
   }
 
   .modal-content ul.categorias-container {
@@ -364,27 +411,20 @@ button {
       padding: 15px; /* Adjust padding for smaller screens */
   }
 
-  .carousel-button-container {
-    bottom: 2480px; /* Adjust the bottom position for smaller screens */
-  }
-
   .contenedor-general-inicio-0 {
-    width: 120px;
-    height: 100%;
-    background-color: transparent;
-    float: left;
-    display: flex;
-    justify-content: flex-start;
-    flex: 1;
-    margin-top: 150px;
-    margin-bottom: -3300px;
-    z-index: 10;
+    grid-template-columns: repeat(2, 1fr); /* Change to 2 columns */
+    margin-bottom: 50px;
   }
 }
 
 @media (max-width: 576px) {
   .carousel-container {
+    margin-top: 150px;
     height: 50vh; /* Adjust the container height */
+  }
+
+  .modal-categorias {
+    margin-top: -1050px;
   }
 
   .image-wrapper {
@@ -418,20 +458,11 @@ button {
   }
 
   .carousel-button-container {
-    bottom: 2650px; /* Adjust the bottom position for smaller screens */
+    bottom: 3330px; /* Adjust the bottom position for smaller screens */
   }
 
   .contenedor-general-inicio-0 {
-    width: 120px;
-    height: 100%;
-    background-color: transparent;
-    float: left;
-    display: flex;
-    justify-content: flex-start;
-    flex: 1;
-    margin-top: 100px;
-    margin-bottom: -100px;
-    z-index: 10;
+    grid-template-columns: repeat(2, 1fr); /* Change to 2 columns */
   }
 
   .modal-filtros.muestra-modal-filtros {

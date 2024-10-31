@@ -7,9 +7,6 @@ import { DownloadButtonService } from '../services/download-button.service';
 import { StatusService } from '../services/card-status.service';
 import { CategoryServiceService } from '../services/category-service.service';
 
-
-declare var $: any;
-
 interface Card {
   cardName: string;
   category: string;
@@ -27,7 +24,7 @@ interface Card {
   styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent implements OnInit {
-  cards: Card[] = [
+  /*cards: Card[] = [
     {
       cardName: 'Fishers',
       category: 'Premium',
@@ -78,11 +75,11 @@ export class CarouselComponent implements OnInit {
       premium: 'No',
       updateDate: null,
     }
-  ];
-  //cards: Card[] = [];
+  ];*/
+  cards: Card[] = [];
   isExpanded = false;
   selectedItem: string = '';
-  hasImages: boolean = true; //change to false when using api call.
+  hasImages: boolean = false; //change to false when using api call.
   currentIndex: number = 0;
   intervalId: any;
   startX: number = 0;
@@ -107,9 +104,8 @@ export class CarouselComponent implements OnInit {
     this.sharedService.selectedItem$.subscribe(item => {
       this.selectedItem = item;
       console.log('Selected item in Carousel:', this.selectedItem);
-      //this.fetchImageNames(); // Fetch data based on the selected item
+      this.fetchImageNames(); //Uncomment this when calling from API
     });
-    //this.fetchPremiumImages();
     this.addSwipeListeners();
     this.downloadButtonService.setButtonVisibility(false);
   }
@@ -150,40 +146,77 @@ export class CarouselComponent implements OnInit {
   }
 
   // Add swipe gesture listeners
-  addSwipeListeners() {
-    const carousel = this.carouselContainer.nativeElement;
+addSwipeListeners() {
+  const carousel = this.carouselContainer.nativeElement;
+  
+  // Touch events for mobile
+  carousel.addEventListener('touchstart', (event: TouchEvent) => {
+    const touch = event.touches[0];
+    this.startX = touch.clientX;
+    this.startY = touch.clientY;
+  });
 
-    carousel.addEventListener('touchstart', (event: TouchEvent) => {
-      const touch = event.touches[0];
-      this.startX = touch.clientX;
-      this.startY = touch.clientY;
-    });
+  carousel.addEventListener('touchmove', (event: TouchEvent) => {
+    if (!this.startX || !this.startY) {
+      return;
+    }
 
-    carousel.addEventListener('touchmove', (event: TouchEvent) => {
-      if (!this.startX || !this.startY) {
-        return;
+    const touch = event.touches[0];
+    const diffX = this.startX - touch.clientX;
+    const diffY = this.startY - touch.clientY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX > 0) {
+        this.nextImage(); // Swipe left
+      } else {
+        this.prevImage(); // Swipe right
       }
+    }
 
-      const touch = event.touches[0];
-      const diffX = this.startX - touch.clientX;
-      const diffY = this.startY - touch.clientY;
+    // Reset values
+    this.startX = 0;
+    this.startY = 0;
+  });
 
-      // Detect horizontal swipe
+  // Mouse events for desktop
+  carousel.addEventListener('mousedown', (event: MouseEvent) => {
+    this.startX = event.clientX;
+    this.startY = event.clientY;
+
+    // Add mousemove event to track dragging
+    const onMouseMove = (moveEvent: MouseEvent) => {
+      const diffX = this.startX - moveEvent.clientX;
+      const diffY = this.startY - moveEvent.clientY;
+
       if (Math.abs(diffX) > Math.abs(diffY)) {
         if (diffX > 0) {
-          // Swipe left
-          this.nextImage();
+          this.nextImage(); // Drag left
         } else {
-          // Swipe right
-          this.prevImage();
+          this.prevImage(); // Drag right
         }
+        // Remove mousemove event after swipe
+        carousel.removeEventListener('mousemove', onMouseMove);
       }
+    };
 
-      // Reset values
+    // Add the mousemove and mouseup events
+    carousel.addEventListener('mousemove', onMouseMove);
+    
+    // Clean up events on mouseup
+    carousel.addEventListener('mouseup', () => {
+      carousel.removeEventListener('mousemove', onMouseMove);
       this.startX = 0;
       this.startY = 0;
-    });
-  }
+    }, { once: true });
+
+    // Clean up if the mouse leaves the carousel area
+    carousel.addEventListener('mouseleave', () => {
+      carousel.removeEventListener('mousemove', onMouseMove);
+      this.startX = 0;
+      this.startY = 0;
+    }, { once: true });
+  });
+}
 
   toggleMenu() {
     this.isExpanded = !this.isExpanded;
@@ -211,7 +244,7 @@ export class CarouselComponent implements OnInit {
     }, 500); // Match CSS transition timing
   }
 
-  menuItemClicked(event: Event, item: string) {
+  menuItemClicked(event: Event, item: string, isFromModal: boolean) {
     console.log('menuItemClicked function called');
     event.preventDefault();
     event.stopPropagation();
@@ -219,7 +252,9 @@ export class CarouselComponent implements OnInit {
     console.log('Selected item:', item);
     
     this.fetchImageNames();
-    this.toggleCategorias();
+
+    if(isFromModal)
+      this.toggleCategorias();
   }
   
 

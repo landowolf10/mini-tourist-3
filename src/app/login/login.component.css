@@ -35,6 +35,7 @@ body {
     z-index: 1; /* Ensure it stays above background elements */
     margin-top: 200px; /* Add some margin if needed to push it down */
     padding: 0 15px; /* Add padding for inner content */
+    margin-top: 20px;
 }
 
 .screen__content {

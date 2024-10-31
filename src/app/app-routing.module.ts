@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { MoreAboutMtComponent } from './more-about-mt/more-about-mt.component';
 import { WhereIsMtComponent } from './where-is-mt/where-is-mt.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
+import { TriviaComponent } from './trivia/trivia.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'where-is-mt', component: WhereIsMtComponent },
   { path: 'more-about-mt', component: MoreAboutMtComponent },
-  { path: 'image-slider', component: ImageSliderComponent }
+  { path: 'image-slider', component: ImageSliderComponent },
+  { path: 'deals', component: TriviaComponent }
 ];
 
 @NgModule({

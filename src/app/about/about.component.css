@@ -10,6 +10,7 @@
 .seccion-general {
   animation: fadeIn 2s ease-in-out forwards; /* 2 seconds fade-in */
   opacity: 0; /* Start invisible */
+  margin-top: -20px;
 }
 
 .seccion-nosotros-0, 
