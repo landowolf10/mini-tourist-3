@@ -1,20 +1,53 @@
 <div class="container transition hidden">
 	<div class="screen">
 	  <div class="screen__content">
-		<form class="login" (ngSubmit)="login()" #loginForm="ngForm">
-		  <div class="login__field">
-			<i class="login__icon fas fa-user"></i>
-			<input type="text" class="login__input" placeholder="User name / Email" [(ngModel)]="email" name="email" required>
-		  </div>
-		  <div class="login__field">
-			<i class="login__icon fas fa-lock"></i>
-			<input type="password" class="login__input" placeholder="Password" [(ngModel)]="password" name="password" required>
-		  </div>
-		  <button type="submit" class="button login__submit" [disabled]="!loginForm.valid">
-			<span class="button__text">Log In Now</span>
-			<i class="button__icon fas fa-chevron-right"></i>
-		  </button>
-		</form>
+		<form class="login" (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+			<div class="login__field">
+			  <i class="login__icon fas fa-user"></i>
+			  <input
+				type="text"
+				class="login__input"
+				placeholder="User name / Email"
+				[(ngModel)]="email"
+				name="email"
+				required
+				#emailField="ngModel"
+			  />
+			  <!-- Error message for email -->
+			  <div *ngIf="emailField.invalid && emailField.touched" class="error">
+				Email is required.
+			  </div>
+			</div>
+		  
+			<div class="login__field">
+			  <i class="login__icon fas fa-lock"></i>
+			  <input
+				type="password"
+				class="login__input"
+				placeholder="Password"
+				[(ngModel)]="password"
+				name="password"
+				required
+				#passwordField="ngModel"
+			  />
+			  <!-- Error message for password -->
+			  <div *ngIf="passwordField.invalid && passwordField.touched" class="error">
+				Password is required.
+			  </div>
+			</div>
+
+			<!-- Error message for incorrect credentials -->
+			<div *ngIf="errorMessage" class="error-message">
+				{{ errorMessage }}
+			</div>
+		  
+			<button type="submit" class="button login__submit" (click)="login(loginForm)">
+			  <span class="button__text">Iniciar sesión</span>
+			  <i class="button__icon fas fa-chevron-right"></i>
+			</button>
+		  </form>
+		  
+		  
 	  </div>
 	  <div class="screen__background">
 		<span class="screen__background__shape screen__background__shape4"></span>

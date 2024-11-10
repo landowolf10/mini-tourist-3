@@ -190,6 +190,18 @@ body {
     transform: scale(1.5);    
 }
 
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 4px;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 0.9em; /* Adjust font size as needed */
+    margin-top: 8px; /* Add spacing if necessary */
+  }
+
 /* Responsive styles */
 @media (max-width: 768px) {
     .screen__background__shape1,

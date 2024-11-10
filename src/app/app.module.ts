@@ -29,6 +29,8 @@ import { HomeComponent } from './home/home.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { FooterComponent } from './footer/footer.component';
 import { TriviaComponent } from './trivia/trivia.component';
+import { CreateMemberComponent } from './create-member/create-member.component';
+import { MemberDashboardComponent } from './member-dashboard/member-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { TriviaComponent } from './trivia/trivia.component';
     HomeComponent,
     ImageSliderComponent,
     FooterComponent,
-    TriviaComponent
+    TriviaComponent,
+    CreateMemberComponent,
+    MemberDashboardComponent
   ],
   imports: [
     BrowserModule,

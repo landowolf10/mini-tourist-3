@@ -1,0 +1,83 @@
+<div class="create-member-container">
+    <h2>Create New Member</h2>
+    <form [formGroup]="createMemberForm" (ngSubmit)="onSubmit()">
+      <!-- Member Details Section -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" placeholder="Enter email" />
+        <div *ngIf="createMemberForm.get('email')!.invalid && createMemberForm.get('email')!.touched">
+          <small class="error">Valid email is required</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="text" id="password" formControlName="password" placeholder="Enter password" />
+        <div *ngIf="createMemberForm.get('password')!.invalid && createMemberForm.get('password')!.touched">
+          <small class="error">Password is required</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cardName">Name</label>
+        <input type="text" id="cardName" formControlName="cardName" placeholder="Enter name" />
+        <div *ngIf="createMemberForm.get('cardName')!.invalid && createMemberForm.get('cardName')!.touched">
+          <small class="error">Name is required</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <select id="city" formControlName="city" style="border-style: solid; border-color: red;display: block;">
+          <option value="" disabled>Select city</option>
+          <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+        </select>
+        <div *ngIf="createMemberForm.get('city')!.invalid && createMemberForm.get('city')!.touched">
+          <small class="error">City is required</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category" formControlName="category" style="border-style: solid; border-color: red;display: block;">
+          <option value="" disabled>Select category</option>
+          <option value="parks">Parques y atracciones</option>
+          <option value="restaurants">Restaurantes, bares y cafeterías</option>
+          <option value="places_events">Lugares y eventos</option>
+          <option value="stores">Tiendas</option>
+          <option value="services">Servicios</option>
+        </select>
+        <div *ngIf="createMemberForm.get('category')!.invalid && createMemberForm.get('category')!.touched">
+          <small class="error">Category is required</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="premium">Is premium member?</label>
+        <div class="radio-container">
+          <label class="radio-label">
+            <input type="radio" id="premiumYes" formControlName="premium" value="Yes" />
+            <span>Yes</span>
+          </label>
+      
+          <label class="radio-label">
+            <input type="radio" id="premiumNo" formControlName="premium" value="No" />
+            <span>No</span>
+          </label>
+        </div>
+        <div *ngIf="createMemberForm.get('premium')!.invalid && createMemberForm.get('premium')!.touched">
+          <small class="error">Please select an option</small>
+        </div>
+      </div>
+      
+      
+      
+      <!-- Image Upload Section -->
+      <div class="form-group">
+        <label for="imageFile">Front card</label>
+        <input type="file" id="imageFile" (change)="onImageChange($event)" />
+        <div class="image-preview" *ngIf="imagePreview">
+          <img [src]="imagePreview" alt="Image preview" />
+        </div>
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="createMemberForm.invalid">Create Member</button>
+    </form>
+  </div>
+  

@@ -1,29 +1,71 @@
-<div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-    <!--<button (click)="countVisitedCards()">Show visited cards</button>-->
-    <p>Visited cards: {{visitedCardsCount}}</p>
+<div class="dashboard-container">
+  <!-- Summary Section -->
+  <div class="card-panel">
+    <h2>Dashboard Overview</h2>
+    <div class="summary-cards">
+      <div class="summary-card">
+        <p>Total Visited Cards</p>
+        <h3>{{ visitedCardsCount }}</h3>
+      </div>
+      <div class="summary-card">
+        <p>Total Downloaded Cards</p>
+        <h3>{{ downloadedCardsCount }}</h3>
+      </div>
+    </div>
   </div>
-  <div>
-    <!--<button (click)="countVisitedCards()">Show visited cards</button>-->
-    <p>Downloaded cards: {{downloadedCardsCount}}</p>
+
+  <!-- Filter Section -->
+  <div class="filter-panel">
+    <h2>Filter by Date</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>Select a Date</mat-label>
+      <input matInput [matDatepicker]="datepicker" placeholder="Select a date" (dateChange)="onDateChange($event)">
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker></mat-datepicker>
+    </mat-form-field>
+    <div class="summary-cards">
+      <div class="summary-card">
+        <p>Total Visited Cards</p>
+        <h3>{{ visitedCardsCountDate }}</h3>
+      </div>
+      <div class="summary-card">
+        <p>Total Downloaded Cards</p>
+        <h3>{{ downloadedCardsCountDate }}</h3>
+      </div>
+    </div>
   </div>
-  <div>
-    <br>
+
+    <!-- Date Range Filter Section -->
+    <div class="filter-panel">
+      <h2>Filter by Date Range</h2>
+      <mat-form-field appearance="outline">
+        <mat-label>Select Date Range</mat-label>
+        <mat-date-range-input [rangePicker]="rangePicker">
+          <input matStartDate placeholder="Start date" [(ngModel)]="rangeStartDate" (dateChange)="onDateRangeChange()">
+          <input matEndDate placeholder="End date" [(ngModel)]="rangeEndDate" (dateChange)="onDateRangeChange()">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+        <mat-date-range-picker #rangePicker></mat-date-range-picker>
+      </mat-form-field>
+      <div class="summary-cards">
+        <div class="summary-card">
+          <p>Total Visited Cards</p>
+          <h3>{{ visitedCardsCountRange }}</h3>
+        </div>
+        <div class="summary-card">
+          <p>Total Downloaded Cards</p>
+          <h3>{{ downloadedCardsCountRange }}</h3>
+        </div>
+      </div>
+    </div>
+    
+    
+
+  <!-- Member Management Panel -->
+  <div class="member-panel">
+    <h2>Member Management</h2>
+    <button (click)="router.navigate(['/create-member'])">Create Member</button>
+    <button >Update Member</button>
+    <button >Delete Member</button>
   </div>
-  <mat-form-field>
-    <input matInput [matDatepicker]="datepicker" placeholder="Select a date" (dateChange)="onDateChange($event)">
-    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-    <mat-datepicker #datepicker></mat-datepicker>
-  </mat-form-field>
-  <div>
-    <p>Visited cards: {{visitedCardsCountDate}}</p>
-    <p>Downloaded cards: {{downloadedCardsCountDate}}</p>
-  </div>  
+</div>
