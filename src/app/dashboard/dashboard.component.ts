@@ -4,6 +4,7 @@ import { CardStatusGeneralCount } from './card-status-general-count.model';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment'; // Add this import to use moment.js for date formatting
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,7 +28,8 @@ export class DashboardComponent {
   constructor(
     private http: HttpClient,
     public dialog: MatDialog,
-    public router: Router
+    public router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -116,4 +118,10 @@ export class DashboardComponent {
 
 
   //By City
+
+
+  logout(): void {
+    this.authService.logout(); // Call the logout method in AuthService
+    this.router.navigate(['/login']); // Redirect to login page
+  }
 }

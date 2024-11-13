@@ -1,23 +1,38 @@
 <div class="carousel-container" #carouselContainer>
-  
-    <div *ngFor="let card of cards; let i = index" 
-         class="image-wrapper"
-         [ngClass]="{
-           'current': i === currentIndex,
-           'previous': i === (currentIndex - 1 + cards.length) % cards.length,
-           'next': i === (currentIndex + 1) % cards.length,
-           'hidden': i !== currentIndex && i !== (currentIndex - 1 + cards.length) % cards.length && i !== (currentIndex + 1) % cards.length
-         }">
-        <a class="carousel-item">
-          <div *ngIf="hasImages; else noCards" class="img-area">
-            <img [src]="card.image" alt="{{ card.image }}" (click)="openImageModal($event, card)">
-          </div>
-          <ng-template #noCards>
-            No hay tarjetas
-          </ng-template>
-        </a>
+  <!-- Previous placeholder -->
+  <div class="image-wrapper prev-card">
+    <div class="placeholder-card">
+      <!-- Greyed out style for the previous placeholder -->
     </div>
   </div>
+
+  <!-- Main carousel items -->
+  <div
+    *ngFor="let card of cards; let i = index"
+    class="image-wrapper"
+    [ngClass]="{
+      'current': i === currentIndex,
+      'previous': i === (currentIndex - 1 + cards.length) % cards.length,
+      'next': i === (currentIndex + 1) % cards.length,
+      'hidden': i !== currentIndex && i !== (currentIndex - 1 + cards.length) % cards.length && i !== (currentIndex + 1) % cards.length
+    }"
+  >
+    <a class="carousel-item">
+      <div *ngIf="hasImages; else noCards" class="img-area">
+        <img [src]="card.image" alt="{{ card.image }}" (click)="openImageModal($event, card)" />
+      </div>
+      <ng-template #noCards>No hay tarjetas</ng-template>
+    </a>
+  </div>
+
+  <!-- Next placeholder -->
+  <div class="image-wrapper next-card">
+    <div class="placeholder-card">
+      <!-- Greyed out style for the next placeholder -->
+    </div>
+  </div>
+</div>
+
   <!-- Carousel Buttons -->
   <div class="carousel-button-container">
     <button class="carousel-button left" (click)="prevImage()">

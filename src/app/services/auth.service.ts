@@ -34,5 +34,6 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('authToken');
     localStorage.removeItem('memberRole'); // Clear role on logout
+    sessionStorage.clear();
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CategoryServiceService } from './services/category-service.service';
 import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -26,8 +27,9 @@ export class AppComponent {
   ];
   currentSlideIndex: number = 0;
   autoSlideInterval: any;
+  memberRole: string | null = null;
 
-  constructor(private sharedService: CategoryServiceService, private router: Router) {}
+  constructor(private sharedService: CategoryServiceService, private router: Router, private authService: AuthService) {}
 
   ngAfterViewInit() {
     // Select elements to animate
@@ -58,6 +60,8 @@ export class AppComponent {
     this.autoSlideInterval = setInterval(() => {
       this.nextSlide();
     }, 3000);
+
+    this.memberRole = this.authService.getMemberRole();
   }
 
   ngOnDestroy() {
@@ -65,6 +69,10 @@ export class AppComponent {
     if (this.autoSlideInterval) {
       clearInterval(this.autoSlideInterval);
     }
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
   }
 
   menuItemClicked(event: Event, item: string) {

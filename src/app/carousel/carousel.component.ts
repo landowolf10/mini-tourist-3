@@ -14,6 +14,7 @@ interface Card {
   cardid: number;
   creationDate: string;
   image: string;
+  back_image: string,
   premium: string;
   updateDate: string | null;
 }
@@ -133,8 +134,7 @@ export class CarouselComponent implements OnInit {
   nextImage() {
     this.currentIndex = (this.currentIndex + 1) % this.cards.length;
   }
-
-  // Navigate to the previous image
+  
   prevImage() {
     this.currentIndex = (this.currentIndex - 1 + this.cards.length) % this.cards.length;
   }
@@ -270,7 +270,7 @@ addSwipeListeners() {
       data: { 
         card: card,
         frontImageSrc: card.image,
-        backImageSrc: card.image
+        backImageSrc: card.back_image
       }
     });
 

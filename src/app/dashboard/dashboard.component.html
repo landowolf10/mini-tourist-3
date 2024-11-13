@@ -59,13 +59,34 @@
       </div>
     </div>
     
-    
+    <!-- City filter -->
+  <div class="filter-panel">
+    <h2>Filter by city</h2>
+        <select id="category" formControlName="category" style="border-style: solid; border-color: red;display: block;">
+          <option value="" disabled>Select category</option>
+          <option value="Zihuatanejo" selected>Ixtapa Zihuatanejo</option>
+          <option value="restaurants">Acapulco</option>
+          <option value="places_events">Morelia</option>
+          <option value="stores">Ciudad de México</option>
+        </select>
+    <div class="summary-cards">
+      <div class="summary-card">
+        <p>Total Visited Cards</p>
+        <h3>{{ visitedCardsCountDate }}</h3>
+      </div>
+      <div class="summary-card">
+        <p>Total Downloaded Cards</p>
+        <h3>{{ downloadedCardsCountDate }}</h3>
+      </div>
+    </div>
+  </div>
 
   <!-- Member Management Panel -->
   <div class="member-panel">
     <h2>Member Management</h2>
-    <button (click)="router.navigate(['/create-member'])">Create Member</button>
-    <button >Update Member</button>
-    <button >Delete Member</button>
+    <button (click)="router.navigate(['/create-member'])">Crear asociado</button>
+    <button >Actualizar asociado</button>
+    <button >Eliminar asociado</button>
+    <button (click)="logout()">Cerrar sesión</button>
   </div>
 </div>

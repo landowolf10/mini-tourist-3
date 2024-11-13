@@ -240,6 +240,32 @@
   box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.6);
 }
 
+.prev-card,
+.next-card {
+  width: 290px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(128, 128, 128, 0.5); /* Light grey color with transparency */
+  opacity: 0.8; /* Slight transparency */
+  position: absolute; /* Absolute positioning */
+  top: 85%; /* Center vertically within the container */
+  transform: translateY(-50%); /* Adjust for vertical centering */
+  z-index: 1; /* Place above carousel images */
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Position the prev and next cards at the left and right of the carousel container */
+.prev-card {
+  left: 220px; /* Adjust to set distance from the left */
+}
+
+.next-card {
+  right: 220px; /* Adjust to set distance from the right */
+}
+
 .current {
   transform: translateZ(150px) scale(1); /* Bring the current image forward */
   z-index: 3;

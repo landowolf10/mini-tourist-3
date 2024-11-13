@@ -45,7 +45,15 @@
             <li><a routerLink="/where-is-mt" routerLinkActive="active-menu" (click)="closeMenu()">¿Dónde encontrarnos?</a></li>
             <li><a routerLink="/more-about-mt" routerLinkActive="active-menu" (click)="closeMenu()">Conoce nuestras tarjetas</a></li>
             <li><a routerLink="/contact" routerLinkActive="active-menu" (click)="closeMenu()">Contáctanos</a></li>
-            <li><a routerLink="/login" routerLinkActive="active-menu" (click)="closeMenu()">Iniciar sesión</a></li>
+            <li>
+              <a *ngIf="!isLoggedIn()" routerLink="/login" routerLinkActive="active-menu" (click)="closeMenu()">Dashboard</a>
+              <a *ngIf="isLoggedIn() && memberRole === 'admin'" routerLink="/dashboard" routerLinkActive="active-menu" (click)="closeMenu()">
+                 Dashboard
+              </a>
+              <a *ngIf="isLoggedIn() && memberRole !== 'admin'" routerLink="/member-dashboard" routerLinkActive="active-menu" (click)="closeMenu()">
+                Dashboard
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
