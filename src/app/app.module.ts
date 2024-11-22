@@ -31,6 +31,7 @@ import { FooterComponent } from './footer/footer.component';
 import { TriviaComponent } from './trivia/trivia.component';
 import { CreateMemberComponent } from './create-member/create-member.component';
 import { MemberDashboardComponent } from './member-dashboard/member-dashboard.component';
+import { MemberAdminDashboardComponent } from './member-admin-dashboard/member-admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { MemberDashboardComponent } from './member-dashboard/member-dashboard.co
     FooterComponent,
     TriviaComponent,
     CreateMemberComponent,
-    MemberDashboardComponent
+    MemberDashboardComponent,
+    MemberAdminDashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,7 @@ import { TriviaComponent } from './trivia/trivia.component';
 import { CreateMemberComponent } from './create-member/create-member.component';
 import { MemberDashboardComponent } from './member-dashboard/member-dashboard.component';
 import { authGuard } from './auth.guard';
+import { MemberAdminDashboardComponent } from './member-admin-dashboard/member-admin-dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'image-slider', component: ImageSliderComponent },
   { path: 'deals', component: TriviaComponent },
   { path: 'create-member', component: CreateMemberComponent },
-  { path: 'member-dashboard', component: MemberDashboardComponent, canMatch: [authGuard] }
+  { path: 'member-dashboard', component: MemberDashboardComponent, canMatch: [authGuard] },
+  { path: 'member-admin-dashboard', component: MemberAdminDashboardComponent }
 ];
 
 @NgModule({

@@ -56,16 +56,18 @@ export class LoginComponent implements AfterViewInit {
       return;
     }
   
-    this.http.post<{ id: number, role: string, token: string }>(apiUrl, loginData).subscribe(
+    this.http.post<{ id: number, card_id: number, role: string, token: string }>(apiUrl, loginData).subscribe(
       (response) => {
-        const { id, role, token } = response;
+        const { id, card_id, role, token } = response;
         this.authService.setMemberId(id);
         this.authService.login(token, role); // Store token and role
+        this.authService.setCardId(card_id);
   
         // Redirect to the appropriate dashboard based on role
         if (role === 'admin') {
           this.router.navigate(['/dashboard']);
         } else {
+          localStorage.setItem('card_id', card_id.toString());
           this.router.navigate(['/member-dashboard']);
         }
       },

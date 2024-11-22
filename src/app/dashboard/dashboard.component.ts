@@ -5,6 +5,9 @@ import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment'; // Add this import to use moment.js for date formatting
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { CardService } from '../services/card.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,29 +15,49 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+  dashboardForm: FormGroup;
   visitedCardsCount: number = 0;
   downloadedCardsCount: number = 0;
   visitedCardsCountDate: number = 0;
   downloadedCardsCountDate: number = 0;
   visitedCardsCountRange: number = 0;
   downloadedCardsCountRange: number = 0;
+  visitedCardsCountCity: number = 0;
+  downloadedCardsCountCity: number = 0;
   selectedDate: string | null = null;
   startDate: string | null = null;
   endDate: string | null = null;
   rangeStartDate: string | null = null;
   rangeEndDate: string | null = null;
   currentDate: Date | null = null;
+  citySubscription: Subscription | null = null;
+  cards: { cardid: number; cardname: string }[] = [];
+  selectedCardId: number | null = null;
 
   constructor(
     private http: HttpClient,
     public dialog: MatDialog,
     public router: Router,
-    private authService: AuthService
-  ) {}
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private cardService: CardService
+  ) {
+    this.dashboardForm = this.fb.group({
+      city: ['Zihuatanejo']
+    });
+  }
 
   ngOnInit() {
     this.countVisitedAndDownloadedGeneralCards();
     this.countVisitedAndDownloadedGeneralDateCards(this.setCurrentDate());
+    this.countVisitedAndDownloadedGeneralCityCards(this.dashboardForm.get('city')?.value);
+    this.getAllCards();
+
+    // Subscribe to city changes
+    this.citySubscription = this.dashboardForm.get('city')!.valueChanges.subscribe((selectedCity) => {
+      console.log('Selected city:', selectedCity);
+      this.countVisitedAndDownloadedGeneralCityCards(selectedCity);
+    });
   }
 
   setCurrentDate(): string {
@@ -118,10 +141,57 @@ export class DashboardComponent {
 
 
   //By City
+  countVisitedAndDownloadedGeneralCityCards(selectedCity: string) {
+    const apiUrl = `http://127.0.0.1:8000/api/v1/cards/count/city?city=${selectedCity}`;
+    this.http.get<CardStatusGeneralCount>(apiUrl).subscribe(
+      data => {
+        console.log('Data: ', data);
+        this.visitedCardsCountCity = data?.visited_count ?? 0;
+        this.downloadedCardsCountCity = data?.downloaded_count ?? 0;
+        console.log('Visited count: ', this.visitedCardsCountCity);
+        console.log('Downloaded count: ', this.downloadedCardsCountCity);
+      },
+      error => {
+        console.error('There was an error!', error);
+      }
+    );
+  }
 
+  getAllCards() {
+    const apiUrl = `http://127.0.0.1:8000/api/v1/cards`;
+    this.http.get<{ cardid: number; cardname: string }[]>(apiUrl).subscribe(
+      data => {
+        this.cards = data;
+        this.cardService.setCards(data); // Update the service with the fetched cards
+        console.log('Card data: ', data);
+      },
+      error => {
+        console.error('There was an error!', error);
+      }
+    );
+  }
+  
+  onCardSelect(event: Event) {
+    const selectElement = event.target as HTMLSelectElement;
+    const selectedCardId = Number(selectElement.value);
+    this.cardService.setSelectedCardId(selectedCardId);
+    console.log('Selected Card ID:', selectedCardId);
+
+    if (selectedCardId != null)
+      this.router.navigate(['/member-admin-dashboard']);
+    else
+      this.router.navigate(['/dashboard']);
+  }
 
   logout(): void {
     this.authService.logout(); // Call the logout method in AuthService
     this.router.navigate(['/login']); // Redirect to login page
+  }
+
+  ngOnDestroy() {
+    // Unsubscribe from the subscription to avoid memory leaks
+    if (this.citySubscription) {
+      this.citySubscription.unsubscribe();
+    }
   }
 }

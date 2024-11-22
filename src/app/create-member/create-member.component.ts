@@ -9,8 +9,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CreateMemberComponent {
   createMemberForm: FormGroup;
-  imagePreview: string | ArrayBuffer | null = null;
-  cities: string[] = ['Ixtapa Zihuatanejo', 'Acapulco', 'Morelia', 'Ciudad de México'];
+  frontImagePreview: string | ArrayBuffer | null = null;
+  backImagePreview: string | ArrayBuffer | null = null;
+  cities: string[] = ['Zihuatanejo', 'Acapulco', 'Morelia', 'Ciudad de México'];
   categories: string[] = ['Parques y atracciones', 'Restaurantes, bares y cafeterías', 'Lugares y eventos', 'Tiendas', 'Servicios'];
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
@@ -21,20 +22,31 @@ export class CreateMemberComponent {
       city: ['', Validators.required],
       category: ['', Validators.required],
       premium: [null, Validators.required],
-      imageFile: [null]
+      imageFile: [null],
+      backImageFile: [null]
     });
     
   }
 
-  onImageChange(event: Event): void {
+  onImageChange(event: Event, imageType: 'front' | 'back'): void {
     const file = (event.target as HTMLInputElement).files?.[0];
+
     if (file) {
-      this.createMemberForm.patchValue({ imageFile: file });
-      this.createMemberForm.get('imageFile')!.updateValueAndValidity();
+      if (imageType === 'front') {
+        this.createMemberForm.patchValue({ imageFile: file });
+        this.createMemberForm.get('imageFile')!.updateValueAndValidity();
+      } else {
+        this.createMemberForm.patchValue({ backImageFile: file });
+        this.createMemberForm.get('backImageFile')!.updateValueAndValidity();
+      }
 
       const reader = new FileReader();
       reader.onload = () => {
-        this.imagePreview = reader.result;
+        if (imageType === 'front') {
+          this.frontImagePreview = reader.result;
+        } else {
+          this.backImagePreview = reader.result;
+        }
       };
       reader.readAsDataURL(file);
     }
@@ -50,6 +62,7 @@ export class CreateMemberComponent {
       memberData.append('category', this.createMemberForm.get('category')?.value);
       memberData.append('premium', this.createMemberForm.get('premium')?.value);
       memberData.append('imageFile', this.createMemberForm.get('imageFile')?.value);
+      memberData.append('backImageFile', this.createMemberForm.get('backImageFile')?.value);
 
       // Log form values and additional static data
       console.log("Form Values:", this.createMemberForm.value);

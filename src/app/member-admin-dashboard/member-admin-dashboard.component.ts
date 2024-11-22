@@ -3,16 +3,16 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import * as moment from 'moment';
 import { CardService } from '../services/card.service';
+import { CardStatusCount } from './card-status-count.model';
 import { HttpClient } from '@angular/common/http';
-import { CardStatusCount } from '../member-admin-dashboard/card-status-count.model';
-import { CardStatusDateCount } from '../member-admin-dashboard/card-status-date-count.model';
+import { CardStatusDateCount } from './card-status-date-count.model';
 
 @Component({
   selector: 'app-member-dashboard',
-  templateUrl: './member-dashboard.component.html',
-  styleUrls: ['./member-dashboard.component.css']
+  templateUrl: './member-admin-dashboard.component.html',
+  styleUrls: ['./member-admin-dashboard.component.css']
 })
-export class MemberDashboardComponent implements OnInit {
+export class MemberAdminDashboardComponent implements OnInit {
   cardid: number | null = null;
   visitedCardsCount: number = 0;
   downloadedCardsCount: number = 0;
@@ -37,11 +37,7 @@ export class MemberDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('Received Card ID:', this.authService.getCardId());
-
-    this.getVisitedAndDownloadedCardsById(this.authService.getCardId()!);
-
-    /*this.cardService.selectedCardId$.subscribe(cardid => {
+    this.cardService.selectedCardId$.subscribe(cardid => {
       this.cardid = cardid;
       console.log('Received Card ID:', this.cardid);
 
@@ -57,7 +53,7 @@ export class MemberDashboardComponent implements OnInit {
         this.getVisitedAndDownloadedCardsByIdAndDate(this.cardid, this.setCurrentDate())
       }
         
-    });*/
+    });
   }
 
   getVisitedAndDownloadedCardsById(cardId: number) {
@@ -110,20 +106,41 @@ export class MemberDashboardComponent implements OnInit {
     );
   }
 
-  formatDate(date: Date): string {
-    return moment(date).format('YYYY-MM-DD');
+  onCardSelect(event: Event): void {
+    // Type guard to ensure event.target is a select element
+    const selectElement = event.target as HTMLSelectElement | null;
+    
+    // Check if selectElement is valid before accessing its value
+    if (selectElement && selectElement.value) {
+      const selectedCardId = parseInt(selectElement.value, 10); // Convert to number
+      this.cardService.setSelectedCardId(selectedCardId);
+      console.log('Selected Card ID:', selectedCardId);
+  
+      if (!isNaN(selectedCardId)) { // Ensure the card ID is valid
+        this.router.navigate(['/member-admin-dashboard']);
+      } else {
+        this.router.navigate(['/dashboard']);
+      }
+    } else {
+      console.error('No card selected');
+      this.router.navigate(['/dashboard']); // Navigate to the default dashboard if no card is selected
+    }
   }
-
+  
   setCurrentDate(): string {
     this.currentDate = new Date();
     console.log('Current date: ', this.formatDate(this.currentDate));
     return this.formatDate(this.currentDate);
   }
 
+  formatDate(date: Date): string {
+    return moment(date).format('YYYY-MM-DD');
+  }
+
   onDateChange(event: any) {
     const selected = event.value;
     this.selectedDate = this.formatDate(selected);
-    //this.countVisitedAndDownloadedGeneralDateCards(this.selectedDate);
+    this.getVisitedAndDownloadedCardsByIdAndDate(this.cardid!, this.selectedDate);
     console.log('Selected date: ', this.selectedDate);
   }
 
@@ -133,7 +150,7 @@ export class MemberDashboardComponent implements OnInit {
       const endDate = this.formatDate(new Date(this.rangeEndDate));
 
       console.log('Date range selected from:', startDate, 'to:', endDate);
-      //this.countVisitedAndDownloadedByDateRange(startDate, endDate);
+      this.getVisitedAndDownloadedByIdAndDateRange(startDate, endDate, this.cardid!);
     } else {
       console.log('Please select both a start and end date.');
     }

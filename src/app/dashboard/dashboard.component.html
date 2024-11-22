@@ -1,14 +1,14 @@
 <div class="dashboard-container">
   <!-- Summary Section -->
   <div class="card-panel">
-    <h2>Dashboard Overview</h2>
+    <h2>Dashboard General</h2>
     <div class="summary-cards">
       <div class="summary-card">
-        <p>Total Visited Cards</p>
+        <p>Total de tarjetas visitadas</p>
         <h3>{{ visitedCardsCount }}</h3>
       </div>
       <div class="summary-card">
-        <p>Total Downloaded Cards</p>
+        <p>Total de tarjetas descargadas</p>
         <h3>{{ downloadedCardsCount }}</h3>
       </div>
     </div>
@@ -16,20 +16,20 @@
 
   <!-- Filter Section -->
   <div class="filter-panel">
-    <h2>Filter by Date</h2>
+    <h2>Filtro por fecha</h2>
     <mat-form-field appearance="outline">
-      <mat-label>Select a Date</mat-label>
-      <input matInput [matDatepicker]="datepicker" placeholder="Select a date" (dateChange)="onDateChange($event)">
+      <mat-label>Selecciona una fecha</mat-label>
+      <input matInput [matDatepicker]="datepicker" placeholder="Selecciona una fecha" [value]="currentDate" (dateChange)="onDateChange($event)">
       <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
       <mat-datepicker #datepicker></mat-datepicker>
     </mat-form-field>
     <div class="summary-cards">
       <div class="summary-card">
-        <p>Total Visited Cards</p>
+        <p>Total de tarjetas visitadas</p>
         <h3>{{ visitedCardsCountDate }}</h3>
       </div>
       <div class="summary-card">
-        <p>Total Downloaded Cards</p>
+        <p>Total de tarjetas descargadas</p>
         <h3>{{ downloadedCardsCountDate }}</h3>
       </div>
     </div>
@@ -37,9 +37,9 @@
 
     <!-- Date Range Filter Section -->
     <div class="filter-panel">
-      <h2>Filter by Date Range</h2>
+      <h2>Filtro por rango de fechas</h2>
       <mat-form-field appearance="outline">
-        <mat-label>Select Date Range</mat-label>
+        <mat-label>Selecciona un rango de fechas</mat-label>
         <mat-date-range-input [rangePicker]="rangePicker">
           <input matStartDate placeholder="Start date" [(ngModel)]="rangeStartDate" (dateChange)="onDateRangeChange()">
           <input matEndDate placeholder="End date" [(ngModel)]="rangeEndDate" (dateChange)="onDateRangeChange()">
@@ -49,44 +49,48 @@
       </mat-form-field>
       <div class="summary-cards">
         <div class="summary-card">
-          <p>Total Visited Cards</p>
+          <p>Total de tarjetas visitadas</p>
           <h3>{{ visitedCardsCountRange }}</h3>
         </div>
         <div class="summary-card">
-          <p>Total Downloaded Cards</p>
+          <p>Total de tarjetas descargadas</p>
           <h3>{{ downloadedCardsCountRange }}</h3>
         </div>
       </div>
     </div>
     
     <!-- City filter -->
-  <div class="filter-panel">
-    <h2>Filter by city</h2>
-        <select id="category" formControlName="category" style="border-style: solid; border-color: red;display: block;">
-          <option value="" disabled>Select category</option>
+  <div class="filter-panel" [formGroup]="dashboardForm">
+    <h2>Filtro por ciudad</h2>
+        <select id="city" formControlName="city" style="border-style: solid; border-color: red;display: block;">
+          <option value="" disabled>Selecciona una ciudad</option>
           <option value="Zihuatanejo" selected>Ixtapa Zihuatanejo</option>
-          <option value="restaurants">Acapulco</option>
-          <option value="places_events">Morelia</option>
-          <option value="stores">Ciudad de México</option>
+          <option value="Acapulco">Acapulco</option>
+          <option value="Morelia">Morelia</option>
+          <option value="CDMX">Ciudad de México</option>
         </select>
     <div class="summary-cards">
       <div class="summary-card">
-        <p>Total Visited Cards</p>
-        <h3>{{ visitedCardsCountDate }}</h3>
+        <p>Total de tarjetas visitadas</p>
+        <h3>{{ visitedCardsCountCity }}</h3>
       </div>
       <div class="summary-card">
-        <p>Total Downloaded Cards</p>
-        <h3>{{ downloadedCardsCountDate }}</h3>
+        <p>Total de tarjetas descargadas</p>
+        <h3>{{ downloadedCardsCountCity }}</h3>
       </div>
     </div>
   </div>
 
   <!-- Member Management Panel -->
   <div class="member-panel">
-    <h2>Member Management</h2>
+    <h2>Manejo de usuarios</h2>
     <button (click)="router.navigate(['/create-member'])">Crear asociado</button>
     <button >Actualizar asociado</button>
     <button >Eliminar asociado</button>
     <button (click)="logout()">Cerrar sesión</button>
+    <select id="members" formControlName="members" style="border-style: solid; border-color: red;display: block;" (change)="onCardSelect($event)">
+      <option value="" disabled>Selecciona un socio</option>
+      <option *ngFor="let card of cards" [value]="card.cardid">{{ card.cardname }}</option>
+    </select>
   </div>
 </div>

@@ -1,0 +1,151 @@
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+/* Card Panel Styles */
+.card-panel {
+    padding: 24px;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border-radius: 15px;
+    color: #ffffff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.card-panel h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Summary Cards */
+.summary-cards {
+    display: flex;
+    gap: 20px;
+}
+
+.summary-card {
+    flex: 1;
+    padding: 25px;
+    background-color: #f8f9fc;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.summary-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.summary-card p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #555;
+}
+
+.summary-card h3 {
+    margin: 10px 0;
+    font-size: 32px;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Filter Panel */
+.filter-panel {
+    padding: 24px;
+    margin-bottom: 24px;
+    background-color: #f0f7ff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #0288d1;
+}
+
+.filter-panel h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0288d1;
+    margin-bottom: 12px;
+}
+
+.mat-form-field {
+    width: 100%;
+    max-width: 320px;
+    margin: 12px 0;
+}
+
+.filter-panel p {
+    margin-top: 16px;
+    font-size: 15px;
+    color: #555;
+}
+
+/* Member Management Panel */
+.member-panel {
+    padding: 24px;
+    background-color: #e8f5e9;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-left: 4px solid #66bb6a;
+}
+
+.member-panel h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #66bb6a;
+    margin-bottom: 18px;
+}
+
+.member-panel button {
+    margin: 12px 6px;
+    padding: 12px 26px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Unique Button Colors */
+.member-panel button:nth-child(2) {
+    background-color: #4caf50; /* Green */
+}
+
+.member-panel button:nth-child(3) {
+    background-color: #2196f3; /* Blue */
+}
+
+.member-panel button:nth-child(4) {
+    background-color: #f44336; /* Red */
+}
+
+.member-panel button:nth-child(5) {
+    background-color: #000000; /* Black */
+}
+
+/* Hover States for Buttons */
+.member-panel button:nth-child(2):hover {
+    background-color: #388e3c;
+}
+
+.member-panel button:nth-child(3):hover {
+    background-color: #1976d2;
+}
+
+.member-panel button:nth-child(4):hover {
+    background-color: #d32f2f;
+}
+
+.member-panel button:nth-child(5):hover {
+    background-color: #333333;
+}

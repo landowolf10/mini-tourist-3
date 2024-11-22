@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   private memberId: number | null = null;
+  private cardId: number | null = null;
 
   setMemberId(id: number) {
     this.memberId = id;
@@ -22,9 +23,18 @@ export class AuthService {
     return localStorage.getItem('memberRole');
   }
 
+  setCardId(id: number) {
+    this.cardId = id;
+  }
+
+  getCardId(): number | null {
+    return Number(localStorage.getItem('card_id'));
+  }
+
   isLoggedIn(): boolean {
     return !!localStorage.getItem('authToken');
   }
+  
 
   login(token: string, role: string): void {
     localStorage.setItem('authToken', token);
@@ -34,6 +44,7 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('authToken');
     localStorage.removeItem('memberRole'); // Clear role on logout
+    localStorage.removeItem('card_id');
     sessionStorage.clear();
   }
 }
